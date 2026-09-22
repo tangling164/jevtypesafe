@@ -1,0 +1,51 @@
+{
+  "id": "github-1376230436",
+  "slug": "feelings",
+  "name": "feelings",
+  "owner": "obie",
+  "primary_category": "developer",
+  "secondary_categories": [],
+  "tags": ["tooling", "workflow", "evaluation"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/obie/feelings",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1376230436",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/obie/feelings/blob/044895bef989ded975c51a139da2789effa86482/LICENSE.txt",
+    "checked_at": "2026-09-20T13:00:20.592Z",
+    "method": "github_license_at_commit"
+  },
+  "requirements": { "api_key": true, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "A Ruby gem that brings calibrated `like?` questions to Ruby, judged by Jev through OpenRouter or TypeSafe's API.",
+      "problem": "Inspired by Probably, it lets code branch on a probability instead of hand-rolling prompts: `Feelings(email.body).like?(\"genuinely urgent\")`.",
+      "requirements_text": "Set OPENROUTER_API_KEY or TYPESAFE_API_KEY; no other configuration is required. Installs as a Ruby gem.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/obie/feelings/blob/044895bef989ded975c51a139da2789effa86482/README.md"] }
+    },
+    "zh": {
+      "summary": "Ruby gem：把带校准概率的 like? 提问带入 Ruby，由 Jev 经 OpenRouter 或 TypeSafe API 评判。",
+      "problem": "受 Probably 启发，让代码按概率分支而不是手写提示词：Feelings(email.body).like?(\"genuinely urgent\")。",
+      "requirements_text": "设置 OPENROUTER_API_KEY 或 TYPESAFE_API_KEY 即可，无需其他配置；以 Ruby gem 安装。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/obie/feelings/blob/044895bef989ded975c51a139da2789effa86482/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/obie/feelings", "type": "repository", "revision": "044895bef989ded975c51a139da2789effa86482", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/obie/feelings/blob/044895bef989ded975c51a139da2789effa86482/README.md", "type": "readme", "revision": "044895bef989ded975c51a139da2789effa86482", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/obie/feelings/blob/044895bef989ded975c51a139da2789effa86482/LICENSE.txt", "type": "license", "revision": "044895bef989ded975c51a139da2789effa86482", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 43,
+  "repo_updated_at": "2026-09-20T09:06:37Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:224b1d23cc884645e4b18fe91ae8ffcf76fe702f7fd923d9bc67ba84b5dae416",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

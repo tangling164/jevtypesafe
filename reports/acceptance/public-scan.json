@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-22T02:45:21.824Z",
+  "executor": "ZCode",
+  "sourceFiles": 121,
+  "distFiles": 55,
+  "history": "no_commits",
+  "findings": [],
+  "limitation": "Heuristic token and field checks; no claim of exhaustive secret detection."
+}

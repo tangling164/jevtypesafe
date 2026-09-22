@@ -1,0 +1,20 @@
+---
+import type { PublicProject } from '../lib/content-schema';
+import {dictionary,type Locale} from '../i18n';
+import {projectPath} from '../lib/routes';
+import {content} from '../lib/site';
+interface Props { project: PublicProject; locale: Locale; }
+const {project:p,locale}=Astro.props;
+const t=dictionary(locale); const text=p.locales[locale] ?? p.locales.en;
+const category=content.categories.find(c=>c.id===p.primary_category);
+---
+<li class="border-b border-line last:border-b-0">
+  <article class="grid items-center gap-4 px-4 py-5 transition-colors hover:bg-surface-hover sm:px-6 lg:grid-cols-[minmax(0,1fr)_150px_170px]">
+    <div class="flex min-w-0 gap-4">
+      <span class="grid size-10 shrink-0 place-items-center rounded-md border border-line bg-background font-mono text-sage" aria-hidden="true">{p.name.slice(0,1).toUpperCase()}</span>
+      <div class="min-w-0"><h3 class="text-lg break-words"><a href={projectPath(p,locale)}>{p.name}</a></h3><p class="muted text-sm">{text.summary}</p><div class="flex flex-wrap gap-2"><span class="badge">{t[p.source_status]}</span><span class="badge">{t[p.ecosystem]}</span>{p.archived && <span class="badge">{t.archived}</span>}{p.requirements.local_install===true && <span class="badge">{t.local}</span>}</div>{locale==='zh'&&!p.locales.zh && <p class="text-sm text-pink">{t.missingTranslation}</p>}</div>
+    </div>
+    <div class="text-sm muted"><span>{category?.[locale]}</span>{p.stars!==null && <p title={`${t.checked}: ${p.checked_at}`}>☆ {p.stars.toLocaleString(locale)} <span class="text-xs">Stars</span></p>}</div>
+    <div class="flex flex-wrap gap-2 lg:justify-end"><a class="button text-xs" href={projectPath(p,locale)}>{t.details} →</a>{p.repo_url&&<a class="button text-xs" href={p.repo_url}>GitHub ↗</a>}{p.demo_url&&<a class="button text-xs" href={p.demo_url}>{t.demo} ↗</a>}</div>
+  </article>
+</li>

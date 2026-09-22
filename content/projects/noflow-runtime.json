@@ -1,0 +1,51 @@
+{
+  "id": "github-1373029480",
+  "slug": "noflow-runtime",
+  "name": "noflow-runtime",
+  "owner": "casungo",
+  "primary_category": "routing",
+  "secondary_categories": [],
+  "tags": ["routing", "workflow", "evaluation"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/casungo/noflow-runtime",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1373029480",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/casungo/noflow-runtime/blob/d100d0ca26db362ed87a3343d4f4813b118fc9ca/LICENSE",
+    "checked_at": "2026-09-20T13:00:20.592Z",
+    "method": "github_license_at_commit"
+  },
+  "requirements": { "api_key": null, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "A runtime where UI controls report semantic events and a Jev or mock policy picks which registered affordance to present.",
+      "problem": "It replaces hard-wired interface flows: buttons describe what happened, the policy answers with a decision and confidence, and safety gates fall back instead of improvising.",
+      "requirements_text": "The policy layer can run against Jev or a mock; the README does not state account or key requirements for the Jev path. Runs as a local prototype.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/casungo/noflow-runtime/blob/d100d0ca26db362ed87a3343d4f4813b118fc9ca/README.md"] }
+    },
+    "zh": {
+      "summary": "一个界面运行时：控件上报语义事件，由 Jev 或 mock 政策从已注册的操作中挑选呈现。",
+      "problem": "它替代硬编码的界面流程：控件描述发生的事件，政策以决策与置信度回应，安全门在异常时回退而不是即兴发挥。",
+      "requirements_text": "政策层可对接 Jev 或 mock；README 未说明 Jev 路径的账户或 Key 要求。以本地原型运行。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/casungo/noflow-runtime/blob/d100d0ca26db362ed87a3343d4f4813b118fc9ca/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/casungo/noflow-runtime", "type": "repository", "revision": "d100d0ca26db362ed87a3343d4f4813b118fc9ca", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/casungo/noflow-runtime/blob/d100d0ca26db362ed87a3343d4f4813b118fc9ca/README.md", "type": "readme", "revision": "d100d0ca26db362ed87a3343d4f4813b118fc9ca", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/casungo/noflow-runtime/blob/d100d0ca26db362ed87a3343d4f4813b118fc9ca/LICENSE", "type": "license", "revision": "d100d0ca26db362ed87a3343d4f4813b118fc9ca", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 2,
+  "repo_updated_at": "2026-09-19T00:57:50Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:4876005b0e76ad35766c01526677d7b5368be91010fb6ab4a2d2021ffa4084af",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

@@ -1,0 +1,20 @@
+---
+import { dictionary } from '../i18n';
+import { paginationPath, type Route } from '../lib/routes';
+interface Props { route: Route }
+const { route } = Astro.props;
+const t = dictionary(route.locale);
+const link = (page: number) => paginationPath(route,page);
+const label = (page: number) => t.paginationStatus.replace('{page}', String(page)).replace('{pages}', String(route.pages));
+const pages = Array.from({ length: route.pages }, (_, index) => index + 1);
+---
+{route.pages > 1 && (
+  <nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t.pagination}>
+    {route.page > 1 && <a class="button" rel="prev" href={link(route.page - 1)}>{t.previous}</a>}
+    {pages.map((page) => page === route.page
+      ? <span class="button bg-surface" aria-current="page" aria-label={label(page)}>{page}</span>
+      : <a class="button" href={link(page)} aria-label={label(page)}>{page}</a>)}
+    {route.page < route.pages && <a class="button" rel="next" href={link(route.page + 1)}>{t.next}</a>}
+    <span class="muted text-sm">{label(route.page)}</span>
+  </nav>
+)}

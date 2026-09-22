@@ -1,0 +1,20 @@
+import type { en } from './en';
+export const zh: Record<keyof typeof en, string> = {
+  projects:'项目目录',categories:'用途分类',submit:'提交项目',sponsor:'赞助合作',about:'关于',privacy:'隐私',
+  hero:'发现用 Jev 构建的项目。',intro:'查看源码、实际用途和使用条件。独立整理公开资料，帮助你找到值得进一步了解的项目。',independent:'独立目录，与 TypeSafe AI 无隶属关系。',official:'Jev 官方网站',
+  search:'搜索项目',searchHint:'名称、用途、标签或作者…',browse:'浏览项目',latest:'最新收录',all:'全部项目',source:'查看源码',demo:'查看演示',details:'详情',checked:'资料检查',sourceChecked:'仅资料核实 · 未实际运行验证',runtimeTested:'已运行验证（查看证据）',noProjects:'尚无已发布项目。',noResults:'没有找到匹配项目，请减少筛选条件。',clear:'清除筛选',
+  sourceStatus:'源码状态',ecosystem:'生态关系',usage:'使用方式',sort:'排序',newest:'最新收录',updated:'最近源码更新',stars:'GitHub Stars',name:'名称',open_source:'已确认开源',source_available:'源码可见 · 许可待核',demo_only:'仅公开演示',unknown:'未说明',jev:'使用 Jev',jev_integration:'Jev 集成',jev_like:'Jev-like · 独立实现',online:'有在线演示',local:'需要本地安装',archived:'已归档',previous:'上一页',next:'下一页',missingTranslation:'中文译文尚未就绪，请阅读英文原文。',
+  problem:'解决的问题',requirements:'使用条件',provenance:'出处与核实',license:'许可证',related:'相关项目',correct:'提交纠错',free:'普通收录免费。提供公开项目链接，经来源核实后收录。',cooperation:'让探索 Jev 的开发者发现你。',cooperationBody:'咨询带有明确标识的首页展示位。排期与报告服务在合作确认时约定。',contactMissing:'联系邮箱尚未开放。你仍可复制信息，稍后联系。',openMail:'打开邮件应用',copy:'复制信息',copySuccess:'已复制。请自行发送这些信息。',copyFail:'复制失败，请手动选择下方文本并复制。',mailNotice:'本站尚未收到提交，请在邮件应用中发送。',url:'项目 URL（HTTPS）',optionalName:'项目名称（选填）',notes:'补充说明（最多 500 字）',goal:'推广目标',dates:'期望日期',budget:'预算（选填）',noJs:'搜索需要 JavaScript。你仍可通过静态目录浏览全部项目。',loading:'正在加载搜索索引…',indexFailed:'搜索索引加载失败。',retry:'重试',filters:'筛选',results:'个匹配项目',
+  kicker:'独立 Jev 项目目录',viewAll:'查看全部项目',askSponsor:'咨询赞助',
+  homeStats:'独立项目 {total} 个 · 已确认开源 {openSource} 个 · 资料检查 {date}',
+  directoryCount:'共 {count} 个项目',categoryIntro:'归类于{category}的项目。',filterHint:'在搜索页按生态关系、源码状态、使用方式筛选。',
+  pagination:'分页',paginationStatus:'第 {page} / {pages} 页',
+  role:'Jev 的作用',
+  role_jev:'直接调用 Jev 完成核心任务。',
+  role_jev_integration:'在工具中直接或可选使用 Jev。',
+  role_jev_like:'独立实现的相似目标实验；不是 Jev，与 TypeSafe AI 无关。',
+  role_unknown:'来源未说明与 Jev 的关系。',
+  website:'网站',author:'作者',snapshot:'源码快照',firstPublished:'收录时间',tagList:'标签',
+  yes:'是',no:'否',apiKey:'TypeSafe/Jev API Key',additionalModel:'额外模型',hardware:'硬件要求',
+  sourceTypeRepository:'代码仓库',sourceTypeReadme:'README',sourceTypeLicense:'许可证',sourceTypeWebsite:'网站',sourceTypePost:'作者帖子',fetchedAt:'抓取',
+};

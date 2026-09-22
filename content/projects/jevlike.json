@@ -1,0 +1,51 @@
+{
+  "id": "jevlike",
+  "slug": "jevlike",
+  "name": "jevlike",
+  "owner": "Minimal Labs",
+  "primary_category": "experiments",
+  "secondary_categories": ["data"],
+  "tags": ["research", "classification", "evaluation"],
+  "ecosystem": "jev_like",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/vinnylarouge/jevlike",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1372867305",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/vinnylarouge/jevlike/blob/94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452/LICENSE",
+    "checked_at": "2026-09-20T03:52:48.864Z",
+    "method": "github_api_and_file"
+  },
+  "requirements": { "api_key": false, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "An independent research starter for training a small model that scores a changing list of text options in one pass.",
+      "problem": "It provides JSONL training, evaluation, and prediction tools for the same input/output task shape as Jev without claiming to reproduce Jev.",
+      "requirements_text": "The quickstart uses uv and local JSONL data. A Hugging Face encoder is optional; exact minimum Python and hardware requirements are not stated.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/vinnylarouge/jevlike/blob/94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452/README.md"] }
+    },
+    "zh": {
+      "summary": "一个独立研究起点，用于训练小模型，一次为动态文本选项列表输出概率。",
+      "problem": "它提供 JSONL 训练、评估与预测工具，任务输入输出形态与 Jev 相似，但不声称复现 Jev。",
+      "requirements_text": "快速入门使用 uv 和本地 JSONL 数据，可选 Hugging Face 编码器；README 未说明最低 Python 与硬件要求。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/vinnylarouge/jevlike/blob/94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/vinnylarouge/jevlike", "type": "repository", "revision": "94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/vinnylarouge/jevlike/blob/94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452/README.md", "type": "readme", "revision": "94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/vinnylarouge/jevlike/blob/94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452/LICENSE", "type": "license", "revision": "94f5fd1b0b11d52bbdfdf4e0ee6aa96b568f8452", "fetched_at": "2026-09-20T03:52:48.864Z" }
+  ],
+  "stars": 1002,
+  "repo_updated_at": "2026-09-20T03:01:44Z",
+  "first_published_at": "2026-09-20T04:00:00.000Z",
+  "checked_at": "2026-09-20T03:52:48.864Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": null,
+  "generation": { "provider": "codex", "model": "manual", "prompt_version": "seed-v1", "generated_at": "2026-09-20T04:00:00.000Z" }
+}

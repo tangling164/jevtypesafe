@@ -1,0 +1,45 @@
+{
+  "id": "github-1374793140",
+  "slug": "jev-code",
+  "name": "jev-code",
+  "owner": "rhighs",
+  "primary_category": "developer",
+  "secondary_categories": [],
+  "tags": ["coding-agent", "tooling", "routing"],
+  "ecosystem": "jev",
+  "source_status": "source_available",
+  "repo_url": "https://github.com/rhighs/jev-code",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1374793140",
+  "license": null,
+  "requirements": { "api_key": true, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "A coding agent and TypeScript SDK built on Jev: your code lists the options, Jev picks one, and the library adds typed routers and decision sessions.",
+      "problem": "It turns agent choices into typed decisions with probabilities instead of free-text parsing, and ships a CLI built on the same pieces.",
+      "requirements_text": "The CLI installs locally and uses a `jev-code login` flow; live decisions call the TypeSafe API. Exact plan or key requirements are stated by the tool at login.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/rhighs/jev-code/blob/2a915a266957d504e6e7dad28f3b5743bbbc2add/README.md"] }
+    },
+    "zh": {
+      "summary": "基于 Jev 的编程 Agent 与 TypeScript SDK：由代码列出选项、Jev 挑选其一，并提供类型化路由与决策会话。",
+      "problem": "它把 Agent 的选择变成带概率的类型化决策，而不是解析自由文本；CLI 构建在同一组组件上。",
+      "requirements_text": "CLI 本地安装并使用 jev-code login 流程；实际决策调用 TypeSafe API。具体套餐或 Key 要求以工具登录时的说明为准。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/rhighs/jev-code/blob/2a915a266957d504e6e7dad28f3b5743bbbc2add/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/rhighs/jev-code", "type": "repository", "revision": "2a915a266957d504e6e7dad28f3b5743bbbc2add", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/rhighs/jev-code/blob/2a915a266957d504e6e7dad28f3b5743bbbc2add/README.md", "type": "readme", "revision": "2a915a266957d504e6e7dad28f3b5743bbbc2add", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 15,
+  "repo_updated_at": "2026-09-20T12:09:20Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:fd8c28e2cf8a10d6367cb6c56e8bf691060258f134f8e1c95a103dd03f12683f",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

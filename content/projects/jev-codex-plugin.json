@@ -1,0 +1,51 @@
+{
+  "id": "github-1376040800",
+  "slug": "jev-codex-plugin",
+  "name": "jev-codex-plugin",
+  "owner": "integrate-your-mind",
+  "primary_category": "developer",
+  "secondary_categories": [],
+  "tags": ["coding-agent", "tooling", "workflow"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/integrate-your-mind/jev-codex-plugin",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1376040800",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/integrate-your-mind/jev-codex-plugin/blob/f57353ba6bc6288751d5a229e1359194d1b06a4c/LICENSE",
+    "checked_at": "2026-09-20T13:00:20.592Z",
+    "method": "github_license_at_commit"
+  },
+  "requirements": { "api_key": true, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "An open-source Codex plugin that consults Jev about tools, models, tasks and strategies, diagnoses failed commands, and checks completion claims against evidence.",
+      "problem": "It gives Codex a second opinion with probabilities at decision points instead of relying on one model's prose.",
+      "requirements_text": "Requires Node.js 22+ and your own TYPESAFE_API_KEY in the Codex host environment. TypeSafe's API charges and rate limits apply.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/integrate-your-mind/jev-codex-plugin/blob/f57353ba6bc6288751d5a229e1359194d1b06a4c/README.md"] }
+    },
+    "zh": {
+      "summary": "开源 Codex 插件：就工具、模型、任务与策略咨询 Jev，诊断失败命令，并依据证据核对完成声明。",
+      "problem": "它在决策点为 Codex 提供带概率的第二意见，而不是依赖单一模型的文字表述。",
+      "requirements_text": "需要 Node.js 22+ 与你自己的 TYPESAFE_API_KEY（配置在 Codex 宿主环境）。TypeSafe API 的计费与限流适用。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/integrate-your-mind/jev-codex-plugin/blob/f57353ba6bc6288751d5a229e1359194d1b06a4c/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/integrate-your-mind/jev-codex-plugin", "type": "repository", "revision": "f57353ba6bc6288751d5a229e1359194d1b06a4c", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/integrate-your-mind/jev-codex-plugin/blob/f57353ba6bc6288751d5a229e1359194d1b06a4c/README.md", "type": "readme", "revision": "f57353ba6bc6288751d5a229e1359194d1b06a4c", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/integrate-your-mind/jev-codex-plugin/blob/f57353ba6bc6288751d5a229e1359194d1b06a4c/LICENSE", "type": "license", "revision": "f57353ba6bc6288751d5a229e1359194d1b06a4c", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 2,
+  "repo_updated_at": "2026-09-19T18:14:56Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:82dc4d6d7b42928065a79ade4ccc36eca6840cd585695795d488e8859b73655b",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

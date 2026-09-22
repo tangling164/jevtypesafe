@@ -1,0 +1,51 @@
+{
+  "id": "supercov",
+  "slug": "supercov",
+  "name": "Supercov",
+  "owner": "Supercov contributors",
+  "primary_category": "developer",
+  "secondary_categories": ["review"],
+  "tags": ["coding-agent", "quality", "evaluation"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/supercorp-ai/supercov",
+  "demo_url": null,
+  "website_url": "https://supercov.com",
+  "repository_id": "1343957927",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/supercorp-ai/supercov/blob/0f1a6a3364137a94606563fc173a0dbf1cef855e/LICENSE",
+    "checked_at": "2026-09-20T03:52:48.864Z",
+    "method": "github_api_and_file"
+  },
+  "requirements": { "api_key": true, "additional_model": true, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "A local CLI that gives coding agents code-quality scores and test-coverage evidence.",
+      "problem": "It exposes quality and coverage gaps as bounded queries, records runs, and compares results.",
+      "requirements_text": "Jev-based quality scoring needs a TypeSafe API key; coverage uses the project's existing test command. Platform and toolchain requirements vary by language.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/supercorp-ai/supercov/blob/0f1a6a3364137a94606563fc173a0dbf1cef855e/README.md"] }
+    },
+    "zh": {
+      "summary": "一个为编程 Agent 提供代码质量评分与测试覆盖证据的本地 CLI。",
+      "problem": "它把质量与覆盖缺口转为有边界的查询，并记录和比较每次运行。",
+      "requirements_text": "基于 Jev 的质量评分需要 TypeSafe API Key；覆盖率使用项目现有测试命令。平台与工具链要求因语言而异。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/supercorp-ai/supercov/blob/0f1a6a3364137a94606563fc173a0dbf1cef855e/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/supercorp-ai/supercov", "type": "repository", "revision": "0f1a6a3364137a94606563fc173a0dbf1cef855e", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/supercorp-ai/supercov/blob/0f1a6a3364137a94606563fc173a0dbf1cef855e/README.md", "type": "readme", "revision": "0f1a6a3364137a94606563fc173a0dbf1cef855e", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/supercorp-ai/supercov/blob/0f1a6a3364137a94606563fc173a0dbf1cef855e/LICENSE", "type": "license", "revision": "0f1a6a3364137a94606563fc173a0dbf1cef855e", "fetched_at": "2026-09-20T03:52:48.864Z" }
+  ],
+  "stars": 61,
+  "repo_updated_at": "2026-09-20T03:19:42Z",
+  "first_published_at": "2026-09-20T04:00:00.000Z",
+  "checked_at": "2026-09-20T03:52:48.864Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": null,
+  "generation": { "provider": "codex", "model": "manual", "prompt_version": "seed-v1", "generated_at": "2026-09-20T04:00:00.000Z" }
+}

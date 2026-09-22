@@ -1,0 +1,41 @@
+---
+import ContactForm from './ContactForm.astro';
+import { dictionary, type Locale } from '../i18n';
+import { config } from '../lib/site';
+interface Props { kind: 'submit' | 'sponsor' | 'about' | 'privacy'; locale: Locale }
+const { kind, locale } = Astro.props;
+const t = dictionary(locale);
+const zh = locale === 'zh';
+const headings = {
+  submit: zh ? '提交项目' : 'Submit a project', sponsor: zh ? '赞助合作' : 'Sponsorship',
+  about: zh ? '关于本站' : 'About this directory', privacy: zh ? '隐私说明' : 'Privacy',
+};
+---
+<article class="prose">
+  <h1>{headings[kind]}</h1>
+  {kind === 'submit' && <>
+    <p>{t.free}</p><p>{zh ? '无需注册。我们会核实公开来源和许可状态，但不承诺立即发布。请在自己的邮件应用中真正发送；本站没有邮件发送服务。' : 'No account is needed. We check public sources and license status, but cannot promise immediate publication. You must send the message from your own email app; this site has no email sending service.'}</p>
+    <ContactForm kind="submit" locale={locale} />
+  </>}
+  {kind === 'sponsor' && <>
+    <p>{t.cooperation} {t.cooperationBody}</p>
+    <section class="panel"><h2>{zh ? '合作范围' : 'What the placement includes'}</h2><ul>
+      <li>{zh ? '首页最多 3 个清晰标注的赞助位。' : 'Up to 3 clearly labeled placements on the homepage.'}</li>
+      <li>{zh ? '每期 30 天，同时覆盖英文和中文页面；两种语言不是两份独立受众。' : 'A 30-day placement across English and Chinese pages; the two languages are not separate audiences.'}</li>
+      <li>{zh ? '按具体位置和日期询价，目前没有公开固定价格或自助支付。' : 'Pricing is by inquiry for a specific position and date; there is no published fixed price or self-serve payment.'}</li>
+      <li>{zh ? '首次收费前会落实排期和报告能力；不承诺流量、销售或 SEO 排名。' : 'Scheduling and reporting will be in place before the first paid campaign; traffic, sales, and SEO rankings are not promised.'}</li>
+    </ul><p class="muted">{zh ? '位置示意：搜索下方、自然目录上方；移动端按位置顺序显示。' : 'Placement preview: below search and above the organic directory; mobile follows slot order.'}</p></section>
+    <ContactForm kind="sponsor" locale={locale} />
+  </>}
+  {kind === 'about' && <>
+    <p>{zh ? 'Jev Builds Directory 是独立站点，与 TypeSafe AI 无隶属关系。本站整理可追溯的公开资料，帮助读者发现使用 Jev 或相关方法构建的项目。' : 'Jev Builds Directory is an independent site and is not affiliated with TypeSafe AI. It organizes traceable public information to help readers discover projects built with Jev or related approaches.'}</p>
+    <h2>{zh ? '我们如何核实' : 'How verification works'}</h2><p>{zh ? '我们检查来源、许可和生态关系。除非条目明确链接运行证据，“资料核实”不表示我们实际运行过项目。无许可证的公开源码不会被称为开源。' : 'We check sources, licenses, and ecosystem relationships. Unless an entry links explicit runtime evidence, source review does not mean we ran the project. Public source without a license is not described as open source.'}</p>
+    <p>{zh ? '符合规则的普通收录免费。若资料有误，请从提交页附上项目 ID 发起纠错。' : 'Ordinary listings that meet the rules are free. If something is wrong, use the submission page with the project ID to suggest a correction.'} <a class="text-link" href={locale === 'zh' ? '/zh/submit/' : '/submit/'}>{t.correct}</a></p>
+  </>}
+  {kind === 'privacy' && <>
+    <p>{zh ? '本站目前不存储联系表单提交，也没有站内邮件发送服务。提交和赞助信息只在你的浏览器中组成邮件或复制文本；只有你在自己的邮件应用中发送后，收件人才会收到。' : 'We do not store contact form submissions, and this site has no email service. Submission and sponsorship details are composed into an email or copied text in your browser; the recipient receives them only after you send them from your own email app.'}</p>
+    <h2>{zh ? '访问分析' : 'Site analytics'}</h2>
+    <p>{config.PUBLIC_WEB_ANALYTICS_TOKEN ? (zh ? '本站已配置 Cloudflare Web Analytics，用于了解页面访问和性能。它不作为赞助曝光或出站点击的完整记录。' : 'Cloudflare Web Analytics is configured to understand page visits and performance. It is not treated as a complete record of sponsorship impressions or outbound clicks.') : (zh ? '本站当前未配置访问分析 token，因此不加载分析脚本，也不进行赞助跟踪。' : 'No analytics token is currently configured, so no analytics script is loaded and sponsorship tracking is not active.')}</p>
+    <p>{zh ? '公开联系邮箱可能显示在页面上。本站不会把客户私人邮箱、付款资料或私密备注放入公开目录数据。' : 'A public contact address may appear on the site. Private customer email, payment details, and private notes are not placed in public directory data.'}</p>
+  </>}
+</article>

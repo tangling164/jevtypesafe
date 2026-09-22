@@ -1,0 +1,62 @@
+{
+  "id": "fast-jev-compaction",
+  "slug": "fast-jev-compaction",
+  "name": "fast-jev-compaction",
+  "owner": "Tamara Tran",
+  "primary_category": "developer",
+  "secondary_categories": ["routing"],
+  "tags": ["coding-agent", "data-processing", "workflow"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/tamaratran/fast-jev-compaction",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1374005005",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/LICENSE",
+    "checked_at": "2026-09-20T03:52:48.864Z",
+    "method": "github_api_and_file"
+  },
+  "requirements": {
+    "api_key": true,
+    "additional_model": true,
+    "local_install": true,
+    "hardware": null
+  },
+  "locales": {
+    "en": {
+      "summary": "An npm library and Claude Code hook that uses Jev probabilities to compact conversation history.",
+      "problem": "It helps callers decide which eligible tool calls and results to keep, truncate, or remove while preserving retained content.",
+      "requirements_text": "Live Jev access uses a TypeSafe API key; the early-access Claude Code hook requires Claude Code 2.1.274+ and function hooks enabled.",
+      "generation": {
+        "status": "reviewed",
+        "source_refs": ["https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/README.md"]
+      }
+    },
+    "zh": {
+      "summary": "一个 npm 库与 Claude Code 钩子，利用 Jev 概率压缩对话历史。",
+      "problem": "它帮助调用方判断应保留、截短或移除哪些工具调用与结果，并原样保留留下的内容。",
+      "requirements_text": "实时使用 Jev 需要 TypeSafe API Key；早期版 Claude Code 钩子要求 Claude Code 2.1.274+ 并启用 function hooks。",
+      "generation": {
+        "status": "reviewed",
+        "source_refs": ["https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/README.md"]
+      }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/tamaratran/fast-jev-compaction", "type": "repository", "revision": "e3f262a7f4d42bd8dd32ced30d26176f7cb545b0", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/README.md", "type": "readme", "revision": "e3f262a7f4d42bd8dd32ced30d26176f7cb545b0", "fetched_at": "2026-09-20T03:52:48.864Z" },
+    { "url": "https://github.com/tamaratran/fast-jev-compaction/blob/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0/LICENSE", "type": "license", "revision": "e3f262a7f4d42bd8dd32ced30d26176f7cb545b0", "fetched_at": "2026-09-20T03:52:48.864Z" }
+  ],
+  "stars": 4357,
+  "repo_updated_at": "2026-09-20T03:49:23Z",
+  "first_published_at": "2026-09-20T04:00:00.000Z",
+  "checked_at": "2026-09-20T03:52:48.864Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": null,
+  "generation": { "provider": "codex", "model": "manual", "prompt_version": "seed-v1", "generated_at": "2026-09-20T04:00:00.000Z" }
+}

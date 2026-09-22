@@ -1,0 +1,30 @@
+---
+import { dictionary, type Locale } from '../i18n';
+import { config } from '../lib/site';
+interface Props { kind: 'submit' | 'sponsor'; locale: Locale }
+const { kind, locale } = Astro.props;
+const t = dictionary(locale);
+const email = config.CONTACT_EMAIL;
+// ?project= is read client-side: static HTML cannot capture query parameters at build time.
+---
+<form class="panel grid gap-5" data-contact-form data-kind={kind} data-locale={locale} data-email={email} data-project="" novalidate>
+  <label class="grid gap-2"><span>{t.url}</span><input name="url" type="url" inputmode="url" required pattern="https://.*" autocomplete="url" /></label>
+  {kind === 'submit' ? <>
+    <label class="grid gap-2"><span>{t.optionalName}</span><input name="name" maxlength="120" autocomplete="organization" /></label>
+    <label class="grid gap-2"><span>{t.notes}</span><textarea name="notes" maxlength="500" rows="5"></textarea></label>
+  </> : <>
+    <label class="grid gap-2"><span>{t.goal}</span><textarea name="goal" maxlength="500" rows="4" required></textarea></label>
+    <label class="grid gap-2"><span>{t.dates}</span><input name="dates" maxlength="120" required /></label>
+    <label class="grid gap-2"><span>{t.budget}</span><input name="budget" maxlength="120" /></label>
+  </>}
+  <label class="grid gap-2"><span>{locale === 'zh' ? '待发送的完整内容' : 'Complete message to send'}</span><textarea data-contact-output readonly rows="9"></textarea></label>
+  <p class="muted" data-contact-status aria-live="polite">{email ? t.mailNotice : t.contactMissing}</p>
+  <div class="flex flex-wrap gap-3">
+    <button class="button button-primary" type="submit" data-mail disabled={!email}>{t.openMail}</button>
+    <button class="button" type="button" data-copy>{t.copy}</button>
+  </div>
+  <p class="text-sm muted">{locale === 'zh' ? '联系邮箱：' : 'Contact email: '}<span data-contact-email>{email || (locale === 'zh' ? '尚未配置' : 'Not configured')}</span></p>
+</form>
+<script>
+  import '../scripts/contact';
+</script>

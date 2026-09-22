@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import { dictionary, type Locale } from '../i18n';
+import { config, content } from '../lib/site';
+import { pagePath } from '../lib/routes';
+interface Props { title: string; description: string; locale: Locale; path: string; counterpart?: string | null; indexable?: boolean; }
+const {title,description,locale,path,counterpart,indexable=true}=Astro.props;
+const t=dictionary(locale);
+const url=new URL(path,config.SITE_URL).href;
+const isIndexed=indexable && config.DEPLOY_ENV==='production';
+const enPath=locale==='en'?path:counterpart;
+const zhPath=locale==='zh'?path:counterpart;
+const categories=content.categories.filter(c=>content.projects.some(p=>p.primary_category===c.id || p.secondary_categories.includes(c.id)));
+---
+<!doctype html>
+<html lang={locale==='zh'?'zh-Hans':'en'}>
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {config.SITE_NAME}</title><meta name="description" content={description} />
+    <meta name="robots" content={isIndexed?'index,follow':'noindex,follow'} /><link rel="canonical" href={url} />
+    {enPath && <link rel="alternate" hreflang="en" href={new URL(enPath,config.SITE_URL).href} />}
+    {zhPath && <link rel="alternate" hreflang="zh-Hans" href={new URL(zhPath,config.SITE_URL).href} />}
+    {enPath && <link rel="alternate" hreflang="x-default" href={new URL(enPath,config.SITE_URL).href} />}
+    <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={url} /><meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <slot name="head" />
+    {config.DEPLOY_ENV==='production' && config.PUBLIC_WEB_ANALYTICS_TOKEN && <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({token:config.PUBLIC_WEB_ANALYTICS_TOKEN})}></script>}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">{locale==='zh'?'跳至内容':'Skip to content'}</a>
+    <div class="border-b border-line"><div class="shell flex flex-wrap gap-x-2 py-2 text-xs muted"><span>{t.independent}</span><a href="https://www.jevai.org/" class="underline">{t.official} ↗</a></div></div>
+    <header class="border-b border-line">
+      <div class="shell flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3">
+        <a href={pagePath(locale)} class="flex min-h-11 items-center gap-3 font-semibold no-underline" aria-label={config.SITE_NAME}><span class="grid size-8 place-items-center rounded-md bg-sage text-background" aria-hidden="true">J</span><span>Jev <span class="muted font-normal">/ builds</span></span></a>
+        <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="flex flex-wrap items-center gap-x-4 text-sm">
+          <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'projects/')}>{t.projects}</a>
+          {categories.length>0 && <details class="relative"><summary>{t.categories}</summary><div class="absolute left-0 top-full z-10 min-w-48 rounded-md border border-line bg-surface p-2 shadow-xl">{categories.map(c=><a class="block px-2 py-3" href={pagePath(locale,`categories/${c.id}/`)}>{c[locale]}</a>)}</div></details>}
+          <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'submit/')}>{t.submit}</a>
+          <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'sponsor/')}>{t.sponsor}</a>
+        </nav>
+        {counterpart ? <a id="language-switch" class="button text-sm" href={counterpart} lang={locale==='en'?'zh-Hans':'en'}>{locale==='en'?'简体中文':'EN'}</a> : <a class="button text-sm" href={pagePath(locale==='en'?'zh':'en')}>{locale==='en'?'中文首页':'English home'}</a>}
+      </div>
+    </header>
+    <main id="main" class="shell min-h-[65vh] py-10 md:py-14"><slot /></main>
+    <footer class="border-t border-line py-8"><div class="shell flex flex-wrap items-start justify-between gap-6 text-sm"><div><p class="font-semibold">{config.SITE_NAME}</p><p class="muted max-w-md">{t.independent} {t.sourceChecked}</p></div><nav class="flex flex-wrap gap-5" aria-label={locale==='zh'?'页脚':'Footer'}>{(['about','privacy','submit'] as const).map(key=><a class="inline-flex min-h-11 items-center" href={pagePath(locale,`${key}/`)}>{t[key]}</a>)}</nav></div></footer>
+    <script>
+      const link=document.querySelector<HTMLAnchorElement>('#language-switch');
+      if(link && location.pathname.includes('/search/')) link.search=location.search;
+    </script>
+  </body>
+</html>

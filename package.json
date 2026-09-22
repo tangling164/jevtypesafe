@@ -1,0 +1,50 @@
+{
+  "name": "jev-builds-directory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.14.1",
+    "npm": "11.11.0"
+  },
+  "packageManager": "npm@11.11.0",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check && tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "build": "npm run validate:data && astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "preview:cloudflare": "wrangler dev --ip 127.0.0.1 --port 8787",
+    "deploy": "wrangler deploy",
+    "validate:data": "tsx scripts/validate-data.ts",
+    "ingest": "node --env-file-if-exists=.env --import tsx scripts/ingest.ts",
+    "enrich": "node --env-file-if-exists=.env --import tsx scripts/enrich.ts",
+    "translate": "node --env-file-if-exists=.env --import tsx scripts/translate.ts",
+    "content:diff": "tsx scripts/content-diff.ts",
+    "verify:capacity": "tsx scripts/verify-capacity.ts",
+    "verify:lighthouse": "tsx scripts/lighthouse.ts",
+    "scan:public": "tsx scripts/scan-public.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "astro": "7.3.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "24.13.6",
+    "lighthouse": "13.5.0",
+    "prettier": "3.9.8",
+    "prettier-plugin-astro": "1.0.1",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.13",
+    "typescript": "6.0.3",
+    "vitest": "5.0.1",
+    "wrangler": "4.135.0"
+  }
+}

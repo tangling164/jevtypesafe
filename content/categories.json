@@ -1,0 +1,8 @@
+[
+  {"id":"data","en":"Data & Classification","zh":"数据与分类"},
+  {"id":"routing","en":"Routing & Agents","zh":"路由与 Agent"},
+  {"id":"filtering","en":"Search & Filtering","zh":"搜索与筛选"},
+  {"id":"review","en":"Review & Validation","zh":"审核与校验"},
+  {"id":"developer","en":"Developer Tools","zh":"开发工具"},
+  {"id":"experiments","en":"Research & Demos","zh":"研究与演示"}
+]

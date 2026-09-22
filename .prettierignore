@@ -1,0 +1,8 @@
+package-lock.json
+dist
+.astro
+.wrangler
+node_modules
+reports
+docs/jev-directory-prd-v1.0.md
+docs/AGENTS.md

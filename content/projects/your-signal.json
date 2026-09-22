@@ -1,0 +1,51 @@
+{
+  "id": "github-1376003794",
+  "slug": "your-signal",
+  "name": "your-signal",
+  "owner": "MithrilMan",
+  "primary_category": "filtering",
+  "secondary_categories": [],
+  "tags": ["filtering", "classification", "tooling"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/MithrilMan/your-signal",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1376003794",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/MithrilMan/your-signal/blob/2970c069231b96f094f6fcfe4c11bfcf2da0ecb2/LICENSE",
+    "checked_at": "2026-09-20T13:00:20.592Z",
+    "method": "github_license_at_commit"
+  },
+  "requirements": { "api_key": true, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "An open-source Chrome extension that applies personal, reversible filters to the X timeline; Jev scores each post against criteria you configure.",
+      "problem": "It highlights, labels, dims, collapses or hides posts according to your weights and thresholds, with every change reversible and no telemetry.",
+      "requirements_text": "Bring your own TypeSafe API key (BYOK); the extension connects the X page to the Jev API and stores preferences locally.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/MithrilMan/your-signal/blob/2970c069231b96f094f6fcfe4c11bfcf2da0ecb2/README.md"] }
+    },
+    "zh": {
+      "summary": "开源 Chrome 扩展：为 X 时间线提供个人化、可逆的过滤；Jev 按你配置的标准为每条帖子打分。",
+      "problem": "它依据你的权重与阈值对帖子高亮、标记、变暗、折叠或隐藏，所有改动可逆且无遥测。",
+      "requirements_text": "自带 TypeSafe API Key（BYOK）；扩展把 X 页面连接到 Jev API，偏好仅本地存储。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/MithrilMan/your-signal/blob/2970c069231b96f094f6fcfe4c11bfcf2da0ecb2/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/MithrilMan/your-signal", "type": "repository", "revision": "2970c069231b96f094f6fcfe4c11bfcf2da0ecb2", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/MithrilMan/your-signal/blob/2970c069231b96f094f6fcfe4c11bfcf2da0ecb2/README.md", "type": "readme", "revision": "2970c069231b96f094f6fcfe4c11bfcf2da0ecb2", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/MithrilMan/your-signal/blob/2970c069231b96f094f6fcfe4c11bfcf2da0ecb2/LICENSE", "type": "license", "revision": "2970c069231b96f094f6fcfe4c11bfcf2da0ecb2", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 1,
+  "repo_updated_at": "2026-09-18T18:26:17Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:0241d24ef5c4e96a2b198dbb002f39ca1afb4896c3a329c1d850a70180510d92",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

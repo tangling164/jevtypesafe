@@ -1,0 +1,9 @@
+---
+import type {PublicProject} from '../lib/content-schema';
+import type {Locale} from '../i18n';
+import {dictionary} from '../i18n';
+import ProjectRow from './ProjectRow.astro';
+interface Props { projects: PublicProject[]; locale: Locale; }
+const {projects,locale}=Astro.props;
+---
+{projects.length ? <ul class="overflow-hidden rounded-xl border border-line bg-surface">{projects.map(project=><ProjectRow project={project} locale={locale}/>)}</ul> : <p class="panel muted">{dictionary(locale).noProjects}</p>}

@@ -1,0 +1,51 @@
+{
+  "id": "github-1373977947",
+  "slug": "typesafe-mcp",
+  "name": "typesafe-mcp",
+  "owner": "itsmostafa",
+  "primary_category": "developer",
+  "secondary_categories": [],
+  "tags": ["tooling", "coding-agent", "routing"],
+  "ecosystem": "jev_integration",
+  "source_status": "open_source",
+  "repo_url": "https://github.com/itsmostafa/typesafe-mcp",
+  "demo_url": null,
+  "website_url": null,
+  "repository_id": "1373977947",
+  "license": {
+    "spdx": "MIT",
+    "url": "https://github.com/itsmostafa/typesafe-mcp/blob/d4c110c7edd82127a4ca962c9d60fb96f748eb6e/LICENSE",
+    "checked_at": "2026-09-20T13:00:20.592Z",
+    "method": "github_license_at_commit"
+  },
+  "requirements": { "api_key": true, "additional_model": null, "local_install": true, "hardware": null },
+  "locales": {
+    "en": {
+      "summary": "An MCP server that lets Claude Code, Claude Desktop, Codex and pi call Jev and get typed probabilities they can branch on.",
+      "problem": "Agents get calibrated yes/no, routing or severity answers as typed JSON with probabilities, instead of parsing prose and hoping the format holds.",
+      "requirements_text": "One `evaluate setup` command registers the server with detected hosts. Calls go to the TypeSafe API (or OpenRouter); account and key requirements come with that API.",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/itsmostafa/typesafe-mcp/blob/d4c110c7edd82127a4ca962c9d60fb96f748eb6e/README.md"] }
+    },
+    "zh": {
+      "summary": "MCP 服务器：让 Claude Code、Claude Desktop、Codex 与 pi 调用 Jev，获得可以分支判断的类型化概率。",
+      "problem": "Agent 得到的是带概率的类型化 JSON 是/否、路由或严重度答案，而不是解析自由文本并指望格式不破。",
+      "requirements_text": "一条 evaluate setup 命令即可注册到检测到的宿主。调用 TypeSafe API（或 OpenRouter）；账户与 Key 要求随所选 API。",
+      "generation": { "status": "reviewed", "source_refs": ["https://github.com/itsmostafa/typesafe-mcp/blob/d4c110c7edd82127a4ca962c9d60fb96f748eb6e/README.md"] }
+    }
+  },
+  "sources": [
+    { "url": "https://github.com/itsmostafa/typesafe-mcp", "type": "repository", "revision": "d4c110c7edd82127a4ca962c9d60fb96f748eb6e", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/itsmostafa/typesafe-mcp/blob/d4c110c7edd82127a4ca962c9d60fb96f748eb6e/README.md", "type": "readme", "revision": "d4c110c7edd82127a4ca962c9d60fb96f748eb6e", "fetched_at": "2026-09-20T13:00:20.592Z" },
+    { "url": "https://github.com/itsmostafa/typesafe-mcp/blob/d4c110c7edd82127a4ca962c9d60fb96f748eb6e/LICENSE", "type": "license", "revision": "d4c110c7edd82127a4ca962c9d60fb96f748eb6e", "fetched_at": "2026-09-20T13:00:20.592Z" }
+  ],
+  "stars": 127,
+  "repo_updated_at": "2026-09-20T12:15:23Z",
+  "first_published_at": "2026-09-20T13:30:00.000Z",
+  "checked_at": "2026-09-20T13:00:20.592Z",
+  "archived": false,
+  "verification": "source_checked",
+  "runtime_evidence": null,
+  "status": "published",
+  "source_hash": "sha256:9fef085aa9353a034f708a20c1d4ed5f4e6fabae010b7af65b70a63c17c8df15",
+  "generation": { "provider": "zcode", "model": "manual", "prompt_version": "review-2026-09-20", "generated_at": "2026-09-20T13:30:00.000Z" }
+}

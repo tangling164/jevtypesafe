@@ -1,0 +1,27 @@
+---
+import {dictionary,type Locale} from '../i18n';
+import {content} from '../lib/site';
+import {createSearchIndex} from '../lib/search-index';
+import {pagePath} from '../lib/routes';
+interface Props {locale:Locale;}
+const {locale}=Astro.props;const t=dictionary(locale);
+---
+<section id="search-app" data-locale={locale} data-index={createSearchIndex(locale).url}>
+  <h1>{t.search}</h1>
+  <noscript><p class="panel my-6">{t.noJs} <a class="text-link" href={pagePath(locale,'projects/')}>{t.projects}</a></p></noscript>
+  <form id="search-form" class="my-8" action={pagePath(locale,'search/')} method="get">
+    <label for="q" class="mb-2 block">{t.search}</label><div class="flex gap-2"><input type="search" id="q" name="q" placeholder={t.searchHint} maxlength="200" /><button class="button button-primary" type="submit">{t.search}</button></div>
+    <details id="filters-panel" class="my-4 rounded-lg border border-line px-4"><summary>{t.filters} <span id="filter-count"></span></summary>
+      <div class="grid gap-6 py-4 sm:grid-cols-2 lg:grid-cols-4">
+        <fieldset><legend class="mb-3 font-semibold">{t.categories}</legend>{content.categories.map(c=><label class="flex min-h-11 items-center gap-2"><input class="size-5 min-h-0 w-5" name="category" type="checkbox" value={c.id}/>{c[locale]}</label>)}</fieldset>
+        <fieldset><legend class="mb-3 font-semibold">{t.ecosystem}</legend>{(['jev','jev_integration','jev_like'] as const).map(key=><label class="flex min-h-11 items-center gap-2"><input class="size-5 min-h-0 w-5" name="ecosystem" type="checkbox" value={key}/>{t[key]}</label>)}</fieldset>
+        <fieldset><legend class="mb-3 font-semibold">{t.sourceStatus}</legend>{(['open_source','source_available','demo_only'] as const).map(key=><label class="flex min-h-11 items-center gap-2"><input class="size-5 min-h-0 w-5" name="source" type="checkbox" value={key}/>{t[key]}</label>)}</fieldset>
+        <fieldset><legend class="mb-3 font-semibold">{t.usage}</legend>{(['online','local'] as const).map(key=><label class="flex min-h-11 items-center gap-2"><input class="size-5 min-h-0 w-5" name="usage" type="checkbox" value={key}/>{t[key]}</label>)}</fieldset>
+      </div><button type="button" id="close-filters" class="button mb-4">{locale==='zh'?'收起筛选':'Close filters'}</button>
+    </details>
+    <div class="flex flex-wrap items-end gap-4"><label class="min-w-48" for="sort">{t.sort}<select name="sort" id="sort">{(['newest','updated','stars','name'] as const).map(key=><option value={key}>{t[key]}</option>)}</select></label><button class="button" id="clear-filters" type="button">{t.clear}</button></div>
+  </form>
+  <p id="search-status" role="status" aria-live="polite"></p><button class="button my-3" id="retry-search" type="button" hidden>{t.retry}</button>
+  <ul id="search-results" class="my-4 overflow-hidden rounded-xl border border-line"></ul><nav id="search-pagination" class="flex gap-3" aria-label={locale==='zh'?'搜索分页':'Search pagination'}></nav>
+</section>
+<script>import '../scripts/search';</script>
