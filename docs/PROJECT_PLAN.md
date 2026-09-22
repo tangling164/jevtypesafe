@@ -190,7 +190,7 @@
 ## 9. 本次交接与下一步
 
 - 本次完成：按用户确认配置联系邮箱 `support@jevtypesafe.dev`（提交/赞助页邮件按钮启用、诚实文案、e2e 30/30 无回归，B-03 解除）；M4-01 全部交付物验证通过并验收——质量门全绿、1500 条容量复跑（索引 gzip 18KB、JS 5.8KB、搜索 P95 9.3ms）、Lighthouse 移动 99/100/100、dist/Git 凭证扫描 findings 空（EV-003）。证据脚本 executor 标注改为如实反映执行者。
-- 当前代码分支/commit：`codex/m1-foundation`，尚无提交；全部变更在工作区（未提交、未推送）。Git 历史凭证扫描待首次提交后复扫。
+- 当前代码分支/commit：`codex/m1-foundation` @ `5ad4f38`（首次提交，2026-09-22，用户授权）；远程 `tangling164/jevtypesafe` 未推送。提交后 Git 历史凭证扫描 0 命中（同 scan:public 模式）。
 - 实际运行检查：见 EV-003 表格；无线上部署、无生产构建（DEPLOY_ENV=production 除容量沙箱外）验证。
 - 当前阻塞：无本地阻塞。待用户输入：B-01（GitHub/Cloudflare 接入，闭环 M3-06 与 M4-02 部署）、B-06（分析 token，可选）；AC-01 视觉确认仍待用户。
 - 下一项：M4-02（Cloudflare Static Assets 配置与本地预览验收：真实 404、静态分发、预览 noindex、不配置全站 SSR）。本地可完成 wrangler 配置复核与预览验证；真实 Cloudflare 部署需 B-01。

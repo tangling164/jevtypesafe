@@ -39,7 +39,7 @@
 ## 凭证隔离（AC-16）
 
 - `scan:public`：GitHub/模型 API Key、私钥模式、非公开字段（source_hash、SUMMARY_API_KEY、synthetic fixture 等）在 dist 55 文件与 Git 工作区 121 文件中 0 命中。
-- `history: no_commits`——仓库尚无提交，Git 历史检查暂不适用；**首次提交与 G0-07 发布门槛时需复扫**。
+- `history: no_commits`——记录时仓库尚无提交；2026-09-22 建立首次提交 `5ad4f38` 后，对全部历史执行同模式扫描（`git log -p --all` 匹配私钥/GitHub token/模型 Key 模式）：0 命中。
 - 公开联系邮箱 `support@jevtypesafe.dev` 属 PRD 9.1 公开配置白名单，非凭证。
 
 ## 未验证 / 限制
