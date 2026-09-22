@@ -29,10 +29,10 @@ const categories=content.categories.filter(c=>content.projects.some(p=>p.primary
   <body>
     <a href="#main" class="skip-link">{locale==='zh'?'跳至内容':'Skip to content'}</a>
     <div class="border-b border-line"><div class="shell flex flex-wrap gap-x-2 py-2 text-xs muted"><span>{t.independent}</span><a href="https://www.jevai.org/" class="underline">{t.official} ↗</a></div></div>
-    <header class="border-b border-line">
-      <div class="shell flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3">
+    <header class="site-header border-b border-line">
+      <div class="shell header-inner">
         <a href={pagePath(locale)} class="flex min-h-11 items-center gap-3 font-semibold no-underline" aria-label={config.SITE_NAME}><span class="grid size-8 place-items-center rounded-md bg-sage text-background" aria-hidden="true">J</span><span>Jev <span class="muted font-normal">/ builds</span></span></a>
-        <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="flex flex-wrap items-center gap-x-4 text-sm">
+        <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="site-nav text-sm">
           <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'projects/')}>{t.projects}</a>
           {categories.length>0 && <details class="relative"><summary>{t.categories}</summary><div class="absolute left-0 top-full z-10 min-w-48 rounded-md border border-line bg-surface p-2 shadow-xl">{categories.map(c=><a class="block px-2 py-3" href={pagePath(locale,`categories/${c.id}/`)}>{c[locale]}</a>)}</div></details>}
           <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'submit/')}>{t.submit}</a>

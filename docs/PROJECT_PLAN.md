@@ -4,8 +4,8 @@
 
 ## 1. 当前状态与使用规则
 
-- 建档日期：2026-09-20。最近更新：2026-09-20（M2 浏览器验收闭环、M3 流水线与首批候选导入，证据 EV-002）。
-- 当前阶段：M3 收尾（仅 M3-06 待真实 Actions 运行）；下一项任务：M4-01。
+- 建档日期：2026-09-20。最近更新：2026-09-22（沿用 GLM-5.3 的 M4-01 基线，按用户选择优化精致深色目录 UI）。
+- 当前阶段：M4-01 已验收；本次 M1-05/M2-01/M2-07 的 UI 优化与本地回归已完成（EV-004）；AC-01 最终视觉确认仍待用户，下一工程任务为 M4-02。
 - 已有交付：可复现工程、内容 Schema、10 条真实发布项目（3 种子 + 7 审核候选）、全部页面路由（en/zh，47 页）、搜索/联系交互、采集/审核/生成流水线、容量与 Lighthouse 记录；尚无部署与线上证据。
 - 先完成 M1–M4 的 P0；M5 单独跟踪，首次收费前必须完成。P1 不在本期分母内。
 - 每个任务只用：待开始、进行中、待验收、已验收、受阻。原则上同时只有一个主任务进行中。
@@ -95,7 +95,7 @@
 
 | AC | 场景 | 主要任务 | 状态 | 证据 |
 | --- | --- | --- | --- | --- |
-| AC-01 | 首页风格 | M2-01、M2-07 | 未验证 | EV-001/002：axe、截图、代理视觉模型检查全部通过；按规范视觉验收待用户确认 |
+| AC-01 | 首页风格 | M2-01、M2-07 | 未验证 | EV-004：用户选择精致深色目录方向后完成 UI 优化；28 项响应式检查、30 项 e2e 通过，前后截图留证；最终视觉验收仍待用户确认 |
 | AC-02 | 375px 手机使用 | M2-07 | 通过 | EV-002：全页 375px 无溢出断言 + 44px 触控检查 + axe（desktop+mobile） |
 | AC-03 | 无 JS 静态浏览 | M2-01、M2-02 | 通过 | EV-002：禁 JS 上下文 e2e 浏览目录/分类/详情/语言切换/搜索提示 |
 | AC-04 | 搜索与状态恢复 | M2-03 | 通过 | EV-002：e2e 覆盖 AND/OR、语言切换带查询、返回/前进恢复状态、失败重试 |
@@ -128,6 +128,8 @@
 | EV-001 | M1-01～M1-05、M2-01～M2-06（实现+部分场景） | Node v24.14.1 / npm 11.11.0 / Windows 11；分支 codex/m1-foundation 未提交（以工作区差异为准） | validate:data 通过（3 项目 6 分类）；check 0 错误；test 67/67；build 31 页；playwright 10/10（desktop+mobile）；canonical/hreflang/sitemap/404/noindex 抽查通过；375px 无溢出断言+截图+代理视觉检查通过。修复 contact 头部清理、e2e matcher、?project= 客户端初始化；新增 [...path].astro 页面层等（详见证据文件） | reports/acceptance/EV-001-m1-baseline.md 及 screenshots/ | ZCode 代理 / 2026-09-20 |
 | EV-002 | M1-04/05、M2-01～M2-07 验收闭环；M3-01～M3-05、M3-07；M3-06 实现 | 同上环境；Codex 产出（e2e 套件、容量/Lighthouse/扫描、README、工作流、流水线）经复验计入 | validate:data 10 项目；check 0 错误；test 81/81；build 47 页；e2e 30/30（axe/44px/无 JS/搜索恢复/复制/键盘/reduced-motion/JSON-LD 核对）；容量 1500 条 23.3s、索引 gzip 18KB、JS 5.8KB；Lighthouse 移动 P/A/SEO=100/100/100；scan findings 空；发布 7 条真实候选（3→10）+ 2 待核（原因记录）；修复 publicFetchText 整体超时；e2e 数量断言改为数据驱动 | reports/acceptance/EV-002-m3-content.md、capacity.json、lighthouse-capacity-mobile.json、public-scan.json；reports/research/m3-07-review-2026-09-20.md | ZCode 代理（含 Codex 产出复验）/ 2026-09-20 |
 | EV-003 | M4-01（AC-16）；B-03 邮箱配置 | Node v24.14.1 / npm 11.11.0 / Windows 11；工作区未提交 | 配置 contact_email=support@jevtypesafe.dev（按钮启用、无假成功文案、e2e 30/30 无回归）；validate/check/test(81)/build(47)；容量复跑 1500 条 36.4s（索引 gzip 18KB、JS 5.8KB、P95 9.3ms）；Lighthouse 移动 99/100/100；scan:public 源 121 + dist 55 findings 空（history=no_commits 待首次提交后复扫）；PRD 17.1 目标逐项对照见证据文件 | reports/acceptance/EV-003-m4-01-quality.md、capacity.json、lighthouse-capacity-mobile.json、public-scan.json | ZCode 代理 / 2026-09-22 |
+
+| EV-004 | M1-05/M2-01/M2-07 UI 优化；AC-01/02 与既有行为回归 | 同上环境；基于 a68a040，codex/m1-foundation | 沿用 GLM-5.3 基线；桌面侧栏/手机滑动分类、搜索前置、紧凑列表与内页样式；check 0 errors、test 81/81、build 47 页、最终 e2e 30/30、7 页×4 宽度无整体溢出；手机键盘分类检查通过；一次 Wrangler 临时目录锁冲突隔离后复跑成功 | reports/acceptance/EV-004-ui-review.md；reports/ui-review/ 前后截图、capture.mjs、measurements.json | Codex / 2026-09-22 |
 
 建议编号 EV-001 起。一个证据可覆盖多项 AC，但必须列出各场景结果。UI 至少记录 375px 与桌面；构建通过不能替代视觉验收。生产域名验证必须记录真实 URL/状态码，不能只引用本地截图。
 
@@ -189,12 +191,12 @@
 
 ## 9. 本次交接与下一步
 
-- 本次完成：按用户确认配置联系邮箱 `support@jevtypesafe.dev`（提交/赞助页邮件按钮启用、诚实文案、e2e 30/30 无回归，B-03 解除）；M4-01 全部交付物验证通过并验收——质量门全绿、1500 条容量复跑（索引 gzip 18KB、JS 5.8KB、搜索 P95 9.3ms）、Lighthouse 移动 99/100/100、dist/Git 凭证扫描 findings 空（EV-003）。证据脚本 executor 标注改为如实反映执行者。
-- 当前代码分支/commit：`codex/m1-foundation` @ `5ad4f38`（首次提交，2026-09-22，用户授权）；远程 `tangling164/jevtypesafe` 未推送。提交后 Git 历史凭证扫描 0 命中（同 scan:public 模式）。
-- 实际运行检查：见 EV-003 表格；无线上部署、无生产构建（DEPLOY_ENV=production 除容量沙箱外）验证。
+- 本次完成：在 GLM-5.3 的 M4-01 基线上按用户选择优化精致深色目录；调整首页信息层级、分类导航、列表、详情和表单。前后截图与本地验证见 EV-004；任务/AC 分母与已验收率不变。
+- 当前代码分支/版本：`codex/m1-foundation`，本次基线 `a68a040`；UI 改动对应本次 `Polish dark directory hierarchy and responsive navigation` 提交。未推送、未部署。
+- 实际运行检查：check、81 项单元测试、47 页构建、最终 30 项浏览器测试通过；28 项页面/宽度检查无整体溢出。测试实例隔离在 `.wrangler/ui-preview/`，预览 `http://127.0.0.1:8787/zh/`；保留既有 8788 实例。本轮未复测容量和 Lighthouse，EV-003 属历史证据。
 - 当前阻塞：无本地阻塞。待用户输入：B-01（GitHub/Cloudflare 接入，闭环 M3-06 与 M4-02 部署）、B-06（分析 token，可选）；AC-01 视觉确认仍待用户。
 - 下一项：M4-02（Cloudflare Static Assets 配置与本地预览验收：真实 404、静态分发、预览 noindex、不配置全站 SSR）。本地可完成 wrangler 配置复核与预览验证；真实 Cloudflare 部署需 B-01。
-- 后续顺序：M4-02 → M4-03 → M4-04/M4-05 → M4-06；M5 在 P0 后实施。首次 git 提交建议尽快建立。
+- 后续顺序：M4-02 → M4-03 → M4-04/M4-05 → M4-06；M5 在 P0 后实施。本次用户追加范围为 UI 优化，未推进外部部署。
 
 每次工作结束替换上面的当前交接摘要，并在下表追加简短历史。无需为每次会话新建一份进度文档。
 
@@ -204,3 +206,4 @@
 | 2026-09-20 | M1 全部实现 + M2 页面层；基线修复与全量验证 | EV-001；M1-01/02/03 已验收，M1-04/05 与 M2-01～M2-06 待验收 | M2-07 系统化验证收尾，然后 M3-01 |
 | 2026-09-20 | M2 浏览器验收闭环（Codex e2e/容量/Lighthouse）+ M3 流水线 + M3-07 首批导入（发布 3→10） | EV-002；P0 任务 18/25、AC 12/17；M1/M2 全部与 M3-01～05/07 已验收，M3-06 待真实 Actions | M4-01；AC-01 待用户视觉确认 |
 | 2026-09-22 | 域名统一 jevtypesafe.dev（CH-01）；M4-01 质量容量凭证检查；邮箱配置（B-03 解除） | EV-003；P0 任务 19/25、AC 12/17；容量/Lighthouse/扫描全部达标 | M4-02（Cloudflare 配置与预览）；建议建立首次 git 提交 |
+| 2026-09-22 | 在 GLM-5.3 基线上完成精致深色目录 UI 优化 | EV-004；81 单测、30 e2e、28 响应式检查通过；前后截图留证 | AC-01 待最终视觉确认；下一工程任务 M4-02 |

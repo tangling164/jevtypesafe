@@ -22,7 +22,7 @@ const facts: Array<[string, string]> = [
   [t.firstPublished, date(p.first_published_at)],
 ];
 ---
-<article class="grid gap-10">
+<article class="project-detail grid gap-10">
   <header class="grid gap-3">
     <h1>{p.name}</h1>
     {p.owner && <p class="muted">{t.author}: {p.owner}</p>}
