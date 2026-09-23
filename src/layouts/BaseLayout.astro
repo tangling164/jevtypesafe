@@ -12,17 +12,23 @@ const enPath=locale==='en'?path:counterpart;
 const zhPath=locale==='zh'?path:counterpart;
 const categories=content.categories.filter(c=>content.projects.some(p=>p.primary_category===c.id || p.secondary_categories.includes(c.id)));
 const languageLabel=counterpart ? (locale==='en'?'Switch to 简体中文':'Switch to English') : (locale==='en'?'前往中文首页':'Go to English home');
+const documentTitle=`${title} · ${config.SITE_NAME}`;
+const socialImage=new URL('/images/jev-atlas-social.png',config.SITE_URL).href;
+const socialImageAlt=locale==='zh'?'Jev Atlas 科技风格项目目录预览':'Jev Atlas technology project directory preview';
 ---
 <!doctype html>
 <html lang={locale==='zh'?'zh-Hans':'en'}>
   <head>
     <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · {config.SITE_NAME}</title><meta name="description" content={description} />
+    <title>{documentTitle}</title><meta name="description" content={description} />
     <meta name="robots" content={isIndexed?'index,follow':'noindex,follow'} /><link rel="canonical" href={url} />
     {enPath && <link rel="alternate" hreflang="en" href={new URL(enPath,config.SITE_URL).href} />}
     {zhPath && <link rel="alternate" hreflang="zh-Hans" href={new URL(zhPath,config.SITE_URL).href} />}
     {enPath && <link rel="alternate" hreflang="x-default" href={new URL(enPath,config.SITE_URL).href} />}
-    <meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={url} /><meta property="og:type" content="website" />
+    <meta property="og:site_name" content={config.SITE_NAME} /><meta property="og:title" content={documentTitle} /><meta property="og:description" content={description} /><meta property="og:url" content={url} /><meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale==='zh'?'zh_CN':'en_US'} /><meta property="og:locale:alternate" content={locale==='zh'?'en_US':'zh_CN'} />
+    <meta property="og:image" content={socialImage} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:alt" content={socialImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={documentTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={socialImage} /><meta name="twitter:image:alt" content={socialImageAlt} />
     <link rel="icon" href="/favicon-tech-32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="/favicon-tech-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/apple-touch-icon-tech.png" sizes="180x180" />

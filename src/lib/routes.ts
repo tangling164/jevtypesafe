@@ -1,7 +1,7 @@
 import type { Locale } from '../i18n';
 import type { PublicProject } from './content-schema';
 
-export type Category = { id: PublicProject['primary_category']; en: string; zh: string };
+export type Category = { id: PublicProject['primary_category']; en: string; zh: string; description: { en: string; zh: string } };
 export type Route = {
   path: string; locale: Locale; kind: 'home' | 'directory' | 'category' | 'project' | 'search' | 'submit' | 'sponsor' | 'about' | 'privacy';
   indexable: boolean; counterpart: string | null; projects: PublicProject[];

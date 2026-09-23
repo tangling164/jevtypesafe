@@ -1,8 +1,56 @@
 [
-  {"id":"data","en":"Data & Classification","zh":"数据与分类"},
-  {"id":"routing","en":"Routing & Agents","zh":"路由与 Agent"},
-  {"id":"filtering","en":"Search & Filtering","zh":"搜索与筛选"},
-  {"id":"review","en":"Review & Validation","zh":"审核与校验"},
-  {"id":"developer","en":"Developer Tools","zh":"开发工具"},
-  {"id":"experiments","en":"Research & Demos","zh":"研究与演示"}
+  {
+    "id": "data",
+    "en": "Data & Classification",
+    "zh": "数据与分类",
+    "description": {
+      "en": "Explore Jev projects that turn unstructured inputs into classified, labeled, or otherwise structured data for downstream workflows.",
+      "zh": "探索使用 Jev 将非结构化输入转换为分类、标签或其他结构化数据，并衔接后续工作流的项目。"
+    }
+  },
+  {
+    "id": "routing",
+    "en": "Routing & Agents",
+    "zh": "路由与 Agent",
+    "description": {
+      "en": "Explore Jev projects that select routes, tools, actions, or agent behaviors from natural-language input and explicit choices.",
+      "zh": "探索使用 Jev 从自然语言输入和明确选项中选择路径、工具、操作或 Agent 行为的项目。"
+    }
+  },
+  {
+    "id": "filtering",
+    "en": "Search & Filtering",
+    "zh": "搜索与筛选",
+    "description": {
+      "en": "Explore Jev projects that rank, filter, or narrow candidate results to support search and information discovery workflows.",
+      "zh": "探索使用 Jev 对候选结果进行排序、筛选或缩小范围，以支持搜索和信息发现工作流的项目。"
+    }
+  },
+  {
+    "id": "review",
+    "en": "Review & Validation",
+    "zh": "审核与校验",
+    "description": {
+      "en": "Explore Jev projects that review, validate, or assess content and decisions against defined options, rules, or evidence.",
+      "zh": "探索使用 Jev 按照明确选项、规则或证据审核、校验和评估内容与决策的项目。"
+    }
+  },
+  {
+    "id": "developer",
+    "en": "Developer Tools",
+    "zh": "开发工具",
+    "description": {
+      "en": "Explore SDKs, command-line tools, integrations, and developer utilities that make Jev easier to test, connect, or use in software projects.",
+      "zh": "探索让开发者更容易测试、连接 Jev，或在软件项目中使用 Jev 的 SDK、命令行工具、集成和实用程序。"
+    }
+  },
+  {
+    "id": "experiments",
+    "en": "Research & Demos",
+    "zh": "研究与演示",
+    "description": {
+      "en": "Explore public experiments, prototypes, and demonstrations that investigate Jev or similar probabilistic selection techniques.",
+      "zh": "探索研究 Jev 或相似概率选择技术的公开实验、原型和演示项目。"
+    }
+  }
 ]

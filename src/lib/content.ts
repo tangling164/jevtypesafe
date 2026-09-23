@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { z } from "zod";
 import { CATEGORY_IDS, ProjectSchema, PublicUrlSchema, toPublicProject, type Project, type PublicProject } from "./content-schema";
 
-const CategorySchema = z.object({ id: z.enum(CATEGORY_IDS), en: z.string().trim().min(1), zh: z.string().trim().min(1) });
+const CategorySchema = z.object({ id: z.enum(CATEGORY_IDS), en: z.string().trim().min(1), zh: z.string().trim().min(1), description: z.object({ en: z.string().trim().min(40), zh: z.string().trim().min(20) }) });
 const SiteSchema = z.object({
   name: z.string().trim().min(1),
   site_url: PublicUrlSchema,

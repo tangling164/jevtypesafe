@@ -18,9 +18,9 @@ function fixtureRoot(projects: unknown[], options: { overrides?: unknown[]; tomb
   writeFileSync(
     join(root, "content", "categories.json"),
     JSON.stringify([
-      { id: "data", en: "Data & Classification", zh: "数据与分类" },
-      { id: "review", en: "Review & Validation", zh: "审核与校验" },
-      { id: "developer", en: "Developer Tools", zh: "开发工具" },
+      { id: "data", en: "Data & Classification", zh: "数据与分类", description: { en: "Projects that structure and classify data for downstream workflows.", zh: "用于整理、分类数据并支持后续工作流处理与使用的项目说明。" } },
+      { id: "review", en: "Review & Validation", zh: "审核与校验", description: { en: "Projects that review and validate content against defined evidence.", zh: "按照明确证据、规则或选项审核和校验内容与决策的项目说明。" } },
+      { id: "developer", en: "Developer Tools", zh: "开发工具", description: { en: "Tools and integrations that help developers use Jev in software.", zh: "帮助开发者在软件项目中测试、连接和使用 Jev 的工具与集成说明。" } },
     ]),
   );
   writeFileSync(

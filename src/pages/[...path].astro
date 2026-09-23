@@ -10,6 +10,7 @@ import { manifest, config } from '../lib/site';
 import { dictionary } from '../i18n';
 import { pagePath, paginationPath, type Route } from '../lib/routes';
 import { structuredData, serializeStructuredData } from '../lib/seo';
+import { pageDescription } from '../lib/page-metadata';
 
 export function getStaticPaths() {
   return manifest.map((route) => ({
@@ -29,16 +30,12 @@ const baseTitle = route.kind === 'home' ? t.hero
   : route.kind === 'category' ? (route.category?.[locale] ?? '')
   : t[route.kind];
 const pageTitle = route.pages>1 ? `${baseTitle} · ${t.paginationStatus.replace('{page}',String(route.page)).replace('{pages}',String(route.pages))}` : baseTitle;
-const pageDescription = route.kind === 'project' ? (route.project?.locales[locale] ?? route.project?.locales.en)?.summary ?? t.intro
-  : route.kind === 'sponsor' ? `${t.cooperation} ${t.cooperationBody}`
-  : route.kind === 'submit' ? t.free
-  : route.kind === 'category' ? t.categoryIntro.replace('{category}', route.category?.[locale] ?? '')
-  : t.intro;
+const description = pageDescription(route, t);
 const listCount = t.directoryCount.replace('{count}', String(route.total));
 const prevLink = route.page > 1 ? paginationPath(route,route.page-1) : null;
 const nextLink = route.page < route.pages ? paginationPath(route,route.page+1) : null;
 ---
-<BaseLayout title={pageTitle} description={pageDescription} locale={locale} path={route.path} counterpart={route.counterpart} indexable={route.indexable} isHome={route.kind === 'home'}>
+<BaseLayout title={pageTitle} description={description} locale={locale} path={route.path} counterpart={route.counterpart} indexable={route.indexable} isHome={route.kind === 'home'}>
   {route.kind === 'home' && <HomePage locale={locale} projects={route.projects} />}
 
   {route.kind === 'directory' && <>
@@ -49,7 +46,7 @@ const nextLink = route.page < route.pages ? paginationPath(route,route.page+1) :
   </>}
 
   {route.kind === 'category' && route.category && <>
-    <header class="page-heading" data-reveal><p class="eyebrow"><a href={pagePath(locale, 'projects/')}>{t.projects}</a> / {route.category[locale]}</p><h1>{pageTitle}</h1><p>{t.categoryIntro.replace('{category}', route.category[locale])}</p></header>
+    <header class="page-heading" data-reveal><p class="eyebrow"><a href={pagePath(locale, 'projects/')}>{t.projects}</a> / {route.category[locale]}</p><h1>{pageTitle}</h1><p>{route.category.description[locale]}</p></header>
     <div class="directory-toolbar" data-reveal><span>{listCount}</span><a class="button button-primary" href={pagePath(locale, 'search/')}>{t.search}</a></div>
     <div class="directory-content"><ProjectList projects={route.projects} locale={locale} /></div>
     <Pagination route={route} />

@@ -12,10 +12,11 @@ npm run validate:data
 npm run check
 npm test
 npm run build
+npm run build:production
 npm run dev
 ```
 
-`npm run preview` previews Astro output; `npm run preview:cloudflare` serves built assets at `http://127.0.0.1:8787` with Cloudflare's actual local routing and 404 behavior. `npx playwright install chromium` installs the test browser; `npm run test:e2e` checks desktop and **375px** mobile behavior. `npm run verify:capacity` builds 1,500 isolated synthetic projects; it never changes production content. `npm run scan:public` scans the public build and non-ignored Git working files, printing locations rather than matching secret text.
+`npm run build` deliberately creates preview-safe `noindex` output. `npm run build:production` forces the production environment and rejects the result unless indexable pages, robots.txt, canonical URLs, hreflang, sitemap entries, and social metadata agree. `npm run preview` previews Astro output; `npm run preview:cloudflare` serves built assets at `http://127.0.0.1:8787` with Cloudflare's actual local routing and 404 behavior. `npx playwright install chromium` installs the test browser; `npm run test:e2e` checks desktop and **375px** mobile behavior. `npm run verify:capacity` builds 1,500 isolated synthetic projects; it never changes production content. `npm run scan:public` scans the public build and non-ignored Git working files, printing locations rather than matching secret text.
 
 Astro 7.3.3, Tailwind 4.3.3, TypeScript 6.0.3 and Zod 4.6.5 are pinned with exact direct versions and `package-lock.json`. TypeScript 6 is used because the current Astro checker declares support through 6. Tailwind uses the official Vite integration. Vitest covers data rules; Playwright and axe cover browser behavior and accessibility; Lighthouse provides laboratory performance evidence. Test tools are development dependencies, not browser runtime dependencies.
 
@@ -42,7 +43,7 @@ See [operations](docs/OPERATIONS.md) for review, correction and recovery. [PROJE
 
 ## Deployment
 
-Cloudflare Workers Builds should install with `npm ci` and run `npm run validate:data`, `npm run check`, `npm run build`. Deploy only from the intended `main` branch with reviewed production settings. `npm run deploy` is the explicit deployment command and needs account access. This repository has no SSR adapter, Worker `main`, D1 binding or all-route Worker execution.
+Cloudflare Workers Builds should install with `npm ci` and run `npm run check`, `npm test`, and `npm run build:production`. Deploy only from the intended `main` branch with reviewed production settings. `npm run deploy` always rebuilds and verifies production SEO before scanning and uploading, so a preview `noindex` artifact cannot be deployed accidentally. The command needs account access. This repository has no SSR adapter, Worker `main`, D1 binding or all-route Worker execution.
 
 Confirm the purchased domain in Vercel, preserve existing DNS records, connect Cloudflare nameservers/custom domain, and verify HTTPS plus a www 301 retaining path/query. A local preview is not a deployed site. GitHub's content workflow proposes a review report; it neither merges nor deploys changes.
 

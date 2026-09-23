@@ -10,6 +10,9 @@ test('manifest metadata covers every published route and list JSON-LD matches HT
     await page.goto(new URL(url).pathname);
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute('href',url);
     await expect(page.locator('meta[name=robots]')).toHaveAttribute('content','noindex,follow');
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content','https://jevtypesafe.dev/images/jev-atlas-social.png');
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content','summary_large_image');
+    await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content','https://jevtypesafe.dev/images/jev-atlas-social.png');
     const en=await page.locator('link[hreflang=en]').getAttribute('href');
     await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute('href',en!);
     const json=JSON.parse(await page.locator('script[type="application/ld+json"]').textContent()??'{}');
@@ -19,6 +22,9 @@ test('manifest metadata covers every published route and list JSON-LD matches HT
       expect(json['@graph'][0].mainEntity.itemListElement.map((item:{name:string})=>item.name)).toEqual(names);
     }
   }
+  const socialImage=await request.get('/images/jev-atlas-social.png');
+  expect(socialImage.ok()).toBe(true);
+  expect(socialImage.headers()['content-type']).toBe('image/png');
 });
 
 test('capture local acceptance screenshots',async({page},info)=>{
