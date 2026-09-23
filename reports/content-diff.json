@@ -42,194 +42,71 @@
     {
       "id": "github-1373029480",
       "slug": "noflow-runtime",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
-        "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "checked_at"
       ],
-      "reasons": [
-        "new_project_requires_classification_and_review",
-        "substantive_input_changed"
-      ],
+      "reasons": [],
       "publication": "review_required"
     },
     {
       "id": "github-1374793140",
       "slug": "jev-code",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
-        "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
-        "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "checked_at"
       ],
-      "reasons": [
-        "new_project_requires_classification_and_review",
-        "substantive_input_changed"
-      ],
+      "reasons": [],
       "publication": "review_required"
     },
     {
       "id": "github-1376040800",
       "slug": "jev-codex-plugin",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
-        "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "checked_at"
       ],
-      "reasons": [
-        "new_project_requires_classification_and_review",
-        "substantive_input_changed"
-      ],
+      "reasons": [],
       "publication": "review_required"
     },
     {
       "id": "github-1376003794",
       "slug": "your-signal",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
-        "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "checked_at"
       ],
-      "reasons": [
-        "new_project_requires_classification_and_review",
-        "substantive_input_changed"
-      ],
+      "reasons": [],
       "publication": "review_required"
     },
     {
       "id": "github-1375781597",
       "slug": "is-malicious",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
         "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "source_hash"
       ],
       "reasons": [
-        "new_project_requires_classification_and_review",
         "substantive_input_changed"
       ],
       "publication": "review_required"
@@ -237,38 +114,16 @@
     {
       "id": "github-1373977947",
       "slug": "typesafe-mcp",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
         "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "source_hash"
       ],
       "reasons": [
-        "new_project_requires_classification_and_review",
         "substantive_input_changed"
       ],
       "publication": "review_required"
@@ -276,40 +131,15 @@
     {
       "id": "github-1376230436",
       "slug": "feelings",
-      "kind": "new",
+      "kind": "update",
       "fields": [
-        "id",
-        "slug",
-        "name",
-        "owner",
-        "primary_category",
-        "secondary_categories",
-        "tags",
-        "ecosystem",
-        "source_status",
-        "repo_url",
-        "demo_url",
-        "website_url",
-        "repository_id",
         "license",
-        "requirements",
-        "locales",
         "sources",
         "stars",
         "repo_updated_at",
-        "first_published_at",
-        "checked_at",
-        "archived",
-        "verification",
-        "runtime_evidence",
-        "status",
-        "source_hash",
-        "generation"
+        "checked_at"
       ],
-      "reasons": [
-        "new_project_requires_classification_and_review",
-        "substantive_input_changed"
-      ],
+      "reasons": [],
       "publication": "review_required"
     },
     {
@@ -4950,6 +4780,142 @@
       "reason": "non_repository_source_requires_review"
     },
     {
+      "url": "https://x.com/CompleteSkeptic/status/2099925688925184171",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/nikhilmudholkar/status/2100604560335139083",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/omarsar0/status/2100693601021997193",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/MichaelLee04/status/2100003037150683593",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/TheMattBerman/status/2100654891756589230",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/OpenRouter/status/2101061688338575739",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/MartinPulitano/status/2101414345096012228",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/irabukht/status/2101090579127951694",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/robj3d3/status/2101074194260000982",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/Teknium/status/2101398453578555898",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/sethkimmel3/status/2101357768640987302",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/mxfp4/status/2101070906852298910",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/sermakarevich/status/2101374291640213785",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/0xCodila/status/2101433560796467348",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/omarsar0/status/2101443311454036477",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/liorshkiller/status/2100936106615140757",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/brainstormity/status/2101445977924370858",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/raihankhan_rk/status/2101333813842620522",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/bartlomein/status/2101436827819192584",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/thisisclaireli/status/2101438195238162648",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/Jester_Journal/status/2101235750431830095",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/ColinMcDermott/status/2100535744775242012",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/romanbuildsaas/status/2100891604735099103",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/0xidanlevin/status/2100937437325205568",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/dabit3/status/2100756930054504776",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/airesearch12/status/2101311992984199580",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/anshuc/status/2101040309522121072",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/MatijaSosic/status/2100190746389135772",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/leojrr/status/2101161666410893328",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/Neriousy/status/2100287208166969746",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/nutlope/status/2100426999546184123",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/nikunj/status/2101077053567332618",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/taroleo/status/2101106887840370919",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
+      "url": "https://x.com/dani_avila7/status/2101484241762603363",
+      "reason": "non_repository_source_requires_review"
+    },
+    {
       "url": "https://github.com/rhighs/jev-code",
       "reason": "license_unavailable_kept_for_review"
     },
@@ -5506,7 +5472,7 @@
       "reason": "outside_selected_batch"
     }
   ],
-  "sourceCandidateCount": 1328,
-  "publishedCount": 3,
+  "sourceCandidateCount": 1362,
+  "publishedCount": 10,
   "automaticPublication": false
 }
