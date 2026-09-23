@@ -1,0 +1,1 @@
+This folder contains the built output assets for the worker "jev-builds-directory" generated at 2026-09-22T14:42:57.493Z.

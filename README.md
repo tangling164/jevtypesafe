@@ -1,4 +1,4 @@
-# Jev Builds Directory
+# Jev Atlas
 
 Independent, source-reviewed English / 简体中文 directory. Astro produces static HTML; Cloudflare Workers Static Assets serves it. Ordinary listings are free. No runtime AI, accounts, payment collection or active sponsorship tracking is included.
 

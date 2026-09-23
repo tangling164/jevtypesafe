@@ -5,7 +5,7 @@ const configSchema = z.object({
     const url = new URL(value);
     return url.protocol === 'https:' && url.pathname === '/' && !url.search && !url.hash && !url.username && !url.password;
   }, 'SITE_URL must be an HTTPS origin'),
-  SITE_NAME: z.string().trim().min(1).default('Jev Builds Directory'),
+  SITE_NAME: z.string().trim().min(1).default('Jev Atlas'),
   CONTACT_EMAIL: z.union([z.literal(''), z.string().email()]).default(''),
   DEPLOY_ENV: z.enum(['preview', 'production']).default('preview'),
   COMMERCIAL_MODE: z.literal('off').default('off'),

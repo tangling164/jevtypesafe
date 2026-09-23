@@ -2,13 +2,13 @@
 
 文档日期：2026-09-20  
 文档语言：中文；产品语言：英文、简体中文  
-工作名称：Jev Builds Directory（独立案例目录，可配置）  
+工作名称：Jev Atlas（独立案例目录，可配置）
 用户提供的已购域名：`jevtypesafe.dev`  
 产品形态：开源项目及公开案例聚合导航站  
 开发方式：单人使用 Codex 开发、自动化采集、少量运营审核  
 状态：可用于实施；正式域名拼写、联系邮箱和收款方式按第 20 节完成上线配置。
 
-> 域名以用户 2026-09-22 确认的 `jevtypesafe.dev` 为准（此前版本曾记录 `jevtaypesafe.dev`，系拼写存疑期间的占位；用户已确认正确域名为 `jevtypesafe.dev`）。开发时集中配置站点地址，正式绑定前仍从 Vercel 控制台复制实际域名核对。本次交付是产品需求文档，不代表网站已开发或已部署。
+> 域名以用户 2026-09-22 确认的 `jevtypesafe.dev` 为准；此前文档中的错误拼写已统一修正。开发时集中配置站点地址，正式绑定前仍从 Vercel 控制台复制实际域名核对。本次交付是产品需求文档，不代表网站已开发或已部署。
 
 ## 1. 产品结论与已确定决策
 
@@ -25,7 +25,7 @@
 | 核心收费商品 | 首页赞助展示位，30 天，最多同时 3 个，英中两版覆盖 |
 | 免费内容 | 浏览、搜索、筛选、查看详情、普通项目收录 |
 | 价格 | 未确定；先询价，不把此前演示用的 $49 当成既定售价 |
-| UI 参考 | `https://www.jevai.org/` 及其 `/apps`；参考风格，采用本产品的信息结构 |
+| UI 参考 | [Open App Scout](https://openappscout.com/)；重点参考导航、搜索优先 Hero、分类/筛选、项目列表、详情信息密度和移动端布局，保留本站品牌与内容 |
 | 主技术栈 | Astro 静态生成、TypeScript、Tailwind CSS、GitHub JSON 内容库 |
 | 主部署 | Cloudflare Workers Static Assets；Vercel 保留域名注册和续费 |
 | 初期成本目标 | 静态托管在免费额度内 $0/月；域名、AI、CI 和支付费用单独计算 |
@@ -204,18 +204,18 @@ P1 如确有提交量再改为 Turnstile＋Worker＋D1 表单；保留现有页�
 
 ### 6.1 参考站实看结论
 
-2026-09-20 已通过浏览器查看参考站首页和应用目录。可借鉴：近黑底色、偏灰白文本、淡粉色与灰绿色渐变按钮、细边框、轻微点阵纹理、居中大标题、紧凑列表、用途标签。首页和目录来源：[jevai.org 首页](https://www.jevai.org/)、[应用目录](https://www.jevai.org/apps)。
+2026-09-22 已通过浏览器查看 [Open App Scout](https://openappscout.com/) 的首页、目录与详情结构。可借鉴：紧凑顶部导航、居中的搜索主入口、真实计数、分类网格、高密度项目条目、详情正文与事实侧栏、桌面/手机布局切换。用户提供的 `tortuvshin/openappscout` 仓库地址核查时返回未找到；参考站公开源码入口指向 [tortuvshin/open-apps](https://github.com/tortuvshin/open-apps)，仅用于结构和许可证研究。
 
-本项目保留上述视觉语言，但把搜索和项目列表前置；不复制参考站品牌、Logo、宣传文案或无关功能。参考站的密集纹理在本项目中降低强度，避免遮挡正文。
+本项目保留近黑底、偏灰白文本、淡粉和灰绿强调色、细边框与克制装饰，并把搜索、分类和真实项目列表前置。不复制参考站品牌、Logo、宣传文案、项目数据、图片或无关功能，不把参考站名称用于本站身份。若以后实际复制 MIT 组件代码，分发时继续保留对应版权和许可证声明。
 
 ### 6.2 设计令牌（本项目建议值，非原站完整 CSS）
 
 | 令牌 | 建议值 | 用途 |
 | --- | --- | --- |
-| `background` | `#080908` | 页面底色；参考站主体实测颜色 |
+| `background` | `#080908` | 本站页面基准底色 |
 | `surface` | `#141715` | 列表、卡片、输入区域 |
 | `surface-hover` | `#1C211E` | Hover 和选中背景 |
-| `text-primary` | `#E6E4E7` | 标题和正文；参考站主体实测颜色 |
+| `text-primary` | `#E6E4E7` | 本站标题和正文基准色 |
 | `text-secondary` | `#AFB6B0` | 次要说明，保持可读对比 |
 | `border` | `#303833` | 常规分隔线；表单控件需另验证对比 |
 | `accent-pink` | `#E9A8C0` | 强调和焦点边框 |
@@ -225,7 +225,7 @@ P1 如确有提交量再改为 Turnstile＋Worker＋D1 表单；保留现有页�
 | 主字体 | 系统无衬线；中文优先 PingFang／Microsoft YaHei | 首版不依赖外部字体请求 |
 | 代码与标识 | 系统等宽字体 | 仓库名、短代码字段 |
 
-布局规格：内容最大宽度 1180px；桌面左右间距至少 24px，手机 16px；导航高约 64px；Hero 桌面约 300–380px；标题桌面 48–56px、手机 32–36px；正文 16px、行高 1.6。参考站首页大标题约 64px，本项目主动缩短首屏营销区域。
+布局规格：内容最大宽度 1180px；桌面左右间距至少 24px，手机 16px；导航主体约 64–72px；Hero 桌面约 300–420px；标题桌面 48–72px、手机 32–42px；正文 16px、行高 1.6。首屏以搜索为主要操作，分类和项目列表保持较高信息密度。
 
 ### 6.3 关键组件
 
@@ -806,7 +806,7 @@ P0.1 定期导出 D1，保留最近一个完整报表周期的恢复副本；备
 | 配置 | 阶段 | 放置位置 | 默认／要求 |
 | --- | --- | --- | --- |
 | `SITE_URL` | P0 | 构建环境 | 默认 `https://jevtypesafe.dev`（用户 2026-09-22 确认），上线时与 Vercel 控制台核对 |
-| `SITE_NAME` | P0 | 公开配置 | Jev Builds Directory，可更换 |
+| `SITE_NAME` | P0 | 公开配置 | Jev Atlas，可更换 |
 | `CONTACT_EMAIL` | P0 | 公开配置 | 用户提供真实可收信地址；可以用已有邮箱，无需新购域名邮箱 |
 | `PUBLIC_WEB_ANALYTICS_TOKEN` | P0 | 前端允许公开值 | 创建对应站点后配置；缺失时不加载 beacon |
 | `SOURCE_REPO`／`SOURCE_REF` | P0 | 采集配置 | 已知开源目录／固定 commit 或受控分支 |
@@ -855,7 +855,7 @@ P1 表单必须服务端验证 Turnstile token；仅前端验证码不构成有�
 
 主要依据：
 
-1. [UI 参考首页](https://www.jevai.org/) 与 [应用目录](https://www.jevai.org/apps)：风格与列表参考。
+1. [Open App Scout](https://openappscout.com/) 与其[公开源码](https://github.com/tortuvshin/open-apps)：布局结构、信息密度和许可证研究；不复制品牌、内容和项目数据。
 2. [Jev 官方说明](https://docs.typesafe.ai/introduction)：结构化决策模型背景；本站不提供官方 API。
 3. [开源目录仓库](https://github.com/everyai-com/jev-directory) 与 [MIT 许可证](https://github.com/everyai-com/jev-directory/blob/main/LICENSE)：候选内容与复用边界。
 4. [Astro Cloudflare 部署](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)：纯静态部署路径。

@@ -1,0 +1,10 @@
+▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+
+
+
+ ⛅️ wrangler 4.135.0
+────────────────────
+✨ Read 104 files from the assets directory D:\project\jevtypesafe\dist
+Total Upload: 0.31 KiB / gzip: 0.22 KiB
+No bindings found.
+--dry-run: exiting now.

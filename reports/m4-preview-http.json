@@ -1,0 +1,12 @@
+{
+  "root_status": 200,
+  "zh_status": 200,
+  "missing_status": 404,
+  "preview_noindex": true,
+  "canonical_domain": true,
+  "html_cache": "public, must-revalidate, max-age=0",
+  "asset_cache": "public, must-revalidate, max-age=31536000, immutable",
+  "content_type_options": "nosniff",
+  "frame_options": "DENY",
+  "asset_path": "/_astro/BaseLayout.DJ_oL-Cd.css"
+}

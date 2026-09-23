@@ -24,11 +24,17 @@ if(root){
     root!.querySelector('#filter-count')!.textContent=`(${state.category.length+state.ecosystem.length+state.source.length+state.usage.length})`;
     results.replaceChildren();pagination.replaceChildren();
     for(const project of filtered.slice((state.page-1)*24,state.page*24)){
-      const li=document.createElement('li');li.className='border-b border-line bg-surface p-5 last:border-b-0';
-      const link=document.createElement('a');link.href=project.href;link.className='text-lg font-semibold text-link';link.textContent=project.name;
+      const li=document.createElement('li');
+      const article=document.createElement('article');article.className='project-row search-project-row';
+      const main=document.createElement('div');main.className='project-main';
+      const mark=document.createElement('span');mark.className='project-monogram';mark.setAttribute('aria-hidden','true');mark.textContent=project.name.slice(0,1).toUpperCase();
+      const copy=document.createElement('div');copy.className='min-w-0';
+      const heading=document.createElement('h3');
+      const link=document.createElement('a');link.href=project.href;link.textContent=project.name;heading.append(link);
       const summary=document.createElement('p');summary.className='muted text-sm';summary.textContent=project.summary;
       const badge=document.createElement('span');badge.className='badge';badge.textContent=t[project.source_status as 'open_source']??project.source_status;
-      li.append(link,summary,badge);results.append(li);
+      const action=document.createElement('a');action.href=project.href;action.className='search-result-action';action.textContent=`${t.details} →`;
+      copy.append(heading,summary,badge);main.append(mark,copy);article.append(main,action);li.append(article);results.append(li);
     }
     for(const [page,label] of [[state.page-1,t.previous],[state.page+1,t.next]] as const){
       if(page<1||page>pages)continue;

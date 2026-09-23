@@ -1,0 +1,11 @@
+{
+  "commit": "95c6b1cff744ffe037afb13015f97b24bec80400",
+  "detached": true,
+  "node": "v24.14.1",
+  "npm": "11.11.0",
+  "external_keys": "disabled",
+  "validate": "10 published projects / 6 categories",
+  "tests": "81/81 passed",
+  "build": "47 static pages",
+  "worker_bundle_present": false
+}

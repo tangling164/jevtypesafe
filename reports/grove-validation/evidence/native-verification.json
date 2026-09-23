@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-22T13:26:10.730Z",
+  "mode": "native",
+  "base": "http://127.0.0.1:8792",
+  "results": [
+    {
+      "name": "Native generated JSON strips required fields",
+      "passed": true,
+      "details": {
+        "expectedLimitation": true,
+        "fields": [
+          "id",
+          "locales",
+          "ecosystem",
+          "source_status",
+          "license",
+          "requirements",
+          "sources",
+          "verification"
+        ]
+      }
+    },
+    {
+      "name": "Native scaffold has no Chinese route",
+      "passed": true,
+      "details": {
+        "expectedLimitation": true
+      }
+    },
+    {
+      "name": "Native list, category and detail without JavaScript",
+      "passed": true
+    },
+    {
+      "name": "Native client search and license filter",
+      "passed": true
+    }
+  ]
+}

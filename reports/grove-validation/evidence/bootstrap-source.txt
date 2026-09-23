@@ -1,0 +1,8 @@
+// Probe-only Windows fallback. Uses the published CLI's built-in direct writer;
+// no upstream package files are modified. The stock CLI failure is evidence.
+import { initDirectory } from './tooling/node_modules/@grove-dev/cli/dist/init.js';
+const result = await initDirectory(new URL('./grove-probe/', import.meta.url).pathname.replace(/^\/(\w:)/, '$1'), {
+  packageManager: { name: 'npm', version: '11.11.0' },
+  installScaffold: async () => { throw new Error('Probe: use bundled registry writer to avoid Windows npm spawn failure'); },
+});
+console.log(JSON.stringify({ target: result.targetDir, packageManager: result.packageManager, files: result.installedScaffold.files.length }));

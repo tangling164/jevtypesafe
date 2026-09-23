@@ -1,0 +1,66 @@
+[
+  {
+    "width": 375,
+    "locale": "en",
+    "centers": [
+      91,
+      91,
+      91,
+      91
+    ],
+    "overflow": false,
+    "bar": false,
+    "arrow": "none",
+    "images": true,
+    "menuAndLanguage": "passed",
+    "favicons": "passed"
+  },
+  {
+    "width": 375,
+    "locale": "zh",
+    "centers": [
+      91,
+      91,
+      91,
+      91
+    ],
+    "overflow": false,
+    "bar": false,
+    "arrow": "none",
+    "images": true,
+    "menuAndLanguage": "passed",
+    "favicons": "passed"
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "centers": [
+      36,
+      36,
+      36,
+      36
+    ],
+    "overflow": false,
+    "bar": false,
+    "arrow": "none",
+    "images": true,
+    "menuAndLanguage": "passed",
+    "favicons": "passed"
+  },
+  {
+    "width": 1440,
+    "locale": "zh",
+    "centers": [
+      36,
+      36,
+      36,
+      36
+    ],
+    "overflow": false,
+    "bar": false,
+    "arrow": "none",
+    "images": true,
+    "menuAndLanguage": "passed",
+    "favicons": "passed"
+  }
+]

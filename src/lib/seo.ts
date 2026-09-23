@@ -1,8 +1,8 @@
 import {pagePath,projectPath,type Route} from './routes';
 
-export function structuredData(route:Route,title:string,siteUrl:string){
+export function structuredData(route:Route,title:string,siteUrl:string,siteName='Jev Atlas'){
   const absolute=(path:string)=>new URL(path,siteUrl).href;
-  const breadcrumbs=[{name:'Jev Builds Directory',item:absolute(pagePath(route.locale))}];
+  const breadcrumbs=[{name:siteName,item:absolute(pagePath(route.locale))}];
   if(route.kind!=='home')breadcrumbs.push({name:title,item:absolute(route.path)});
   const list=['home','directory','category'].includes(route.kind);
   return {'@context':'https://schema.org','@graph':[

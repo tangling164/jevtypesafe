@@ -24,10 +24,11 @@ describe('publication manifest and SEO',()=>{
   });
   it('structured lists mirror visible records, without fake ratings',()=>{
     const second=routes.find(r=>r.path==='/projects/page/2/')!;
-    const graph=structuredData(second,'Projects · 2','https://example.org');
+    const graph=structuredData(second,'Projects · 2','https://example.org','Jev Atlas');
     const serialized=JSON.stringify(graph);
     expect(serialized).toContain('CollectionPage');
     expect(serialized).toContain('BreadcrumbList');
+    expect(serialized).toContain('Jev Atlas');
     expect(serialized).not.toContain('aggregateRating');
     const collection=graph['@graph'][0] as {mainEntity:{itemListElement:unknown[]}};
     expect(collection.mainEntity.itemListElement).toHaveLength(24);

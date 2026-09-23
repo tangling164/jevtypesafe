@@ -1,0 +1,8 @@
+{
+  "version": "0.11.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "dist.integrity": "sha512-BbdJ1q8bTg/Vai8U3ODhlCbeu/9nttwT2OoP/iSHgYvksZS3qzAlYKb8b6kcIxadc3NgjAC3s3XaP4PC2nxlFA=="
+}

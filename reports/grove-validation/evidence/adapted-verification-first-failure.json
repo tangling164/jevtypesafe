@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-22T13:27:00.560Z",
+  "mode": "adapted",
+  "base": "http://127.0.0.1:8791",
+  "results": [
+    {
+      "name": "16 static bilingual routes bypass Worker; no server bundle",
+      "passed": true,
+      "details": {
+        "routes": 16
+      }
+    },
+    {
+      "name": "Stable IDs, both summaries and all required custom fields in static detail HTML",
+      "passed": true,
+      "details": {
+        "fixtures": 3,
+        "details": 6
+      }
+    },
+    {
+      "name": "Asset distribution, license preservation, true 404 and isolated API",
+      "passed": false,
+      "error": "Error: ENOENT: no such file or directory, scandir 'D:\\project\\jevtypesafe-grove-validation-20260922\\grove-probe\\dist-adapted\\_astro'\n    at readdirSync (node:fs:1569:26)\n    at file:///D:/project/jevtypesafe-grove-validation-20260922/grove-probe/scripts/verify.mjs:78:21\n    at check (file:///D:/project/jevtypesafe-grove-validation-20260922/grove-probe/scripts/verify.mjs:11:31)\n    at file:///D:/project/jevtypesafe-grove-validation-20260922/grove-probe/scripts/verify.mjs:77:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+    },
+    {
+      "name": "No-JS navigation, category and same-project language switch",
+      "passed": true
+    },
+    {
+      "name": "Chinese search, ecosystem/source filters, unknown handling, empty/reset and URL reload",
+      "passed": true
+    },
+    {
+      "name": "375px/1440px layout and canonical/hreflang, sitemap, preview noindex",
+      "passed": true
+    }
+  ]
+}

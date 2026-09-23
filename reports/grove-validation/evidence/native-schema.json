@@ -1,0 +1,78 @@
+{
+  "date": "2026-09-22T13:29:25.538Z",
+  "packageVersion": "0.11.0",
+  "nativeRecordParses": true,
+  "fields": [
+    {
+      "name": "id",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "locales",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "ecosystem",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "source_status",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "license",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "requirements",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "sources",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    },
+    {
+      "name": "verification",
+      "presentInInput": true,
+      "preservedInRecord": false,
+      "preservedInIndex": false
+    }
+  ],
+  "customFacetAccepted": false,
+  "customFacetErrors": [
+    {
+      "path": [
+        "browse",
+        "facets",
+        1
+      ],
+      "message": "Invalid option: expected one of \"category\"|\"stack\"|\"platform\"|\"tags\"|\"license\""
+    },
+    {
+      "path": [
+        "browse",
+        "facets",
+        2
+      ],
+      "message": "Invalid option: expected one of \"category\"|\"stack\"|\"platform\"|\"tags\"|\"license\""
+    }
+  ],
+  "nativeIdentity": {
+    "slug": "lantern",
+    "separateStableId": false
+  }
+}

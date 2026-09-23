@@ -7,6 +7,7 @@ import ProjectList from './ProjectList.astro';
 interface Props { project: PublicProject; locale: Locale }
 const { project: p, locale } = Astro.props;
 const t = dictionary(locale);
+const zh = locale === 'zh';
 const text = p.locales[locale] ?? p.locales.en;
 const categories = [p.primary_category, ...p.secondary_categories].map((id) => content.categories.find((c) => c.id === id)!);
 const related = content.projects.filter((other) => other.id !== p.id && other.primary_category === p.primary_category).slice(0, 4);
@@ -22,64 +23,49 @@ const facts: Array<[string, string]> = [
   [t.firstPublished, date(p.first_published_at)],
 ];
 ---
-<article class="project-detail grid gap-10">
-  <header class="grid gap-3">
-    <h1>{p.name}</h1>
-    {p.owner && <p class="muted">{t.author}: {p.owner}</p>}
-    <p class="max-w-3xl text-lg">{text.summary}</p>
-    <div class="flex flex-wrap gap-2">
+<article class="project-detail">
+  <header class="detail-header" data-reveal>
+    <div class="detail-identity"><span class="detail-monogram" aria-hidden="true">{p.name.slice(0, 1).toUpperCase()}</span><div><p class="eyebrow">{categories[0]?.[locale] ?? t.projects}</p><h1>{p.name}</h1>{p.owner && <p class="muted">{t.author}: {p.owner}</p>}</div></div>
+    <p class="detail-summary">{text.summary}</p>
+    <div class="detail-badges flex flex-wrap gap-2">
       <span class="badge">{t[p.source_status]}</span>
       <span class="badge">{t[p.ecosystem]}</span>
       {p.archived && <span class="badge">{t.archived}</span>}
       {categories.map((category) => <a class="badge" href={pagePath(locale, `categories/${category.id}/`)}>{category[locale]}</a>)}
     </div>
-    <div class="flex flex-wrap gap-3">
+    <div class="detail-actions flex flex-wrap gap-3">
       {p.repo_url && <a class="button button-primary" href={p.repo_url} rel="noopener">{t.source} ↗</a>}
       {p.demo_url && <a class="button" href={p.demo_url} rel="noopener">{t.demo} ↗</a>}
       {p.website_url && <a class="button" href={p.website_url} rel="noopener">{t.website} ↗</a>}
     </div>
   </header>
 
-  <section class="grid gap-2">
-    <h2>{t.problem}</h2>
-    <p>{text.problem}</p>
-  </section>
-
-  <section class="grid gap-2">
-    <h2>{t.requirements}</h2>
-    <p>{text.requirements_text}</p>
-    <dl class="grid gap-2 text-sm sm:grid-cols-2">
-      <div class="panel flex items-center justify-between gap-4 px-4 py-3"><dt class="muted">{t.apiKey}</dt><dd>{tristate(p.requirements.api_key)}</dd></div>
-      <div class="panel flex items-center justify-between gap-4 px-4 py-3"><dt class="muted">{t.additionalModel}</dt><dd>{tristate(p.requirements.additional_model)}</dd></div>
-      <div class="panel flex items-center justify-between gap-4 px-4 py-3"><dt class="muted">{t.local}</dt><dd>{tristate(p.requirements.local_install)}</dd></div>
-      <div class="panel flex items-center justify-between gap-4 px-4 py-3"><dt class="muted">{t.hardware}</dt><dd>{p.requirements.hardware ?? t.unknown}</dd></div>
-    </dl>
-  </section>
-
-  <section class="grid gap-2">
-    <h2>{t.role}</h2>
-    <p>{ecosystemRole}</p>
-  </section>
-
-  <section class="grid gap-3">
-    <h2>{t.provenance}</h2>
-    <p class="muted text-sm">{p.verification === 'runtime_tested' ? t.runtimeTested : t.sourceChecked} · {t.checked}: {date(p.checked_at)}</p>
-    <ul class="grid gap-2 text-sm">
-      {p.sources.map((source) => <li><a class="text-link" href={source.url} rel="noopener">{sourceLabel[source.type]}</a> <span class="muted">({source.url}) · {t.fetchedAt} {date(source.fetched_at)}</span></li>)}
-      {p.runtime_evidence && <li><a class="text-link" href={p.runtime_evidence} rel="noopener">{t.runtimeTested}</a></li>}
-    </ul>
-    <dl class="grid gap-2 text-sm sm:grid-cols-2">
-      {facts.map(([label2, value]) => <div class="panel flex items-center justify-between gap-4 px-4 py-3"><dt class="muted">{label2}</dt><dd>{value}</dd></div>)}
-    </dl>
-    {p.license && <p class="muted text-sm">{t.license}: <a class="text-link" href={p.license.url} rel="noopener">{p.license.spdx}</a></p>}
-  </section>
+  <div class="detail-layout">
+    <div class="detail-main">
+      <section data-reveal><p class="section-kicker">{t.problem}</p><h2>{t.problem}</h2><p>{text.problem}</p></section>
+      <section data-reveal><p class="section-kicker">{t.role}</p><h2>{t.role}</h2><p>{ecosystemRole}</p></section>
+      <section data-reveal><p class="section-kicker">{t.requirements}</p><h2>{t.requirements}</h2><p>{text.requirements_text}</p></section>
+      <section data-reveal>
+        <p class="section-kicker">{t.provenance}</p><h2>{t.provenance}</h2>
+        <p class="muted text-sm">{p.verification === 'runtime_tested' ? t.runtimeTested : t.sourceChecked} · {t.checked}: {date(p.checked_at)}</p>
+        <ul class="source-list">
+          {p.sources.map((source) => <li><a href={source.url} rel="noopener"><span>{sourceLabel[source.type]}</span><span>{date(source.fetched_at)} ↗</span></a><small>{source.url}</small></li>)}
+          {p.runtime_evidence && <li><a href={p.runtime_evidence} rel="noopener"><span>{t.runtimeTested}</span><span>↗</span></a></li>}
+        </ul>
+      </section>
+    </div>
+    <aside class="detail-sidebar" aria-label={zh ? '项目事实' : 'Project facts'} data-reveal>
+      <h2>{zh ? '项目事实' : 'Project facts'}</h2>
+      <dl>{facts.map(([label2, value]) => <div><dt>{label2}</dt><dd>{value}</dd></div>)}<div><dt>{t.apiKey}</dt><dd>{tristate(p.requirements.api_key)}</dd></div><div><dt>{t.additionalModel}</dt><dd>{tristate(p.requirements.additional_model)}</dd></div><div><dt>{t.local}</dt><dd>{tristate(p.requirements.local_install)}</dd></div><div><dt>{t.hardware}</dt><dd>{p.requirements.hardware ?? t.unknown}</dd></div></dl>
+      {p.license && <a class="detail-license" href={p.license.url} rel="noopener">{t.license}: {p.license.spdx} ↗</a>}
+      <a class="detail-correction" href={`${pagePath(locale, 'submit/')}?project=${encodeURIComponent(p.id)}`}>{t.correct} →</a>
+    </aside>
+  </div>
 
   {related.length > 0 && (
-    <section class="grid gap-3">
-      <h2>{t.related}</h2>
+    <section class="related-projects" data-reveal>
+      <div class="section-heading"><h2>{t.related}</h2></div>
       <ProjectList projects={related} locale={locale} />
     </section>
   )}
-
-  <p><a class="button" href={`${pagePath(locale, 'submit/')}?project=${encodeURIComponent(p.id)}`}>{t.correct}</a></p>
 </article>

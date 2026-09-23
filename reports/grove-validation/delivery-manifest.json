@@ -1,0 +1,10 @@
+{
+  "createdAt": "2026-09-22T21:36:08.3167732+08:00",
+  "archive": "probe-source.zip",
+  "bytes": 695012,
+  "sha256": "32ce83c77db5d6fe35630f14878e148d132baf7a124547c550f90489054f1cc3",
+  "originalHead": "95c6b1cff744ffe037afb13015f97b24bec80400",
+  "groveVersion": "0.11.0",
+  "fictionalFixtures": 3,
+  "note": "Source archive only; npm install was executed in the isolated original. No production deploy."
+}

@@ -1,0 +1,58 @@
+{
+  "head": "95c6b1cff744ffe037afb13015f97b24bec80400",
+  "branch": "codex/m1-foundation",
+  "files": [
+    {
+      "path": "docs/PROJECT_PLAN.md",
+      "sha256": "1747cca756ceaac6e552025e7f7b70fef9b94bea21d7680544ad6615c9c4f462"
+    },
+    {
+      "path": "reports/taste-review/before-1440.png",
+      "sha256": "e5a32b51bbe09e470af010c0e0ea769bb37d3e35e70a578576bb0135a6036040"
+    },
+    {
+      "path": "reports/taste-review/before-375.png",
+      "sha256": "a83d50cb6aa9ced3c51d10738335b2257b1b1c9f8d9e0cd4d4546b42849504c0"
+    },
+    {
+      "path": "reports/taste-review/draft-1440.png",
+      "sha256": "95e44f33f8c982bfa0e2091e24640b5597fcd1fd24ce4779a324de628bef8a54"
+    },
+    {
+      "path": "reports/taste-review/draft-375.png",
+      "sha256": "3e94ddf31fbbe22f92d95b428adf466c700902de52f23bc3dc96adbcf585284d"
+    },
+    {
+      "path": "src/components/HomePage.astro",
+      "sha256": "4f1b12573c0e4f7274c8a11719574123fb00111f33ef10619dd2bf3ebbcc6295"
+    },
+    {
+      "path": "src/components/ProjectRow.astro",
+      "sha256": "00d0e7ca3d54b076fc7d53ec5751301434ed03fe95b7e57d8763348df703a3e9"
+    },
+    {
+      "path": "src/layouts/BaseLayout.astro",
+      "sha256": "74a9f391546238cf0753e98bd6cb9318eec8388fc473951c6e0edee093eb363c"
+    },
+    {
+      "path": "src/pages/[...path].astro",
+      "sha256": "f6204d5e689bac2dd5ec165da700d188b9837b6a20ae1bccc33deb99861dff2f"
+    },
+    {
+      "path": "src/scripts/motion.ts",
+      "sha256": "2ab8a8d1dd94ac9001d4f4922c617a38448e5f260b76ecc379d1fb2fea63a39a"
+    },
+    {
+      "path": "src/styles/discovery.css",
+      "sha256": "2d32112ce4ec74c7d4131690409bd5ac847729c9f88c4f2b0953250f46070958"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "66f0056585a585c5a894bd5dafad7909572a032c56e77c373ed4fc2933593c13"
+    },
+    {
+      "path": "tests/e2e/motion.spec.ts",
+      "sha256": "8f3a177b8bcb338c97684adcc5a7b549f7db8587807ae2b858fee73f8df87dc7"
+    }
+  ]
+}

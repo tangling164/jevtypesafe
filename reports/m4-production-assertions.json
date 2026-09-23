@@ -1,0 +1,10 @@
+{
+  "home_index_follow": true,
+  "search_noindex_follow": true,
+  "canonical_domain": true,
+  "robots_allow": true,
+  "sitemap_domain": true,
+  "analytics_absent": true,
+  "static_output": true,
+  "html_count": 47
+}

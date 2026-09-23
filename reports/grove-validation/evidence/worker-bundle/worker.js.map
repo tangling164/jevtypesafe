@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["../../grove-probe/worker.js"],
+  "sourceRoot": "../evidence/worker-bundle",
+  "sourcesContent": ["// Probe only; no real sponsor service, analytics, persistence, or secrets.\nexport default {\n  async fetch(request, env) {\n    const url = new URL(request.url);\n    if (url.pathname === '/api/sponsors/health') {\n      return Response.json({ fixture: true, scope: 'sponsors', implemented: false }, {\n        headers: { 'X-Probe-Worker': 'sponsors', 'Cache-Control': 'no-store' },\n      });\n    }\n    const response = await env.ASSETS.fetch(request);\n    const result = new Response(response.body, response);\n    result.headers.set('X-Probe-Worker', 'fallback');\n    return result;\n  },\n};\n"],
+  "mappings": ";AACA,IAAO,iBAAQ;AAAA,EACb,MAAM,MAAM,SAAS,KAAK;AACxB,UAAM,MAAM,IAAI,IAAI,QAAQ,GAAG;AAC/B,QAAI,IAAI,aAAa,wBAAwB;AAC3C,aAAO,SAAS,KAAK,EAAE,SAAS,MAAM,OAAO,YAAY,aAAa,MAAM,GAAG;AAAA,QAC7E,SAAS,EAAE,kBAAkB,YAAY,iBAAiB,WAAW;AAAA,MACvE,CAAC;AAAA,IACH;AACA,UAAM,WAAW,MAAM,IAAI,OAAO,MAAM,OAAO;AAC/C,UAAM,SAAS,IAAI,SAAS,SAAS,MAAM,QAAQ;AACnD,WAAO,QAAQ,IAAI,kBAAkB,UAAU;AAC/C,WAAO;AAAA,EACT;AACF;",
+  "names": []
+}

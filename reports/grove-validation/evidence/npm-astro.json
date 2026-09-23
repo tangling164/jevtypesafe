@@ -1,0 +1,8 @@
+{
+  "version": "0.11.0",
+  "license": "MIT",
+  "peerDependencies": {
+    "astro": "^6.0.0 || ^7.0.0"
+  },
+  "dist.integrity": "sha512-hgd7sDXWr8nJqBL+Hp0zIxT0SQdSweMOi7ZAxfzdaRolX0vtgk40cTCbE6vuAjOE9jlB+wOCvgUs4UBJFYj3/g=="
+}

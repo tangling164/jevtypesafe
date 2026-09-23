@@ -1,0 +1,54 @@
+---
+import ProjectList from './ProjectList.astro';
+import { content } from '../lib/site';
+import { pagePath } from '../lib/routes';
+import { dictionary, type Locale } from '../i18n';
+import type { PublicProject } from '../lib/content-schema';
+interface Props { locale: Locale; projects: PublicProject[] }
+const { locale, projects } = Astro.props;
+const t = dictionary(locale);
+const zh = locale === 'zh';
+const categories = content.categories.filter(c => content.projects.some(p => p.primary_category === c.id || p.secondary_categories.includes(c.id)));
+const openCount = content.projects.filter(p => p.source_status === 'open_source').length;
+const checkedAt = content.projects.reduce((date, p) => p.checked_at > date ? p.checked_at : date, '');
+const checkedDate = checkedAt ? new Date(checkedAt).toLocaleDateString(zh ? 'zh-CN' : 'en-US', {dateStyle: 'medium', timeZone: 'UTC'}) : t.unknown;
+---
+<div class="home-page">
+  <section class="discovery-hero">
+    <div class="hero-copy">
+      <p class="eyebrow hero-enter">{t.kicker}</p>
+      <h1 class="hero-enter">{zh ? <>发现用 Jev 构建的<br/><span>真实项目。</span></> : <>Discover real projects<br/><span>built with Jev.</span></>}</h1>
+      <p class="hero-intro hero-enter">{t.intro}</p>
+      <form class="home-search hero-enter" method="get" action={pagePath(locale, 'search/')}>
+        <label class="sr-only" for="home-q">{t.search}</label>
+        <div class="search-field"><span class="search-glyph" aria-hidden="true">⌕</span><input id="home-q" name="q" type="search" placeholder={t.searchHint} maxlength="200"/><button class="button button-primary" type="submit">{t.search}</button></div>
+      </form>
+      <div class="hero-links hero-enter"><a href={pagePath(locale, 'projects/')}>{t.browse} <span aria-hidden="true">→</span></a><a href={pagePath(locale, 'submit/')}>{t.submit}</a></div>
+    </div>
+  </section>
+
+  <div class="directory-summary" data-reveal>
+    <p><strong>{content.projects.length}</strong><span>{zh ? '收录项目' : 'listed projects'}</span></p>
+    <p><strong>{openCount}</strong><span>{zh ? '已确认开源' : 'confirmed open source'}</span></p>
+    <p class="summary-date"><span>{t.checked}</span><span>{checkedDate}</span></p>
+  </div>
+
+  <section class="category-section" aria-labelledby="category-title" data-reveal>
+    <div class="section-heading"><div><p class="eyebrow">{zh ? '按用途浏览' : 'Browse by purpose'}</p><h2 id="category-title">{t.categories}</h2></div><a href={pagePath(locale, 'projects/')}>{t.all} <span aria-hidden="true">→</span></a></div>
+    <nav class="category-directory" aria-label={t.categories}>
+      {categories.map(c => <a href={pagePath(locale, `categories/${c.id}/`)}><span>{c[locale]}</span><strong>{content.projects.filter(p => p.primary_category === c.id || p.secondary_categories.includes(c.id)).length}</strong><span aria-hidden="true">↗</span></a>)}
+    </nav>
+  </section>
+
+  <section class="project-collection featured-directory" aria-labelledby="collection-title">
+    <div class="collection-heading" data-reveal><div><p class="eyebrow">{zh ? '探索 Jev 生态' : 'Explore the ecosystem'}</p><h2 id="collection-title">{t.latest}</h2></div><a class="button" href={pagePath(locale, 'projects/')}>{t.viewAll}<span aria-hidden="true">→</span></a></div>
+    <ProjectList projects={projects} locale={locale}/>
+  </section>
+
+  <section class="cooperation-strip" data-reveal>
+    <p><strong>{t.cooperation}</strong><span>{t.cooperationBody}</span></p>
+    <a class="button" href={pagePath(locale, 'sponsor/')}>{t.askSponsor}<span aria-hidden="true">↗</span></a>
+  </section>
+
+  <section class="submission-strip" data-reveal><div><h2>{zh ? '让你的项目被发现。' : 'Give your project a place here.'}</h2><p>{t.free}</p></div><a class="button button-primary" href={pagePath(locale, 'submit/')}>{t.submit}<span aria-hidden="true">↗</span></a></section>
+</div>

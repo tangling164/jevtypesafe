@@ -11,8 +11,9 @@ const headings = {
   about: zh ? '关于本站' : 'About this directory', privacy: zh ? '隐私说明' : 'Privacy',
 };
 ---
-<article class="prose">
-  <h1>{headings[kind]}</h1>
+<article class="info-page">
+  <header class="page-heading" data-reveal><p class="eyebrow">{t.kicker}</p><h1>{headings[kind]}</h1></header>
+  <div class="info-layout"><div class="prose" data-reveal>
   {kind === 'submit' && <>
     <p>{t.free}</p><p>{zh ? '无需注册。我们会核实公开来源和许可状态，但不承诺立即发布。请在自己的邮件应用中真正发送；本站没有邮件发送服务。' : 'No account is needed. We check public sources and license status, but cannot promise immediate publication. You must send the message from your own email app; this site has no email sending service.'}</p>
     <ContactForm kind="submit" locale={locale} />
@@ -28,7 +29,7 @@ const headings = {
     <ContactForm kind="sponsor" locale={locale} />
   </>}
   {kind === 'about' && <>
-    <p>{zh ? 'Jev Builds Directory 是独立站点，与 TypeSafe AI 无隶属关系。本站整理可追溯的公开资料，帮助读者发现使用 Jev 或相关方法构建的项目。' : 'Jev Builds Directory is an independent site and is not affiliated with TypeSafe AI. It organizes traceable public information to help readers discover projects built with Jev or related approaches.'}</p>
+    <p>{zh ? 'Jev Atlas 是独立的 Jev 项目图谱，与 TypeSafe AI 无隶属关系。本站整理可追溯的公开资料，帮助读者发现使用 Jev 或相关方法构建的项目。' : 'Jev Atlas is an independent atlas of Jev projects and is not affiliated with TypeSafe AI. It organizes traceable public information to help readers discover projects built with Jev or related approaches.'}</p>
     <h2>{zh ? '我们如何核实' : 'How verification works'}</h2><p>{zh ? '我们检查来源、许可和生态关系。除非条目明确链接运行证据，“资料核实”不表示我们实际运行过项目。无许可证的公开源码不会被称为开源。' : 'We check sources, licenses, and ecosystem relationships. Unless an entry links explicit runtime evidence, source review does not mean we ran the project. Public source without a license is not described as open source.'}</p>
     <p>{zh ? '符合规则的普通收录免费。若资料有误，请从提交页附上项目 ID 发起纠错。' : 'Ordinary listings that meet the rules are free. If something is wrong, use the submission page with the project ID to suggest a correction.'} <a class="text-link" href={locale === 'zh' ? '/zh/submit/' : '/submit/'}>{t.correct}</a></p>
   </>}
@@ -38,4 +39,5 @@ const headings = {
     <p>{config.PUBLIC_WEB_ANALYTICS_TOKEN ? (zh ? '本站已配置 Cloudflare Web Analytics，用于了解页面访问和性能。它不作为赞助曝光或出站点击的完整记录。' : 'Cloudflare Web Analytics is configured to understand page visits and performance. It is not treated as a complete record of sponsorship impressions or outbound clicks.') : (zh ? '本站当前未配置访问分析 token，因此不加载分析脚本，也不进行赞助跟踪。' : 'No analytics token is currently configured, so no analytics script is loaded and sponsorship tracking is not active.')}</p>
     <p>{zh ? '公开联系邮箱可能显示在页面上。本站不会把客户私人邮箱、付款资料或私密备注放入公开目录数据。' : 'A public contact address may appear on the site. Private customer email, payment details, and private notes are not placed in public directory data.'}</p>
   </>}
+  </div><aside class="info-aside" data-reveal><p class="info-aside-label">{zh ? '目录原则' : 'Directory principles'}</p><p>{t.independent}</p><p>{t.sourceChecked}</p><a href={locale === 'zh' ? '/zh/projects/' : '/projects/'}>{t.browse} →</a></aside></div>
 </article>

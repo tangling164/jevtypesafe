@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-22T13:27:42.310Z",
+  "mode": "adapted",
+  "base": "http://127.0.0.1:8791",
+  "results": [
+    {
+      "name": "16 static bilingual routes bypass Worker; no server bundle",
+      "passed": true,
+      "details": {
+        "routes": 16
+      }
+    },
+    {
+      "name": "Stable IDs, both summaries and all required custom fields in static detail HTML",
+      "passed": true,
+      "details": {
+        "fixtures": 3,
+        "details": 6
+      }
+    },
+    {
+      "name": "Asset distribution, license preservation, true 404 and isolated API",
+      "passed": true
+    },
+    {
+      "name": "No-JS navigation, category and same-project language switch",
+      "passed": true
+    },
+    {
+      "name": "Chinese search, ecosystem/source filters, unknown handling, empty/reset and URL reload",
+      "passed": true
+    },
+    {
+      "name": "375px/1440px layout and canonical/hreflang, sitemap, preview noindex",
+      "passed": true
+    }
+  ]
+}

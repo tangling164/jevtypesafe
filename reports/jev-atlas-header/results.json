@@ -1,0 +1,46 @@
+[
+  {
+    "width": 375,
+    "locale": "en",
+    "brand": "Jev Atlas",
+    "title": "Discover what people build with Jev. · Jev Atlas",
+    "headerToHero": 0,
+    "headerToFirstCopy": 28,
+    "overflow": false,
+    "devToolbarCount": 0,
+    "languageSwitch": "passed"
+  },
+  {
+    "width": 375,
+    "locale": "zh",
+    "brand": "Jev Atlas",
+    "title": "发现用 Jev 构建的项目。 · Jev Atlas",
+    "headerToHero": 0,
+    "headerToFirstCopy": 28,
+    "overflow": false,
+    "devToolbarCount": 0,
+    "languageSwitch": "passed"
+  },
+  {
+    "width": 1440,
+    "locale": "en",
+    "brand": "Jev Atlas",
+    "title": "Discover what people build with Jev. · Jev Atlas",
+    "headerToHero": 0,
+    "headerToFirstCopy": 36,
+    "overflow": false,
+    "devToolbarCount": 0,
+    "languageSwitch": "passed"
+  },
+  {
+    "width": 1440,
+    "locale": "zh",
+    "brand": "Jev Atlas",
+    "title": "发现用 Jev 构建的项目。 · Jev Atlas",
+    "headerToHero": 0,
+    "headerToFirstCopy": 36,
+    "overflow": false,
+    "devToolbarCount": 0,
+    "languageSwitch": "passed"
+  }
+]
