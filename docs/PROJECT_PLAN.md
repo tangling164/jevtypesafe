@@ -4,8 +4,8 @@
 
 ## 1. 当前状态与使用规则
 
-- 建档日期：2026-09-20。最近更新：2026-09-23（CH-05 站名更新为 Jev Atlas、首页 Hero 上移、关闭 Astro 开发工具栏，见 EV-008；先前工程状态见 EV-006/007）。
-- 当前阶段：M4-02、M4-03 已验收；M4-05 本地恢复工作完成但受 M3-06 真实 Actions 前置约束保持待验收。Grove 直接采用已否决，正式沿用 Astro + TypeScript + Tailwind CSS + JSON；用户于 2026-09-23 确认 UI 调整完成，AC-01 通过。
+- 建档日期：2026-09-20。最近更新：2026-09-23（已提交 Jev Atlas UI 候选版本并补齐 Git 历史凭证扫描，见 EV-008/009；先前工程状态见 EV-006/007）。
+- 当前阶段：M4-02、M4-03 已验收；M3-06 正在进入真实 GitHub Actions 验证，M4-05 本地恢复工作完成但受其前置约束保持待验收。Grove 直接采用已否决，正式沿用 Astro + TypeScript + Tailwind CSS + JSON；用户于 2026-09-23 确认 UI 调整完成，AC-01 通过。
 - 已有交付：可复现工程、内容 Schema、10 条真实发布项目（3 种子 + 7 审核候选）、全部页面路由（en/zh，47 页）、搜索/联系交互、采集/审核/生成流水线、Open App Scout 结构参考的完整响应式 UI/动效、Cloudflare Static Assets 本地预览和恢复证据；尚无线上部署、DNS、HTTPS 或真实 GitHub Actions 证据。
 - 先完成 M1–M4 的 P0；M5 单独跟踪，首次收费前必须完成。P1 不在本期分母内。
 - 每个任务只用：待开始、进行中、待验收、已验收、受阻。原则上同时只有一个主任务进行中。
@@ -71,7 +71,7 @@
 
 | ID | 工作 | 前置 | 可验收交付 | 覆盖 | 状态 | 证据 |
 | --- | --- | --- | --- | --- | --- | --- |
-| M4-01 | 质量、容量与凭证检查 | M2-06、M2-07、M3-07 | check/test/build；1500 条独立容量 fixture；JS/索引体积与性能记录；dist/Git 凭证检查 | AC-16 | 已验收 | EV-003：validate/check/test(81)/build(47 页)/e2e(30) 全绿；容量 1500 条（索引 gzip 18KB、JS 5.8KB、P95 9.3ms）；Lighthouse 移动 99/100/100；scan findings 空（Git 历史待首次提交后复扫） |
+| M4-01 | 质量、容量与凭证检查 | M2-06、M2-07、M3-07 | check/test/build；1500 条独立容量 fixture；JS/索引体积与性能记录；dist/Git 凭证检查 | AC-16 | 已验收 | EV-003/009：validate/check/test(82)/build(47 页)/e2e(40) 全绿；容量 1500 条（索引 gzip 18KB、JS 5.8KB、P95 9.3ms）；Lighthouse 移动 99/100/100；源码 233、dist 59、Git 历史 6 提交扫描 findings 空 |
 | M4-02 | Cloudflare 静态配置与预览 | M4-01 | Static Assets、真实 404；普通 HTML 静态分发；预览 noindex；不配置全站 SSR | AC-13、AC-22 | 已验收 | EV-006：Wrangler 本地 `/`/`/zh/` 200、缺页 404、缓存/安全头正确；dry-run 读取 104 assets、无 bindings；无 main/SSR/Worker bundle |
 | M4-03 | 正式配置与基础分析 | M4-02 | 核实 SITE_URL、邮箱；有 token 才加载分析；生产索引配置正确 | AC-11、AC-12 | 已验收 | EV-006：生产首页 index、搜索 noindex、robots Allow、canonical/sitemap 为 jevtypesafe.dev；support@ 已配置；分析 token 门控构建验证，真实 token 暂不配置 |
 | M4-04 | 域名与正式分支部署 | M4-03 | Vercel 核实域名/备份 DNS；Cloudflare NS、HTTPS、www 301 保留参数；main 部署验证 | AC-13、AC-14、AC-22 | 受阻 | B-01/B-02：缺 GitHub/Cloudflare/Vercel 控制台接入，未部署、未改 DNS，不能产生线上证据 |
@@ -120,7 +120,7 @@
 | AC-13 | 部署/离线快照构建 | M3-05、M4-04、M4-05 | 未验证 | EV-006：独立 worktree 无外部 Key 恢复 81 单测与 47 页构建，Cloudflare 本地预览通过；正式部署链路仍未验证 |
 | AC-14 | 正式域名 | M4-04 | 未验证 | — |
 | AC-15 | 真实初始内容 | M3-07 | 通过 | EV-002：10 条全部有出处（固定 commit）与许可状态；数量从数据生成；待核/拒绝原因如实记录 |
-| AC-16 | 凭证隔离 | M4-01 | 通过 | EV-006：终态 scan:public 扫描源码 202 + dist 55 文件，findings 空；恢复构建和分析门控未使用真实密钥，Git 历史仍待远端发布链路复扫 |
+| AC-16 | 凭证隔离 | M4-01 | 通过 | EV-009：scan:public 扫描源码 233、dist 59 文件及 Git 历史 6 个提交，historyMatches=0、findings 空；回归测试验证能发现仅存在于已删除提交中的令牌且不输出令牌值 |
 | AC-17 | 赞助排期 | M5-02、M5-06 | 未验证 | — |
 | AC-18 | 服务器到期 | M5-03、M5-06 | 未验证 | — |
 | AC-19 | 事件计量 | M5-04、M5-06 | 未验证 | — |
@@ -143,6 +143,7 @@
 | EV-005 | SP-01；不计原站 M4/M5 通过 | 原站基线 95c6b1c；Windows、Node 24.14.1、Grove 0.11.0、Astro 7.3.3；外部隔离工程 | 原生/适配构建各 17 页、check 0 errors（7 hints）；4 组原生检查含限制复现、6 组适配检查通过；本地 assets-first / API / 404 通过；12 个已有脏文件 hash 未变。初始化失败、内存失败重跑、dry-run 挂起均留证；未部署 | reports/acceptance/EV-005-grove-compatibility.md；reports/grove-validation/ 工程 ZIP、日志、截图与 SHA256 清单 | Codex / 2026-09-22 |
 | EV-006 | Open App Scout 结构 UI/动效；M4-02/03；M4-05 本地恢复 | 基线 95c6b1c + 未提交工作区；Windows、Node 24.14.1、Astro 7.3.3、Wrangler 4.135.0、Playwright 1.63.0 | check 0 errors；test 81/81；build 47 页；e2e 40/40；7 路由×4 宽度无溢出；Wrangler `/`/`/zh/` 200、404 正确、104 assets/无 bindings；生产索引/分析门控通过；detached baseline 恢复构建通过；公开扫描 202 源文件 + 55 dist 文件 findings 空。未部署，dry-run 输出成功后 Windows 进程未自行退出 | reports/acceptance/EV-006-open-app-scout-ui-m4-local.md；reports/taste-review/；reports/m4-*.json；reports/m4-static-dry-run/；reports/acceptance/public-scan.json | Codex / 2026-09-22 |
 | EV-008 | CH-05；AC-01/02/03 技术验证 | HEAD a8dd5ce + 未提交实现及既有 UI 工作区；Windows、Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | Jev Atlas 名称/当前文案同步；首页 Hero 外间距 0px；dev toolbar=0；check 0 errors/0 warnings（8 hints）；test 81/81；build 47 页；并行 e2e 38/40，同一无 JS 用例双端超时后单 worker 完整复跑 40/40；中英×375/1440 四组专项验证通过 | reports/acceptance/EV-008-jev-atlas-header.md；reports/jev-atlas-header/ | Codex / 2026-09-23 |
+| EV-009 | M4-01 / AC-16；M3-06/M4-04 发布前置 | `1ba9657` + `b721781`；Windows、Node 24.14.1、npm 11.11.0 | UI 候选版本已提交；check 0 errors/0 warnings、test 82/82、build 47 页；scan:public 扫描源码 233、dist 59、Git 历史 6 提交，0 history matches、findings 空；GitHub/Cloudflare 真实链路未提前记为通过 | reports/acceptance/EV-009-release-readiness.md；reports/acceptance/public-scan.json | Codex / 2026-09-23 |
 
 建议编号 EV-001 起。一个证据可覆盖多项 AC，但必须列出各场景结果。UI 至少记录 375px 与桌面；构建通过不能替代视觉验收。生产域名验证必须记录真实 URL/状态码，不能只引用本地截图。
 
@@ -158,7 +159,7 @@
 
 | ID | 待落实项 | 需要时间 | 当前状态/负责人 | 缺失时可继续 |
 | --- | --- | --- | --- | --- |
-| B-01 | GitHub 仓库和 Cloudflare 项目访问 | M3-06/M4-04 实际接入 | 阻塞 M3-06、M4-04/M4-06 / 用户提供访问，Codex 配置 | M4-02 本地 Static Assets、生产构建、恢复和文档已完成 |
+| B-01 | GitHub 仓库和 Cloudflare 项目访问 | M3-06/M4-04 实际接入 | 部分具备：GitHub origin 已配置，待首次推送和 Actions 实证；Cloudflare 当前未认证且无账户/token 环境变量，仍阻塞 M4-04/M4-06 | M4-02 本地 Static Assets、生产构建、恢复、文档及 Git 历史扫描已完成 |
 | B-02 | Vercel 控制台域名与 DNS 访问 | M4-04 正式绑定 | 域名已确认（2026-09-22：`jevtypesafe.dev`，见 CH-01）；阻塞 NS/HTTPS/www 线上验证 | SITE_URL、canonical、sitemap 和本地预览已验证 |
 | B-03 | 真实可收信 CONTACT_EMAIL | M4-03 及公开发布 | 已确认（2026-09-22 用户提供：support@jevtypesafe.dev；已配置 site.json 并验证构建产物） | 邮箱已在提交/赞助页启用；正式收信能力待用户在邮箱侧确认 |
 | B-04 | 摘要供应商、模型、Key 与预算 | 真实 AI 批处理前 | 待选择 / 用户 | 适配器、受控测试、已有快照构建、待处理队列 |
@@ -207,12 +208,12 @@
 
 ## 9. 本次交接与下一步
 
-- 本次完成：CH-05 / EV-008。站名和当前公开文案统一为 Jev Atlas；首页 Hero 紧贴导航、首行内容距导航手机 28px/桌面 36px；关闭 Astro 开发工具栏，移除 Settings/Audit 等本地框架按钮。
-- 当前代码分支/版本：`codex/m1-foundation`，HEAD `a8dd5ce`（Jev Atlas 设计说明）加未提交实现及已有 UI 工作区。未安装 Grove/React/数据库/SSR adapter，`package.json` 和 lockfile 依赖架构不变。未推送、未部署、未改 DNS。
-- 本轮实际检查：build 47 页；check 0 errors/0 warnings（8 hints）；unit 81/81；并行 e2e 非截图项 38/40，同一无 JS 用例桌面/手机 30s 超时；随后单 worker 完整复跑 40/40（1.8 分钟）；中英×375/1440 四组站名、标题、0px Hero 外间距、无溢出、语言切换及 dev toolbar=0 通过并留截图。
-- 当前限制：M3-06 缺真实 Actions；M4-04/M4-06 缺 GitHub/Cloudflare/Vercel 控制台接入和线上 DNS/HTTPS/www 证据；M4-05 因前置未满足保持待验收；真实 Analytics token 维持关闭。Wrangler dry-run 输出完成信息后在 Windows 留存句柄，已如实记录。
-- 查看本轮交付：`reports/acceptance/EV-008-jev-atlas-header.md`、`reports/jev-atlas-header/`、`docs/superpowers/plans/2026-09-23-jev-atlas-header.md`。本地开发预览 `http://127.0.0.1:4322/`；此前图标证据保留 EV-007。
-- 下一步：先提交并推送已确认 UI，运行真实 GitHub Actions，创建已知正常 release tag；Cloudflare/Vercel 接入后完成 M4-04 的部署、域名/HTTPS/www 冒烟与 M4-05 终验，随后执行 M4-06。
+- 本次完成：EV-009。已确认的 Jev Atlas UI 已形成候选提交 `1ba9657`；新增真实 Git 历史敏感信息扫描与回归测试，提交 `b721781`，补齐 AC-16 先前保留的历史扫描缺口。
+- 当前代码分支/版本：`codex/m1-foundation`，HEAD `b721781` 加 EV-009/台账及最终扫描报告工作区。未安装 Grove/React/数据库/SSR adapter，依赖架构不变；尚未部署或改 DNS。
+- 本轮实际检查：build 47 页；check 0 errors/0 warnings（8 hints）；unit 82/82；scan:public 扫描源码 233、dist 59 和 Git 历史 6 提交，historyMatches=0、findings 空；此前单 worker e2e 40/40 和用户视觉确认继续有效。
+- 当前限制：M3-06 仍缺真实 Actions；Cloudflare 当前未认证，M4-04/M4-06 仍缺部署、Vercel DNS、HTTPS/www 证据；M4-05 因前置未满足保持待验收；真实 Analytics token 维持关闭。
+- 查看本轮交付：`reports/acceptance/EV-009-release-readiness.md`、`reports/acceptance/public-scan.json`、`tests/unit/public-scan.test.ts`；UI 证据见 EV-008。
+- 下一步：提交当前证据并推送到 GitHub `main`，核验真实 Actions；成功后创建已知正常 release tag。Cloudflare/Vercel 接入后完成 M4-04 的部署、域名/HTTPS/www 冒烟与 M4-05 终验，随后执行 M4-06。
 
 每次工作结束替换上面的当前交接摘要，并在下表追加简短历史。无需为每次会话新建一份进度文档。
 
@@ -226,6 +227,7 @@
 | 2026-09-22 | Grove 0.11.0 隔离兼容性验证，保留 Taste 未提交工作 | SP-01 / EV-005；原生字段和双语限制复现，自定义适配版有限场景通过；静态 assets 与 API 本地路由通过；未迁移/部署 | 建议保留 Astro 并参考 UI；正式方向确认后恢复 UI 回归及 M4-02 |
 | 2026-09-22 | Open App Scout 结构 UI/动效重构；M4-02/03 本地发布验证；M4-05 恢复演练 | CH-03 / EV-006；81 单测、40 e2e、47 页构建、28 响应式检查；Static Assets/生产索引/分析门控/独立恢复通过 | AC-01 待视觉确认；B-01/B-02 解除后完成 M3-06、M4-04/05/06 |
 | 2026-09-23 | Jev Atlas 政名、首页 Hero 上移、关闭 Astro 开发工具栏 | CH-05 / EV-008；47 页构建、81 单测；中英×375/1440 Hero 外间距 0px、dev toolbar=0；单 worker e2e 40/40；用户确认 UI 完成，AC-01 通过 | 推进 M3-06 与 M4-04；线上接入待核 |
+| 2026-09-23 | 提交 UI 候选并补齐 Git 历史凭证扫描 | EV-009；82 单测、47 页构建；源码 233、dist 59、Git 历史 6 提交扫描 findings 空；AC-16 历史扫描缺口关闭 | 推送 GitHub main 并核验真实 Actions；Cloudflare/Vercel 接入后推进 M4-04/05/06 |
 
 ### CH-04 · 2026-09-23 · 导航与生成图标（第二版完成并获用户确认）
 按用户要求统一分类对齐并移除箭头、将语言切换改为图标、去掉顶部说明栏；使用内置 image_gen 生成站点标识和语言图标，应用 logo/favicon/touch icon。EV-007 记录构建、类型检查、e2e 超时与复跑、双语响应式专项验证。用户于后续轮次确认 UI 调整完成，AC-01 通过；P0 分母及线上门槛不变。图像工具未返回可核验的底层模型版本。
