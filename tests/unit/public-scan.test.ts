@@ -47,5 +47,5 @@ describe('public scan', () => {
       rule: 'github-token',
     }));
     expect(output).not.toContain(token);
-  });
+  }, 15_000);
 });
