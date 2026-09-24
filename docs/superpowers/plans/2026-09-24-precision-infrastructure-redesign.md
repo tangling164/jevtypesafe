@@ -145,7 +145,7 @@ git commit -m "Establish precision infrastructure design system"
 - Consumes: `content.projects`, localized dictionary text, category data, `pagePath()`, and Task 1 tokens.
 - Produces: `.hero-grid`, `.hero-primary`, `.hero-signal-panel`, `.signal-row`, `.category-index`, and the new home-page section layout.
 
-- [ ] **Step 1: Add failing structure and authenticity assertions**
+- [x] **Step 1: Add failing structure and authenticity assertions**
 
 Replace the old hierarchy assertions with:
 
@@ -162,13 +162,13 @@ test('home is an asymmetric technical index backed by real data', async ({ page 
 });
 ```
 
-- [ ] **Step 2: Run the focused test and confirm failure**
+- [x] **Step 2: Run the focused test and confirm failure**
 
 Run: `npx playwright test tests/e2e/reference-layout.spec.ts --project=desktop --workers=1`
 
 Expected: FAIL because the new hero and numbered category hooks do not exist.
 
-- [ ] **Step 3: Replace centered Hero markup with a two-column real-data composition**
+- [x] **Step 3: Replace centered Hero markup with a two-column real-data composition**
 
 In `HomePage.astro`, calculate `translatedCount` and create this semantic structure:
 
@@ -197,7 +197,7 @@ In `HomePage.astro`, calculate `translatedCount` and create this semantic struct
 
 Remove the separate three-cell `.directory-summary` because the same facts now live in the signal panel.
 
-- [ ] **Step 4: Convert categories and lower strips to editorial structures**
+- [x] **Step 4: Convert categories and lower strips to editorial structures**
 
 Render category links with their one-based padded index:
 
@@ -214,7 +214,7 @@ Render category links with their one-based padded index:
 
 Rename the navigation class to `.category-index`. Recast cooperation and submission sections as ruled editorial rows with restrained actions.
 
-- [ ] **Step 5: Implement responsive home styles**
+- [x] **Step 5: Implement responsive home styles**
 
 In `discovery.css`:
 
@@ -225,7 +225,7 @@ In `discovery.css`:
 - Remove radial gradients, pill-category styling, large shadows, and project-card grid overrides.
 - Collapse the signal panel below the Hero copy under 900px while preserving its four real rows.
 
-- [ ] **Step 6: Verify home behavior and commit**
+- [x] **Step 6: Verify home behavior and commit**
 
 Run:
 

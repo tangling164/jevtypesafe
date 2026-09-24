@@ -26,13 +26,15 @@ test('Jev Atlas home begins directly below the navigation', async ({ page }) => 
   }
 });
 
-test('home follows a search-first directory hierarchy', async ({ page }) => {
+test('home is an asymmetric technical index backed by real data', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.discovery-hero .home-search')).toBeVisible();
-  await expect(page.locator('.discovery-hero .hero-showcase')).toHaveCount(0);
-  await expect(page.locator('.category-directory a')).toHaveCount(6);
+  await expect(page.locator('.hero-grid')).toBeVisible();
+  await expect(page.locator('.hero-primary .home-search')).toBeVisible();
+  await expect(page.locator('.hero-signal-panel .signal-row')).toHaveCount(4);
+  await expect(page.locator('.category-index a')).toHaveCount(6);
+  await expect(page.locator('.category-index [data-index]')).toHaveText(['01', '02', '03', '04', '05', '06']);
   await expect(page.locator('.featured-directory .project-row')).toHaveCount(10);
-  await expect(page.locator('.directory-summary')).toContainText('10');
+  await expect(page.locator('.hero-signal-panel')).toContainText('10');
 });
 
 test('directory, search, detail and info pages use the shared layout system', async ({ page }) => {
@@ -58,7 +60,7 @@ test('directory, search, detail and info pages use the shared layout system', as
 test('motion never hides content and reduced motion removes transforms', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/zh/');
-  for (const selector of ['.discovery-hero', '.category-directory', '.featured-directory', '.submission-strip']) {
+  for (const selector of ['.discovery-hero', '.category-index', '.featured-directory', '.submission-strip']) {
     await expect(page.locator(selector)).toHaveCSS('opacity', '1');
     await expect(page.locator(selector)).toHaveCSS('transform', 'none');
   }

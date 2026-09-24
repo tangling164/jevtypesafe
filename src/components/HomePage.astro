@@ -10,38 +10,46 @@ const t = dictionary(locale);
 const zh = locale === 'zh';
 const categories = content.categories.filter(c => content.projects.some(p => p.primary_category === c.id || p.secondary_categories.includes(c.id)));
 const openCount = content.projects.filter(p => p.source_status === 'open_source').length;
+const translatedCount = content.projects.filter(p => p.locales.zh).length;
 const checkedAt = content.projects.reduce((date, p) => p.checked_at > date ? p.checked_at : date, '');
 const checkedDate = checkedAt ? new Date(checkedAt).toLocaleDateString(zh ? 'zh-CN' : 'en-US', {dateStyle: 'medium', timeZone: 'UTC'}) : t.unknown;
+const categoryCount = (id: typeof categories[number]['id']) => content.projects.filter(p => p.primary_category === id || p.secondary_categories.includes(id)).length;
 ---
 <div class="home-page">
   <section class="discovery-hero">
-    <div class="hero-copy">
-      <p class="eyebrow hero-enter">{t.kicker}</p>
-      <h1 class="hero-enter">{zh ? <>发现用 Jev 构建的<br/><span>真实项目。</span></> : <>Discover real projects<br/><span>built with Jev.</span></>}</h1>
-      <p class="hero-intro hero-enter">{t.intro}</p>
-      <form class="home-search hero-enter" method="get" action={pagePath(locale, 'search/')}>
-        <label class="sr-only" for="home-q">{t.search}</label>
-        <div class="search-field"><span class="search-glyph" aria-hidden="true">⌕</span><input id="home-q" name="q" type="search" placeholder={t.searchHint} maxlength="200"/><button class="button button-primary" type="submit">{t.search}</button></div>
-      </form>
-      <div class="hero-links hero-enter"><a href={pagePath(locale, 'projects/')}>{t.browse} <span aria-hidden="true">→</span></a><a href={pagePath(locale, 'submit/')}>{t.submit}</a></div>
+    <div class="hero-grid">
+      <div class="hero-primary">
+        <p class="eyebrow hero-enter"><span>01</span>{t.kicker}</p>
+        <h1 class="hero-enter">{zh ? <>发现用 Jev 构建的<br/><span>真实项目。</span></> : <>Discover real projects<br/><span>built with Jev.</span></>}</h1>
+        <p class="hero-intro hero-enter">{t.intro}</p>
+        <form class="home-search hero-enter" method="get" action={pagePath(locale, 'search/')}>
+          <label class="sr-only" for="home-q">{t.search}</label>
+          <div class="search-field"><span class="search-glyph" aria-hidden="true">SEARCH /</span><input id="home-q" name="q" type="search" placeholder={t.searchHint} maxlength="200"/><button class="button button-primary" type="submit">{zh ? '执行' : 'RUN'} <span aria-hidden="true">↵</span></button></div>
+        </form>
+        <div class="hero-links hero-enter"><a href={pagePath(locale, 'projects/')}>{t.browse} <span aria-hidden="true">→</span></a><a href={pagePath(locale, 'submit/')}>{t.submit}</a></div>
+      </div>
+      <aside class="hero-signal-panel hero-enter" aria-label={zh ? '目录状态' : 'Directory status'}>
+        <header><span>ATLAS / INDEX</span><span class="status-live"><i></i>{zh ? '已核查' : 'SOURCE CHECKED'}</span></header>
+        <dl>
+          <div class="signal-row"><dt>{zh ? '项目' : 'Projects'}</dt><dd>{content.projects.length}</dd></div>
+          <div class="signal-row"><dt>{zh ? '已确认开源' : 'Open source'}</dt><dd>{openCount}</dd></div>
+          <div class="signal-row"><dt>{zh ? '双语条目' : 'Bilingual'}</dt><dd>{translatedCount}</dd></div>
+          <div class="signal-row"><dt>{t.checked}</dt><dd>{checkedDate}</dd></div>
+        </dl>
+        <p>{zh ? '基于可追溯公开来源建立的静态目录快照。' : 'Static directory snapshot built from traceable public sources.'}</p>
+      </aside>
     </div>
   </section>
 
-  <div class="directory-summary" data-reveal>
-    <p><strong>{content.projects.length}</strong><span>{zh ? '收录项目' : 'listed projects'}</span></p>
-    <p><strong>{openCount}</strong><span>{zh ? '已确认开源' : 'confirmed open source'}</span></p>
-    <p class="summary-date"><span>{t.checked}</span><span>{checkedDate}</span></p>
-  </div>
-
   <section class="category-section" aria-labelledby="category-title" data-reveal>
-    <div class="section-heading"><div><p class="eyebrow">{zh ? '按用途浏览' : 'Browse by purpose'}</p><h2 id="category-title">{t.categories}</h2></div><a href={pagePath(locale, 'projects/')}>{t.all} <span aria-hidden="true">→</span></a></div>
-    <nav class="category-directory" aria-label={t.categories}>
-      {categories.map(c => <a href={pagePath(locale, `categories/${c.id}/`)}><span>{c[locale]}</span><strong>{content.projects.filter(p => p.primary_category === c.id || p.secondary_categories.includes(c.id)).length}</strong><span aria-hidden="true">↗</span></a>)}
+    <div class="section-heading"><div><p class="eyebrow"><span>02</span>{zh ? '按用途浏览' : 'Browse by purpose'}</p><h2 id="category-title">{t.categories}</h2></div><a href={pagePath(locale, 'projects/')}>{t.all} <span aria-hidden="true">→</span></a></div>
+    <nav class="category-index" aria-label={t.categories}>
+      {categories.map((c,index) => <a href={pagePath(locale, `categories/${c.id}/`)}><span class="category-index-number" data-index>{String(index+1).padStart(2,'0')}</span><span class="category-index-name">{c[locale]}</span><strong>{String(categoryCount(c.id)).padStart(2,'0')}</strong><span aria-hidden="true">↗</span></a>)}
     </nav>
   </section>
 
   <section class="project-collection featured-directory" aria-labelledby="collection-title">
-    <div class="collection-heading" data-reveal><div><p class="eyebrow">{zh ? '探索 Jev 生态' : 'Explore the ecosystem'}</p><h2 id="collection-title">{t.latest}</h2></div><a class="button" href={pagePath(locale, 'projects/')}>{t.viewAll}<span aria-hidden="true">→</span></a></div>
+    <div class="collection-heading" data-reveal><div><p class="eyebrow"><span>03</span>{zh ? '探索 Jev 生态' : 'Explore the ecosystem'}</p><h2 id="collection-title">{t.latest}</h2></div><a class="button" href={pagePath(locale, 'projects/')}>{t.viewAll}<span aria-hidden="true">→</span></a></div>
     <ProjectList projects={projects} locale={locale}/>
   </section>
 
