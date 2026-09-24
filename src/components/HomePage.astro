@@ -26,7 +26,7 @@ const categoryCount = (id: typeof categories[number]['id']) => content.projects.
           <label class="sr-only" for="home-q">{t.search}</label>
           <div class="search-field"><span class="search-glyph" aria-hidden="true">SEARCH /</span><input id="home-q" name="q" type="search" placeholder={t.searchHint} maxlength="200"/><button class="button button-primary" type="submit">{zh ? '执行' : 'RUN'} <span aria-hidden="true">↵</span></button></div>
         </form>
-        <div class="hero-links hero-enter"><a href={pagePath(locale, 'projects/')}>{t.browse} <span aria-hidden="true">→</span></a><a href={pagePath(locale, 'submit/')}>{t.submit}</a></div>
+        <div class="hero-links"><a href={pagePath(locale, 'projects/')}>{t.browse} <span aria-hidden="true">→</span></a><a href={pagePath(locale, 'submit/')}>{t.submit}</a></div>
       </div>
       <aside class="hero-signal-panel hero-enter" aria-label={zh ? '目录状态' : 'Directory status'}>
         <header><span>ATLAS / INDEX</span><span class="status-live"><i></i>{zh ? '已核查' : 'SOURCE CHECKED'}</span></header>

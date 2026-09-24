@@ -427,7 +427,7 @@ git commit -m "Unify inner pages with editorial infrastructure layout"
 - Consumes: all redesigned routes and the existing motion script.
 - Produces: restrained 120–240ms interaction behavior and reproducible 375/768/1440 visual evidence.
 
-- [ ] **Step 1: Add failing motion assertions**
+- [x] **Step 1: Add failing motion assertions**
 
 Assert project rows do not translate horizontally and interaction durations stay within the approved range:
 
@@ -439,17 +439,17 @@ const durations = await row.evaluate((element) => getComputedStyle(element).tran
 expect(durations.every((duration) => duration >= 120 && duration <= 240)).toBe(true);
 ```
 
-- [ ] **Step 2: Run motion tests and confirm failure**
+- [x] **Step 2: Run motion tests and confirm failure**
 
 Run: `npx playwright test tests/e2e/motion.spec.ts --project=desktop --workers=1`
 
 Expected: FAIL because the current row hover translates horizontally.
 
-- [ ] **Step 3: Tune motion CSS**
+- [x] **Step 3: Tune motion CSS**
 
 Use opacity/color/border transitions between 120ms and 240ms. Keep the existing reveal system, reduce Hero entrance displacement to 8px, eliminate row translation, and retain the global reduced-motion override that makes transition duration `0s`.
 
-- [ ] **Step 4: Create and run the visual capture script**
+- [x] **Step 4: Create and run the visual capture script**
 
 The script must start from the already-built Wrangler preview and capture `/`, `/projects/`, `/search/`, `/projects/supercov/`, `/about/`, and `/zh/` at widths 375, 768, and 1440. It must record for every route/width:
 
@@ -467,11 +467,11 @@ The script must start from the already-built Wrangler preview and capture `/`, `
 
 Write screenshots and `measurements.json` under `reports/precision-redesign/`.
 
-- [ ] **Step 5: Review every screenshot and correct visual defects**
+- [x] **Step 5: Review every screenshot and correct visual defects**
 
 Inspect all 18 images at original detail. Fix inconsistent alignment, excessive empty space, clipped text, low-contrast metadata, broken grid transitions, remaining pill clusters, or generic card styling. Re-run the capture after every CSS correction until `overflow` is false, `h1Count` is 1, and `undersizedControls` is empty for every sample.
 
-- [ ] **Step 6: Run focused and full browser checks, then commit**
+- [x] **Step 6: Run focused and full browser checks, then commit**
 
 Run:
 

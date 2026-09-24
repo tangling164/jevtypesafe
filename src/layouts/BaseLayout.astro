@@ -45,7 +45,7 @@ const submitPath=pagePath(locale,'submit/');
     <header class="site-header system-bar border-b border-line">
       <div class="shell header-inner">
         <a href={homePath} class="site-brand" aria-label={config.SITE_NAME} aria-current={path===homePath?'page':undefined}><img class="brand-mark" src="/images/jev-mark-tech.png" width="32" height="32" alt="" /><span>Jev <span>Atlas</span></span></a>
-        <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="site-nav text-sm">
+        <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="site-nav">
           <a class="inline-flex min-h-11 items-center" href={projectsPath} aria-current={path.startsWith(projectsPath)?'page':undefined}>{t.projects}</a>
           {categories.length>0 && <details class="relative"><summary class:list={{'nav-current':path.startsWith(categoryPath)}} aria-current={path.startsWith(categoryPath)?'page':undefined}>{t.categories}</summary><div class="absolute left-0 top-full z-10 min-w-56 border border-line bg-surface p-2">{categories.map(c=><a class="block px-3 py-3" href={pagePath(locale,`categories/${c.id}/`)}>{c[locale]}</a>)}</div></details>}
           <a class="nav-about" href={aboutPath} aria-current={path===aboutPath?'page':undefined}>{t.about}</a>

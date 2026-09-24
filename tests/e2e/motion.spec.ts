@@ -37,3 +37,17 @@ test('reduced motion keeps content visible and disables hover movement', async (
   await expect(card).toHaveCSS('opacity', '1');
   expect(await page.evaluate(() => document.getAnimations().length)).toBe(0);
 });
+
+test('precision interactions stay restrained and project rows do not shift', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/projects/');
+  const row = page.locator('.project-row').first();
+  await row.hover();
+  expect(await row.evaluate((element) => getComputedStyle(element).transform)).toBe('none');
+  const durations = await row.evaluate((element) => getComputedStyle(element).transitionDuration.split(',').map((value) => Number.parseFloat(value) * 1000));
+  expect(durations.every((duration) => duration >= 120 && duration <= 240)).toBe(true);
+  await page.goto('/');
+  const heroDuration = await page.locator('.hero-primary h1').evaluate((element) => Number.parseFloat(getComputedStyle(element).animationDuration) * 1000);
+  expect(heroDuration).toBeGreaterThanOrEqual(120);
+  expect(heroDuration).toBeLessThanOrEqual(240);
+});

@@ -16,8 +16,8 @@ if (!preference.matches && 'IntersectionObserver' in window && 'animate' in Elem
       if (!entry.isIntersecting) return;
       observer?.unobserve(entry.target);
       const animation = entry.target.animate(
-        [{ transform: 'translateY(20px)' }, { transform: 'translateY(0)' }],
-        { duration: 600, delay: Math.min(index, 3) * 65, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' },
+        [{ transform: 'translateY(8px)' }, { transform: 'translateY(0)' }],
+        { duration: 220, delay: Math.min(index, 3) * 35, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' },
       );
       active.add(animation);
       animation.onfinish = animation.oncancel = () => active.delete(animation);
