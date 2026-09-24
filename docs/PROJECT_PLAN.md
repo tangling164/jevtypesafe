@@ -4,9 +4,9 @@
 
 ## 1. 当前状态与使用规则
 
-- 建档日期：2026-09-20。最近更新：2026-09-24（已完成“精密基础设施 / 技术出版物”视觉重构与生产级回归，见 EV-011；上线前 SEO 门禁见 EV-010）。
-- 当前阶段：M3-06、M4-02、M4-03、M4-05 已验收；公开发布主线只剩受外部接入约束的 M4-04，以及依赖其结果的 M4-06。Grove 直接采用已否决，正式沿用 Astro + TypeScript + Tailwind CSS + JSON；用户于 2026-09-23 确认 UI 调整完成，AC-01 通过。
-- 已有交付：可复现工程、内容 Schema、10 条真实发布项目（3 种子 + 7 审核候选）、全部页面路由（en/zh，47 页）、搜索/联系交互、采集/审核/生成流水线、完整响应式 UI/动效、Cloudflare Static Assets 本地预览和恢复证据、GitHub main/真实 Actions/自动审核 PR 与 `v0.1.0-rc.1`；尚无 Cloudflare 线上部署、DNS 或 HTTPS 证据。
+- 建档日期：2026-09-20。最近更新：2026-09-24（Cloudflare Workers Builds、正式域名、HTTPS 与 www 301 已上线并完成 P0 发布验收，见 EV-012；视觉与 SEO 门禁见 EV-011/010）。
+- 当前阶段：M1～M4 的 P0 公开发布全部验收；正式沿用 Astro + TypeScript + Tailwind CSS + JSON。下一阶段为独立跟踪的 M5 P0.1 收费前商业能力，需用户决定价格/收款并提供生产 D1/密钥后才可启用。
+- 已有交付：可复现工程、内容 Schema、10 条真实发布项目、en/zh 共 47 页、搜索/联系交互、采集/审核/生成流水线、完整响应式 UI、GitHub Actions 与 Cloudflare Workers Builds；`https://jevtypesafe.dev/` 正式 HTTPS 可访问，`www` 301 保留路径/查询参数，发布版本标记为 `v0.1.0`。
 - 先完成 M1–M4 的 P0；M5 单独跟踪，首次收费前必须完成。P1 不在本期分母内。
 - 每个任务只用：待开始、进行中、待验收、已验收、受阻。原则上同时只有一个主任务进行中。
 - 有实现但验证未跑，状态为待验收；遇到外部阻塞只阻塞关联任务，继续无依赖工作。
@@ -17,13 +17,13 @@
 
 | 指标 | 当前值 | 计算口径 |
 | --- | --- | --- |
-| P0 任务验收率 | 23/25（92%） | M1 全部 5、M2 全部 7、M3 全部 7、M4-01～M4-03 与 M4-05 已验收（EV-001/002/003/006/009） |
+| P0 任务验收率 | 25/25（100%） | M1～M4 全部验收（EV-001～EV-012） |
 | P0.1 任务验收率 | 0/8（0%） | 单独计算，不混入目录上线进度 |
-| P0 验收通过率 | 14/17（82%） | AC-01～AC-12、AC-15、AC-16 通过（EV-002/003/006/008）；AC-13/14/22 待线上闭环 |
+| P0 验收通过率 | 17/17（100%） | AC-01～AC-16 与 AC-22/P0 全部通过（EV-002/003/006/008/009/010/011/012） |
 | P0.1 验收通过率 | 0/6（0%） | AC-17～AC-21 加 AC-22 的 P0.1 记录 |
-| P0 上线准备 | 3/8 门槛通过；未就绪 | G0-02～G0-04 已有证据；正式部署、域名、线上配置和发布记录仍未通过 |
+| P0 上线准备 | 8/8 门槛通过；已上线 | 正式 Worker、main 构建、HTTPS、www 301、SEO、凭证扫描、恢复和发布记录均有证据 |
 | 商业上线准备 | 0/5 门槛通过；未就绪 | 第 7 节 G1-01～G1-05 |
-| 阻塞性缺陷 | 无已知代码缺陷；M4-04/M4-06 受外部接入阻塞 | 本地与 GitHub Actions 全量验证通过；未含 Cloudflare 部署或域名检查 |
+| 阻塞性缺陷 | 无 | P0 外部接入已解除；M5 输入不影响当前公开目录 |
 
 任务验收率等权，不能代表剩余工期。每次交接同时更新任务、AC 和门槛；不得单独手填一个综合“完成百分比”。AC-22 两阶段分别留证。
 
@@ -74,9 +74,9 @@
 | M4-01 | 质量、容量与凭证检查 | M2-06、M2-07、M3-07 | check/test/build；1500 条独立容量 fixture；JS/索引体积与性能记录；dist/Git 凭证检查 | AC-16 | 已验收 | EV-003/009：validate/check/test(82)/build(47 页)/e2e(40) 全绿；容量 1500 条（索引 gzip 18KB、JS 5.8KB、P95 9.3ms）；Lighthouse 移动 99/100/100；源码 234、dist 59、完整远端历史 10 提交扫描 findings 空 |
 | M4-02 | Cloudflare 静态配置与预览 | M4-01 | Static Assets、真实 404；普通 HTML 静态分发；预览 noindex；不配置全站 SSR | AC-13、AC-22 | 已验收 | EV-006：Wrangler 本地 `/`/`/zh/` 200、缺页 404、缓存/安全头正确；dry-run 读取 104 assets、无 bindings；无 main/SSR/Worker bundle |
 | M4-03 | 正式配置与基础分析 | M4-02 | 核实 SITE_URL、邮箱；有 token 才加载分析；生产索引配置正确 | AC-11、AC-12 | 已验收 | EV-006/010：生产首页 index、搜索 noindex、robots Allow、canonical/sitemap 为 jevtypesafe.dev；新增生产构建门禁逐页核对 44 个可索引 URL、hreflang、sitemap 和分享元数据；support@ 已配置；分析 token 门控构建验证，真实 token 暂不配置 |
-| M4-04 | 域名与正式分支部署 | M4-03 | Vercel 核实域名/备份 DNS；Cloudflare NS、HTTPS、www 301 保留参数；main 部署验证 | AC-13、AC-14、AC-22 | 受阻 | B-01/B-02：GitHub main 已建立；Cloudflare 未认证且缺 Vercel/DNS 接入，未部署、未改 DNS，不能产生线上证据 |
+| M4-04 | 域名与正式分支部署 | M4-03 | Vercel 核实域名/备份 DNS；Cloudflare NS、HTTPS、www 301 保留参数；main 部署验证 | AC-13、AC-14、AC-22 | 已验收 | EV-012：Workers Builds 连接 main；正式 Worker 版本上线；根域名 HTTPS 200、www 301 保留路径/查询、深层页 200、缺页 404；MX/TXT 保留 |
 | M4-05 | 文档与恢复演练 | M3-06、M4-02 | README、.env.example、运营手册；恢复已知快照及代码版本并记录结果 | AC-07、AC-13 | 已验收 | EV-006/009：detached `95c6b1c` 独立恢复通过；文档齐全；M3-06 真实 Actions 全绿；已推送已知正常候选 tag `v0.1.0-rc.1` |
-| M4-06 | P0 发布验收 | M4-04、M4-05 | 核对全部 P0 AC、质量目标及发布门槛；记录线上 URL、版本、遗留项和验收人 | AC-01～AC-16、AC-22 | 受阻 | M4-05 已通过；M4-04 未通过，尚无线上 URL 或正式生产版本；用户视觉确认已完成（EV-008） |
+| M4-06 | P0 发布验收 | M4-04、M4-05 | 核对全部 P0 AC、质量目标及发布门槛；记录线上 URL、版本、遗留项和验收人 | AC-01～AC-16、AC-22 | 已验收 | EV-012：P0 25/25 任务、17/17 AC、8/8 G0 门槛闭环；正式 URL `https://jevtypesafe.dev/`，版本 `v0.1.0` |
 
 ### M5 · P0.1 · 收费前商业能力
 
@@ -117,8 +117,8 @@
 | AC-10 | 语言切换/缺译 | M2-04 | 通过 | EV-002 + EV-006：同项目切换和双语新布局回归通过；缺译不生成假中文详情 |
 | AC-11 | SEO/真实 404 | M2-06、M4-03 | 通过 | EV-006/010/011：重构后生产构建仍为 47 页、44 页 index、3 页 noindex；robots、canonical、hreflang、sitemap、独立描述、Open Graph/Twitter Card 与真实 404 均通过 |
 | AC-12 | 提交与联系 | M2-05、M4-03 | 通过 | EV-006：support@jevtypesafe.dev 构建配置存在；mailto/复制/无假成功完整 e2e 复验通过，邮箱实际收信仍由用户侧确认 |
-| AC-13 | 部署/离线快照构建 | M3-05、M4-04、M4-05 | 未验证 | EV-006：独立 worktree 无外部 Key 恢复 81 单测与 47 页构建，Cloudflare 本地预览通过；正式部署链路仍未验证 |
-| AC-14 | 正式域名 | M4-04 | 未验证 | — |
+| AC-13 | 部署/离线快照构建 | M3-05、M4-04、M4-05 | 通过 | EV-006/012：无外部 Key 从快照构建；main 推送触发 Workers Builds，完整质量门禁与生产发布成功 |
+| AC-14 | 正式域名 | M4-04 | 通过 | EV-012：`https://jevtypesafe.dev/` 200；`www` 301 到 apex 并保留 `/test-path?probe=1`；证书有效、无拼写错绑 |
 | AC-15 | 真实初始内容 | M3-07 | 通过 | EV-002：10 条全部有出处（固定 commit）与许可状态；数量从数据生成；待核/拒绝原因如实记录 |
 | AC-16 | 凭证隔离 | M4-01 | 通过 | EV-009：GitHub 全历史门控与本地复验扫描源码 234、dist 59 文件及 10 个可达提交，historyMatches=0、findings 空；回归测试验证能发现仅存在于已删除提交中的令牌且不输出令牌值 |
 | AC-17 | 赞助排期 | M5-02、M5-06 | 未验证 | — |
@@ -126,7 +126,7 @@
 | AC-19 | 事件计量 | M5-04、M5-06 | 未验证 | — |
 | AC-20 | 商业故障降级 | M5-06 | 未验证 | — |
 | AC-21 | CSV 对账 | M5-05 | 未验证 | — |
-| AC-22 / P0 | 静态资源路径 | M4-02、M4-04 | 未验证 | EV-006：本地 Wrangler Static Assets、404、缓存头、无 bindings/Worker bundle 通过；真实 Cloudflare URL 仍待 M4-04 |
+| AC-22 / P0 | 静态资源路径 | M4-02、M4-04 | 通过 | EV-006/012：本地与真实 Cloudflare 均为 Static Assets；普通 HTML/404/robots/sitemap 直接静态分发，无 bindings 或 Worker bundle |
 | AC-22 / P0.1 | 仅赞助 API 动态执行 | M5-01、M5-06 | 未验证 | — |
 
 ## 5. 证据与缺陷台账
@@ -146,6 +146,7 @@
 | EV-009 | M3-06、M4-01、M4-05 / AC-13、AC-16；M4-04 发布前置 | `fdb986a` / `v0.1.0-rc.1` + workflow fix `8aa65b3`；Windows + GitHub Ubuntu runner，Node 24.14.1、npm 11.11.0 | check/test(82)/build(47)/e2e(40)；源码 234、dist 59、完整远端历史 10 提交扫描 findings 空；main/tag/PR Quality checks 全绿；content review 完成有界采集、自验证、artifact、分支及 PR #1；未部署 Cloudflare | reports/acceptance/EV-009-release-readiness.md；reports/acceptance/public-scan.json；GitHub runs 35869769200/35870617975/35870723324/35870919523/35872076269；PR #1 | Codex / 2026-09-23 |
 | EV-010 | M4-03 / AC-11；M4-04 发布前置 | `bb30dd1`；Windows + GitHub Ubuntu runner，Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | 独立页面/分类描述与 1200×630 分享图；生产构建/部署防误索引门禁；test 88/88、check 0 errors、build 47 页、e2e 42/42；生产 44 index + 3 noindex + sitemap 44；公开扫描 findings 空；GitHub Quality checks `35877569914` 全绿；未部署 Cloudflare | reports/acceptance/EV-010-seo-release-gate.md；public/images/jev-atlas-social.png；reports/acceptance/public-scan.json；GitHub run 35877569914 | Codex / 2026-09-23 |
 | EV-011 | M1-05、M2-01～M2-07 视觉质量复验；AC-01～04、AC-11 回归 | 重构至 `e30d80a`，验收推送 `821d6a8`；分支 `codex/precision-infrastructure-redesign` + `main`；Windows + GitHub Ubuntu runner，Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | 精密基础设施/技术出版物视觉系统；IBM Plex 自托管字体；首页真实状态索引、统一项目行、详情事实表和编号内页；test 88/88、check 0 errors、build 47、e2e 46/46；生产 44 index + 3 noindex；18 组视觉测量无溢出/单 H1/无小控件；公开扫描 264 源文件 + 116 dist + 20 commits，findings 空；GitHub Quality checks `35945161910` 全绿；未部署 | reports/acceptance/EV-011-precision-infrastructure-redesign.md；reports/precision-redesign/；reports/acceptance/public-scan.json；GitHub run 35945161910 | Codex / 2026-09-24 |
+| EV-012 | M4-04/M4-06；AC-13/14/22；G0-01～08 | `fda0c3d` + `v0.1.0`；Windows + Cloudflare Ubuntu build，Node 24.14.1、npm 11.11.0、Wrangler 4.135.0 | Workers Builds Git 集成；check 0 errors、test 88/88、47 页生产构建、公开扫描空；正式版本 `173587e1`；apex/zh/详情 200、真实 404、robots/sitemap 200；www 301 保留路径/查询；MX/TXT 保留 | reports/acceptance/EV-012-cloudflare-production-deployment.md；Cloudflare builds `f433305a`/`32f5d303`；GitHub runs 35966893387/35967436989 | Codex / 2026-09-24 |
 
 建议编号 EV-001 起。一个证据可覆盖多项 AC，但必须列出各场景结果。UI 至少记录 375px 与桌面；构建通过不能替代视觉验收。生产域名验证必须记录真实 URL/状态码，不能只引用本地截图。
 
@@ -161,8 +162,8 @@
 
 | ID | 待落实项 | 需要时间 | 当前状态/负责人 | 缺失时可继续 |
 | --- | --- | --- | --- | --- |
-| B-01 | GitHub 仓库和 Cloudflare 项目访问 | M3-06/M4-04 实际接入 | 部分解除：GitHub main、Actions、bot PR 和 tag 已验证；Cloudflare 当前未认证且无账户/token 环境变量，仍阻塞 M4-04/M4-06 | M3-06 与 M4-05 已完成；可继续维护 PR #1 和本地发布检查 |
-| B-02 | Vercel 控制台域名与 DNS 访问 | M4-04 正式绑定 | 域名已确认（2026-09-22：`jevtypesafe.dev`，见 CH-01）；阻塞 NS/HTTPS/www 线上验证 | SITE_URL、canonical、sitemap 和本地预览已验证 |
+| B-01 | GitHub 仓库和 Cloudflare 项目访问 | M3-06/M4-04 实际接入 | 已解除：GitHub main/Actions/tag 与 Cloudflare OAuth、Workers Builds、API token、生产部署均验证 | 后续 main 推送自动部署；本地 OAuth 凭证仅用于维护 |
+| B-02 | Vercel 控制台域名与 DNS 访问 | M4-04 正式绑定 | 已解除：Cloudflare NS 已生效；apex Custom Domain、HTTPS 与 www 301 已验证；仅移除两条旧 Vercel apex A 记录 | MX/TXT/DKIM/SPF 仍在；Vercel 继续保留域名注册/续费 |
 | B-03 | 真实可收信 CONTACT_EMAIL | M4-03 及公开发布 | 已确认（2026-09-22 用户提供：support@jevtypesafe.dev；已配置 site.json 并验证构建产物） | 邮箱已在提交/赞助页启用；正式收信能力待用户在邮箱侧确认 |
 | B-04 | 摘要供应商、模型、Key 与预算 | 真实 AI 批处理前 | 待选择 / 用户 | 适配器、受控测试、已有快照构建、待处理队列 |
 | B-05 | GitHub 读取授权或限流额度 | 大批量采集前 | 按需要接入 / 用户与 Codex | 小批公开源及固定快照；报告限流情况 |
@@ -178,14 +179,14 @@
 
 | ID | P0 公开上线门槛 | 初始状态 |
 | --- | --- | --- |
-| G0-01 | P0 任务验收、17 项 AC 通过；必需缺口与阻塞/高缺陷关闭 | 未验证 |
+| G0-01 | P0 任务验收、17 项 AC 通过；必需缺口与阻塞/高缺陷关闭 | 通过（EV-012） |
 | G0-02 | 真实发布内容有出处和许可状态；测试 fixtures 不进入产物；不凑 20–50 条 | 通过（EV-002/003） |
 | G0-03 | 双语、无 JS、搜索、移动端和 SEO 实测；性能/可访问性目标有记录 | 通过（EV-003/006/010/011） |
 | G0-04 | 采集与 AI 故障保留快照；验证离线构建和恢复 | 通过（EV-002/006） |
-| G0-05 | 静态 Cloudflare 部署、main 发布链路和实际域名 HTTPS/www 正常 | 未验证 |
-| G0-06 | 正式邮箱、独立站/隐私声明、分析配置和生产索引状态就绪 | 未验证 |
-| G0-07 | dist 与 Git 无密钥/私人资料；运行预算依据复核；无意外付费依赖 | 未验证 |
-| G0-08 | README/运营手册/环境示例齐全；记录发布版本、URL、时间和维护人 | 未验证 |
+| G0-05 | 静态 Cloudflare 部署、main 发布链路和实际域名 HTTPS/www 正常 | 通过（EV-012） |
+| G0-06 | 正式邮箱、独立站/隐私声明、分析配置和生产索引状态就绪 | 通过（EV-006/010/012；Analytics token 依设计维持关闭） |
+| G0-07 | dist 与 Git 无密钥/私人资料；运行预算依据复核；无意外付费依赖 | 通过（EV-003/009/012） |
+| G0-08 | README/运营手册/环境示例齐全；记录发布版本、URL、时间和维护人 | 通过（EV-006/009/012；`v0.1.0`） |
 
 | ID | 首次收费门槛（额外于 P0） | 初始状态 |
 | --- | --- | --- |
@@ -210,12 +211,12 @@
 
 ## 9. 本次交接与下一步
 
-- 本次完成：EV-011；按用户批准的“精密基础设施 / 技术出版物”方向重构全站视觉系统。首页改为真实数据技术索引，目录与搜索统一为编号行，详情/搜索/信息/表单/404 使用事实表和编辑式编号结构；SEO、双语、无 JS 和静态行为保持不变。
-- 当前代码分支/版本：`codex/precision-infrastructure-redesign`，重构实现与测试稳定性提交至 `e30d80a`，验收提交 `821d6a8` 已推送 `main`；发布候选 tag 仍为 `v0.1.0-rc.1`，尚未为本轮变更创建新 tag。新增依赖仅为自托管 IBM Plex 字体；未安装 Grove/React/数据库/SSR adapter，尚未部署或改 DNS。
-- 本轮实际检查：check 0 errors/0 warnings（8 hints）、unit 88/88、预览 build 47 页、桌面/375px e2e 46/46；生产门禁验证 44 个 index 页面和 3 个 noindex 页面；375/768/1440 × 6 路由共 18 组测量全部无溢出、单 H1、无小于 44px 的独立控件；公开扫描 264 源文件、116 dist 文件、20 个 Git commits，findings 空；GitHub Quality checks `35945161910` 对完整验收提交运行并全绿。
-- 当前限制：Cloudflare 当前未认证，M4-04/M4-06 仍缺部署、Vercel DNS、HTTPS/www 和搜索引擎线上证据；真实 Analytics token 维持关闭。PR #1 仍只修改审核报告。
-- 查看本轮交付：`reports/acceptance/EV-011-precision-infrastructure-redesign.md`、`reports/precision-redesign/`、`reports/acceptance/public-scan.json`；SEO 门禁见 EV-010，发布候选链路见 EV-009。
-- 下一步：取得 Cloudflare 与 Vercel/DNS 接入后部署本轮最终已验证提交，完成 HTTPS、www 301 保留查询参数、静态资源和线上 SEO 冒烟，并提交 sitemap 至搜索引擎平台；随后执行 M4-06。
+- 本次完成：EV-012；Cloudflare Workers Builds 已连接 GitHub `main`，正式静态 Worker、根域名、HTTPS、真实 404 与 www 301 全部上线，M4-04/M4-06、17 项 P0 AC 和 8 项 G0 门槛闭环。
+- 当前代码分支/版本：`codex/precision-infrastructure-redesign` 与 `origin/main`；生产源提交 `fda0c3d`，正式发布 tag `v0.1.0`；Worker 版本 `173587e1-93ae-4ddc-8f41-801a09c3f4ad`，正式 URL `https://jevtypesafe.dev/`。
+- 本轮实际检查：Cloudflare Ubuntu 使用 Node 24.14.1/npm 11.11.0；check 0 errors、unit 88/88、47 页生产构建、公开扫描空；apex/zh/详情/robots/sitemap 均 200，缺页 404，www 301 保留 `/test-path?probe=1`；Static Assets 无 bindings/Worker bundle。
+- 当前限制：Cloudflare Web Analytics token 依设计维持关闭；搜索引擎站长平台尚未提交 sitemap；support@ 实际收信仍由用户邮箱侧确认。这些不阻塞 P0 目录上线。P0.1 商业能力仍需 M5 与用户的价格/收款/D1/密钥输入。
+- 查看本轮交付：`reports/acceptance/EV-012-cloudflare-production-deployment.md`、`reports/acceptance/public-scan.json`；视觉/SEO/发布候选链路见 EV-011/010/009。
+- 下一步：如进入收费准备，执行 M5-01；在此之前可由用户选择是否接入 Cloudflare Web Analytics，并在 Google/Bing 站长平台提交 `https://jevtypesafe.dev/sitemap.xml`。
 
 每次工作结束替换上面的当前交接摘要，并在下表追加简短历史。无需为每次会话新建一份进度文档。
 
@@ -233,6 +234,7 @@
 | 2026-09-23 | GitHub main、真实 Actions、内容审核 PR 与候选 tag | EV-009；main/tag/PR Quality checks 和 content review 全绿；全远端历史 10 提交扫描空；自动创建 PR #1；`v0.1.0-rc.1` 已推送；M3-06/M4-05 已验收，P0 任务 23/25 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
 | 2026-09-23 | 上线前 SEO 优化与生产发布门禁 | EV-010；独立双语描述、全站社交分享元数据与 1200×630 分享图；test 88/88、e2e 42/42、生产 44 index + 3 noindex + sitemap 44；`bb30dd1` / Actions `35877569914` 全绿 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
 | 2026-09-24 | 精密基础设施 / 技术出版物全站视觉重构 | EV-011；IBM Plex、自适应真实状态首页、编号项目索引、内页事实表；test 88/88、e2e 46/46、18 组视觉测量通过、生产 44 index + 3 noindex、公开扫描空；`821d6a8` 已进 main，Actions `35945161910` 全绿 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
+| 2026-09-24 | Cloudflare 自动部署、正式域名与 P0 发布验收 | EV-012；Workers Builds/main、生产版本、apex HTTPS、www 301 保留参数、真实 404、robots/sitemap、MX/TXT 保留均验证；P0 25/25、AC 17/17、G0 8/8 | P0 已上线；可选 Analytics/站长平台，商业能力从 M5-01 开始 |
 
 ### CH-04 · 2026-09-23 · 导航与生成图标（第二版完成并获用户确认）
 按用户要求统一分类对齐并移除箭头、将语言切换改为图标、去掉顶部说明栏；使用内置 image_gen 生成站点标识和语言图标，应用 logo/favicon/touch icon。EV-007 记录构建、类型检查、e2e 超时与复跑、双语响应式专项验证。用户于后续轮次确认 UI 调整完成，AC-01 通过；P0 分母及线上门槛不变。图像工具未返回可核验的底层模型版本。
