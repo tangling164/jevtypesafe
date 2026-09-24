@@ -503,7 +503,7 @@ git commit -m "Refine motion and record visual redesign evidence"
 - Consumes: complete redesign, existing production SEO gate, public scanner, and visual evidence.
 - Produces: final acceptance record, current project handoff, and a reviewed remote commit.
 
-- [ ] **Step 1: Run final local verification from the final source state**
+- [x] **Step 1: Run final local verification from the final source state**
 
 Run sequentially:
 
@@ -520,11 +520,11 @@ git diff --check
 
 Expected: 10 projects and 6 categories validate; type check has zero errors; all unit and browser tests pass; preview and production builds generate 47 pages; production SEO verifies 44 indexable and 3 noindex pages; public scan has no findings; diff check passes.
 
-- [ ] **Step 2: Record acceptance evidence**
+- [x] **Step 2: Record acceptance evidence**
 
 Create EV-011 with date, branch/SHA, environment, approved direction, changed visual system, all actual command results, visual-review routes/viewports, screenshots, public-scan counts, and the explicit statement that no deployment or DNS change occurred.
 
-- [ ] **Step 3: Update the sole progress ledger**
+- [x] **Step 3: Update the sole progress ledger**
 
 Update `docs/PROJECT_PLAN.md` current handoff and evidence table with EV-011. Keep P0 task/AC counts unchanged because this is a visual quality refinement; keep M4-04/M4-06 blocked on Cloudflare/Vercel/DNS access.
 
