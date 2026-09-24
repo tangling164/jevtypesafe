@@ -42,11 +42,17 @@ test('directory, search, detail and info pages use the shared layout system', as
   await expect(page.locator('.page-heading')).toContainText('Projects');
   await expect(page.locator('.directory-toolbar')).toBeVisible();
   await expect(page.locator('.project-list .project-row')).toHaveCount(10);
+  await expect(page.locator('.project-row .project-index').first()).toHaveText('01');
+  await expect(page.locator('.project-row .project-data').first()).toBeVisible();
+  await expect(page.locator('.project-row .project-status').first()).toBeVisible();
 
   await page.goto('/search/');
   await expect(page.locator('.search-layout')).toBeVisible();
   await expect(page.locator('.filter-panel')).toBeVisible();
   await expect(page.locator('#search-results .project-row')).toHaveCount(10);
+  await expect(page.locator('#search-results .project-index').first()).toHaveText('01');
+  await expect(page.locator('#search-results .project-data').first()).toBeVisible();
+  await expect(page.locator('#search-results .project-status').first()).toBeVisible();
 
   await page.goto('/projects/supercov/');
   await expect(page.locator('.detail-layout')).toBeVisible();

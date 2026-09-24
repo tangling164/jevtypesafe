@@ -23,7 +23,7 @@ const {locale}=Astro.props;const t=dictionary(locale);
     </details>
     <div class="filter-actions"><label for="sort">{t.sort}<select name="sort" id="sort">{(['newest','updated','stars','name'] as const).map(key=><option value={key}>{t[key]}</option>)}</select></label><button class="button" id="clear-filters" type="button">{t.clear}</button></div>
     </aside>
-    <div class="search-results-panel"><div class="results-heading"><p id="search-status" role="status" aria-live="polite"></p><button class="button" id="retry-search" type="button" hidden>{t.retry}</button></div><ul id="search-results" class="project-list"></ul><nav id="search-pagination" class="flex gap-3" aria-label={locale==='zh'?'搜索分页':'Search pagination'}></nav></div>
+    <div class="search-results-panel"><div class="results-heading"><p id="search-status" role="status" aria-live="polite"></p><button class="button" id="retry-search" type="button" hidden>{t.retry}</button></div><ol id="search-results" class="project-list"></ol><nav id="search-pagination" class="flex gap-3" aria-label={locale==='zh'?'搜索分页':'Search pagination'}></nav></div>
     </div>
   </form>
 </section>

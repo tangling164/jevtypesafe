@@ -6,4 +6,4 @@ import ProjectRow from './ProjectRow.astro';
 interface Props { projects: PublicProject[]; locale: Locale; }
 const {projects,locale}=Astro.props;
 ---
-{projects.length ? <ul class="project-list">{projects.map(project=><ProjectRow project={project} locale={locale}/>)}</ul> : <p class="panel muted">{dictionary(locale).noProjects}</p>}
+{projects.length ? <ol class="project-list">{projects.map((project,index)=><ProjectRow project={project} locale={locale} position={index+1}/>)}</ol> : <p class="panel muted">{dictionary(locale).noProjects}</p>}

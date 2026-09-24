@@ -2,10 +2,11 @@ import {dictionary} from '../i18n';
 import {parseSearch,serializeSearch,searchProjects,decodeSearchIndex,type SearchRecord} from '../lib/search';
 const root=document.querySelector<HTMLElement>('#search-app');
 if(root){
-  const t=dictionary(root.dataset.locale==='zh'?'zh':'en');
+  const locale=root.dataset.locale==='zh'?'zh':'en';
+  const t=dictionary(locale);
   const form=root.querySelector<HTMLFormElement>('#search-form')!;
   const status=root.querySelector<HTMLElement>('#search-status')!;
-  const results=root.querySelector<HTMLUListElement>('#search-results')!;
+  const results=root.querySelector<HTMLOListElement>('#search-results')!;
   const pagination=root.querySelector<HTMLElement>('#search-pagination')!;
   const retry=root.querySelector<HTMLButtonElement>('#retry-search')!;
   let records:SearchRecord[]|null=null;
@@ -23,18 +24,29 @@ if(root){
     status.textContent=filtered.length?`${filtered.length} ${t.results}`:t.noResults;
     root!.querySelector('#filter-count')!.textContent=`(${state.category.length+state.ecosystem.length+state.source.length+state.usage.length})`;
     results.replaceChildren();pagination.replaceChildren();
-    for(const project of filtered.slice((state.page-1)*24,state.page*24)){
+    for(const [index,project] of filtered.slice((state.page-1)*24,state.page*24).entries()){
       const li=document.createElement('li');
       const article=document.createElement('article');article.className='project-row search-project-row';
+      const number=document.createElement('span');number.className='project-index';number.setAttribute('aria-hidden','true');number.textContent=String(index+1).padStart(2,'0');
       const main=document.createElement('div');main.className='project-main';
-      const mark=document.createElement('span');mark.className='project-monogram';mark.setAttribute('aria-hidden','true');mark.textContent=project.name.slice(0,1).toUpperCase();
-      const copy=document.createElement('div');copy.className='min-w-0';
       const heading=document.createElement('h3');
       const link=document.createElement('a');link.href=project.href;link.textContent=project.name;heading.append(link);
+      const owner=document.createElement('p');owner.className='project-owner';owner.textContent=project.owner??'';
       const summary=document.createElement('p');summary.className='muted text-sm';summary.textContent=project.summary;
-      const badge=document.createElement('span');badge.className='badge';badge.textContent=t[project.source_status as 'open_source']??project.source_status;
-      const action=document.createElement('a');action.href=project.href;action.className='search-result-action';action.textContent=`${t.details} →`;
-      copy.append(heading,summary,badge);main.append(mark,copy);article.append(main,action);li.append(article);results.append(li);
+      main.append(heading);if(project.owner)main.append(owner);main.append(summary);
+      const data=document.createElement('dl');data.className='project-data';
+      const facts:Array<[string,string]>=[[locale==='zh'?'分类':'Category',project.category],[t.stars,project.stars===null?'—':project.stars.toLocaleString(locale)]];
+      for(const [label,value] of facts){
+        const group=document.createElement('div');const term=document.createElement('dt');const detail=document.createElement('dd');term.textContent=label;detail.textContent=value;group.append(term,detail);data.append(group);
+      }
+      const projectStatus=document.createElement('div');projectStatus.className='project-status';projectStatus.setAttribute('aria-label',locale==='zh'?'项目状态':'Project status');
+      for(const label of [t[project.source_status as 'open_source']??project.source_status,t[project.ecosystem as 'jev']??project.ecosystem,...(project.local_install?[t.local]:[])]){
+        const badge=document.createElement('span');badge.className='badge';badge.textContent=label;projectStatus.append(badge);
+      }
+      const actions=document.createElement('div');actions.className='project-actions';
+      const action=document.createElement('a');action.href=project.href;action.className='button text-xs search-result-action';action.textContent=`${t.details} →`;actions.append(action);
+      if(project.demo_url){const demo=document.createElement('a');demo.href=project.demo_url;demo.rel='noopener';demo.className='button text-xs';demo.textContent=`${t.demo} ↗`;actions.append(demo);}
+      article.append(number,main,data,projectStatus,actions);li.append(article);results.append(li);
     }
     for(const [page,label] of [[state.page-1,t.previous],[state.page+1,t.next]] as const){
       if(page<1||page>pages)continue;

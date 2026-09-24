@@ -258,7 +258,7 @@ git commit -m "Rebuild home as a technical index"
 - Consumes: `PublicProject`, localized project text, category lookup, existing search-index fields.
 - Produces: `ProjectRow` optional `position: number`, `.project-index`, `.project-data`, `.project-status`, and consistent server/client-rendered project rows.
 
-- [ ] **Step 1: Add failing row-layout assertions**
+- [x] **Step 1: Add failing row-layout assertions**
 
 Add to the shared-layout test:
 
@@ -272,13 +272,13 @@ await expect(page.locator('.project-row .project-status').first()).toBeVisible()
 
 Also assert the search results use the same hooks after navigating to `/search/`.
 
-- [ ] **Step 2: Run the test and confirm failure**
+- [x] **Step 2: Run the test and confirm failure**
 
 Run: `npx playwright test tests/e2e/reference-layout.spec.ts --project=desktop --workers=1`
 
 Expected: FAIL because numbered rows and the new data/status columns are absent.
 
-- [ ] **Step 3: Pass list position into server-rendered rows**
+- [x] **Step 3: Pass list position into server-rendered rows**
 
 Change the component interface and mapping:
 
@@ -293,11 +293,11 @@ const { project: p, locale, position = 1 } = Astro.props;
 
 Render a two-digit `.project-index`, identity block, `.project-data` for category/Stars, `.project-status` for source/ecosystem/requirements, and a single `.project-actions` group. Keep badges semantically readable but visually rectangular.
 
-- [ ] **Step 4: Match client-rendered search rows**
+- [x] **Step 4: Match client-rendered search rows**
 
 In `src/scripts/search.ts`, update the result template to emit the same `.project-index`, `.project-main`, `.project-data`, `.project-status`, and `.project-actions` hierarchy. Use the page-local result index padded with `String(index + 1).padStart(2, '0')`; do not add new index fields to public JSON.
 
-- [ ] **Step 5: Replace card/grid CSS with a ruled index layout**
+- [x] **Step 5: Replace card/grid CSS with a ruled index layout**
 
 Define desktop columns as:
 
@@ -313,7 +313,7 @@ Define desktop columns as:
 
 Use a 2px left signal line on hover/focus-within, a slight surface change, and an arrow color change. Remove horizontal translation and the two-column featured-card grid. Below 767px, use `42px minmax(0, 1fr)`, place data/status/actions beneath the identity column, and preserve 44px actions.
 
-- [ ] **Step 6: Verify server and search rows and commit**
+- [x] **Step 6: Verify server and search rows and commit**
 
 Run:
 
