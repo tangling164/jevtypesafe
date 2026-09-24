@@ -2,6 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "jev-builds-directory",
   "compatibility_date": "2026-09-20",
+  "routes": [
+    {
+      "pattern": "jevtypesafe.dev",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./dist",
     "html_handling": "force-trailing-slash",
