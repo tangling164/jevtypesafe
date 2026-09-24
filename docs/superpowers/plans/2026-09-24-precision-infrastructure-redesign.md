@@ -528,7 +528,7 @@ Create EV-011 with date, branch/SHA, environment, approved direction, changed vi
 
 Update `docs/PROJECT_PLAN.md` current handoff and evidence table with EV-011. Keep P0 task/AC counts unchanged because this is a visual quality refinement; keep M4-04/M4-06 blocked on Cloudflare/Vercel/DNS access.
 
-- [ ] **Step 4: Commit and push the verified redesign**
+- [x] **Step 4: Commit and push the verified redesign**
 
 ```powershell
 git add reports/acceptance/EV-011-precision-infrastructure-redesign.md reports/acceptance/public-scan.json docs/PROJECT_PLAN.md
@@ -536,8 +536,10 @@ git commit -m "Record precision redesign acceptance"
 git push origin HEAD:main
 ```
 
-- [ ] **Step 5: Verify GitHub Actions**
+- [x] **Step 5: Verify GitHub Actions**
 
 Read the public GitHub Actions API for the pushed full SHA until `Quality checks` completes. Record the run URL and conclusion in EV-011 and the project ledger. If documentation is updated with the run ID, commit and push that evidence update, then verify the final remote run also succeeds.
 
 Expected: `origin/main` equals local HEAD, working tree is clean, and the final `Quality checks` conclusion is `success`.
+
+Actual: acceptance push `821d6a8a61f7831ab05632bece76c0a8d42b8868` reached `origin/main`; GitHub `Quality checks` run [`35945161910`](https://github.com/tangling164/jevtypesafe/actions/runs/35945161910) completed with `success`. The evidence-only follow-up push is verified separately after this plan update so it does not create a self-referential documentation loop.

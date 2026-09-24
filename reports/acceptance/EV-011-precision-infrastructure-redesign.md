@@ -2,7 +2,7 @@
 
 - Date: 2026-09-24
 - Executor: Codex
-- Implementation version: `e30d80abaa22f5953a6dbc82926f9d0cc0d1086a` on `codex/precision-infrastructure-redesign`
+- Implementation version: redesign through `e30d80abaa22f5953a6dbc82926f9d0cc0d1086a`; acceptance push `821d6a8a61f7831ab05632bece76c0a8d42b8868` on `codex/precision-infrastructure-redesign` and `origin/main`
 - Environment: Windows 11, Node 24.14.1, npm 11.11.0, Astro 7.3.3, Playwright 1.63.0
 - Scope: visual-quality refinement of the existing Jev Atlas static directory. P0 task and acceptance-criteria counts are unchanged.
 - Approved direction: “精密基础设施 / 技术出版物.” The user approved the design sections and requested implementation before this work began.
@@ -28,6 +28,7 @@
 | `npm run build:production` | Passed: 47 pages, 44 indexable and 3 noindex utility pages. Canonical, hreflang, sitemap, robots, and share metadata gates passed. |
 | `npm run scan:public` | Passed: 264 source files, 116 dist files, 20 Git commits, 0 history matches, 0 findings. |
 | `git diff --check` | Passed. |
+| GitHub `Quality checks` | Passed for acceptance push `821d6a8a61f7831ab05632bece76c0a8d42b8868`: run [`35945161910`](https://github.com/tangling164/jevtypesafe/actions/runs/35945161910) completed with `success`. |
 
 ## Visual review
 

@@ -145,7 +145,7 @@
 | EV-008 | CH-05；AC-01/02/03 技术验证 | HEAD a8dd5ce + 未提交实现及既有 UI 工作区；Windows、Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | Jev Atlas 名称/当前文案同步；首页 Hero 外间距 0px；dev toolbar=0；check 0 errors/0 warnings（8 hints）；test 81/81；build 47 页；并行 e2e 38/40，同一无 JS 用例双端超时后单 worker 完整复跑 40/40；中英×375/1440 四组专项验证通过 | reports/acceptance/EV-008-jev-atlas-header.md；reports/jev-atlas-header/ | Codex / 2026-09-23 |
 | EV-009 | M3-06、M4-01、M4-05 / AC-13、AC-16；M4-04 发布前置 | `fdb986a` / `v0.1.0-rc.1` + workflow fix `8aa65b3`；Windows + GitHub Ubuntu runner，Node 24.14.1、npm 11.11.0 | check/test(82)/build(47)/e2e(40)；源码 234、dist 59、完整远端历史 10 提交扫描 findings 空；main/tag/PR Quality checks 全绿；content review 完成有界采集、自验证、artifact、分支及 PR #1；未部署 Cloudflare | reports/acceptance/EV-009-release-readiness.md；reports/acceptance/public-scan.json；GitHub runs 35869769200/35870617975/35870723324/35870919523/35872076269；PR #1 | Codex / 2026-09-23 |
 | EV-010 | M4-03 / AC-11；M4-04 发布前置 | `bb30dd1`；Windows + GitHub Ubuntu runner，Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | 独立页面/分类描述与 1200×630 分享图；生产构建/部署防误索引门禁；test 88/88、check 0 errors、build 47 页、e2e 42/42；生产 44 index + 3 noindex + sitemap 44；公开扫描 findings 空；GitHub Quality checks `35877569914` 全绿；未部署 Cloudflare | reports/acceptance/EV-010-seo-release-gate.md；public/images/jev-atlas-social.png；reports/acceptance/public-scan.json；GitHub run 35877569914 | Codex / 2026-09-23 |
-| EV-011 | M1-05、M2-01～M2-07 视觉质量复验；AC-01～04、AC-11 回归 | `e30d80a`；分支 `codex/precision-infrastructure-redesign`；Windows、Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | 精密基础设施/技术出版物视觉系统；IBM Plex 自托管字体；首页真实状态索引、统一项目行、详情事实表和编号内页；test 88/88、check 0 errors、build 47、e2e 46/46；生产 44 index + 3 noindex；18 组视觉测量无溢出/单 H1/无小控件；公开扫描 264 源文件 + 116 dist + 20 commits，findings 空；未部署 | reports/acceptance/EV-011-precision-infrastructure-redesign.md；reports/precision-redesign/；reports/acceptance/public-scan.json | Codex / 2026-09-24 |
+| EV-011 | M1-05、M2-01～M2-07 视觉质量复验；AC-01～04、AC-11 回归 | 重构至 `e30d80a`，验收推送 `821d6a8`；分支 `codex/precision-infrastructure-redesign` + `main`；Windows + GitHub Ubuntu runner，Node 24.14.1、Astro 7.3.3、Playwright 1.63.0 | 精密基础设施/技术出版物视觉系统；IBM Plex 自托管字体；首页真实状态索引、统一项目行、详情事实表和编号内页；test 88/88、check 0 errors、build 47、e2e 46/46；生产 44 index + 3 noindex；18 组视觉测量无溢出/单 H1/无小控件；公开扫描 264 源文件 + 116 dist + 20 commits，findings 空；GitHub Quality checks `35945161910` 全绿；未部署 | reports/acceptance/EV-011-precision-infrastructure-redesign.md；reports/precision-redesign/；reports/acceptance/public-scan.json；GitHub run 35945161910 | Codex / 2026-09-24 |
 
 建议编号 EV-001 起。一个证据可覆盖多项 AC，但必须列出各场景结果。UI 至少记录 375px 与桌面；构建通过不能替代视觉验收。生产域名验证必须记录真实 URL/状态码，不能只引用本地截图。
 
@@ -211,8 +211,8 @@
 ## 9. 本次交接与下一步
 
 - 本次完成：EV-011；按用户批准的“精密基础设施 / 技术出版物”方向重构全站视觉系统。首页改为真实数据技术索引，目录与搜索统一为编号行，详情/搜索/信息/表单/404 使用事实表和编辑式编号结构；SEO、双语、无 JS 和静态行为保持不变。
-- 当前代码分支/版本：`codex/precision-infrastructure-redesign`，实现与测试稳定性提交至 `e30d80a`；发布候选 tag 仍为 `v0.1.0-rc.1`，尚未为本轮变更创建新 tag。新增依赖仅为自托管 IBM Plex 字体；未安装 Grove/React/数据库/SSR adapter，尚未部署或改 DNS。
-- 本轮实际检查：check 0 errors/0 warnings（8 hints）、unit 88/88、预览 build 47 页、桌面/375px e2e 46/46；生产门禁验证 44 个 index 页面和 3 个 noindex 页面；375/768/1440 × 6 路由共 18 组测量全部无溢出、单 H1、无小于 44px 的独立控件；公开扫描 264 源文件、116 dist 文件、20 个 Git commits，findings 空。
+- 当前代码分支/版本：`codex/precision-infrastructure-redesign`，重构实现与测试稳定性提交至 `e30d80a`，验收提交 `821d6a8` 已推送 `main`；发布候选 tag 仍为 `v0.1.0-rc.1`，尚未为本轮变更创建新 tag。新增依赖仅为自托管 IBM Plex 字体；未安装 Grove/React/数据库/SSR adapter，尚未部署或改 DNS。
+- 本轮实际检查：check 0 errors/0 warnings（8 hints）、unit 88/88、预览 build 47 页、桌面/375px e2e 46/46；生产门禁验证 44 个 index 页面和 3 个 noindex 页面；375/768/1440 × 6 路由共 18 组测量全部无溢出、单 H1、无小于 44px 的独立控件；公开扫描 264 源文件、116 dist 文件、20 个 Git commits，findings 空；GitHub Quality checks `35945161910` 对完整验收提交运行并全绿。
 - 当前限制：Cloudflare 当前未认证，M4-04/M4-06 仍缺部署、Vercel DNS、HTTPS/www 和搜索引擎线上证据；真实 Analytics token 维持关闭。PR #1 仍只修改审核报告。
 - 查看本轮交付：`reports/acceptance/EV-011-precision-infrastructure-redesign.md`、`reports/precision-redesign/`、`reports/acceptance/public-scan.json`；SEO 门禁见 EV-010，发布候选链路见 EV-009。
 - 下一步：取得 Cloudflare 与 Vercel/DNS 接入后部署本轮最终已验证提交，完成 HTTPS、www 301 保留查询参数、静态资源和线上 SEO 冒烟，并提交 sitemap 至搜索引擎平台；随后执行 M4-06。
@@ -232,7 +232,7 @@
 | 2026-09-23 | 提交 UI 候选并补齐 Git 历史凭证扫描 | EV-009；82 单测、47 页构建；源码 233、dist 59、Git 历史 6 提交扫描 findings 空；AC-16 历史扫描缺口关闭 | 推送 GitHub main 并核验真实 Actions；Cloudflare/Vercel 接入后推进 M4-04/05/06 |
 | 2026-09-23 | GitHub main、真实 Actions、内容审核 PR 与候选 tag | EV-009；main/tag/PR Quality checks 和 content review 全绿；全远端历史 10 提交扫描空；自动创建 PR #1；`v0.1.0-rc.1` 已推送；M3-06/M4-05 已验收，P0 任务 23/25 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
 | 2026-09-23 | 上线前 SEO 优化与生产发布门禁 | EV-010；独立双语描述、全站社交分享元数据与 1200×630 分享图；test 88/88、e2e 42/42、生产 44 index + 3 noindex + sitemap 44；`bb30dd1` / Actions `35877569914` 全绿 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
-| 2026-09-24 | 精密基础设施 / 技术出版物全站视觉重构 | EV-011；IBM Plex、自适应真实状态首页、编号项目索引、内页事实表；test 88/88、e2e 46/46、18 组视觉测量通过、生产 44 index + 3 noindex、公开扫描空 | 推送并核验 Quality checks；随后仍待 Cloudflare/Vercel/DNS 接入完成 M4-04 与 M4-06 |
+| 2026-09-24 | 精密基础设施 / 技术出版物全站视觉重构 | EV-011；IBM Plex、自适应真实状态首页、编号项目索引、内页事实表；test 88/88、e2e 46/46、18 组视觉测量通过、生产 44 index + 3 noindex、公开扫描空；`821d6a8` 已进 main，Actions `35945161910` 全绿 | Cloudflare/Vercel/DNS 接入后完成 M4-04 与 M4-06 |
 
 ### CH-04 · 2026-09-23 · 导航与生成图标（第二版完成并获用户确认）
 按用户要求统一分类对齐并移除箭头、将语言切换改为图标、去掉顶部说明栏；使用内置 image_gen 生成站点标识和语言图标，应用 logo/favicon/touch icon。EV-007 记录构建、类型检查、e2e 超时与复跑、双语响应式专项验证。用户于后续轮次确认 UI 调整完成，AC-01 通过；P0 分母及线上门槛不变。图像工具未返回可核验的底层模型版本。
