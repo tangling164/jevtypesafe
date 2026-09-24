@@ -2,7 +2,7 @@
 
 - Date: 2026-09-23
 - Executor: Codex
-- Branch: `codex/m1-foundation` tracking `origin/main`; implementation verified as a working-tree change after `a20cdea`
+- Version: `bb30dd1d3d1682217042fe2e3e4b470ff399f65b` on `origin/main`
 - Environment: Windows 11, Node 24.14.1, npm 11.11.0, Astro 7.3.3, Playwright 1.63.0
 - Scope: M4-03 and AC-11 regression; M4-04 release preparation. This is local production-build evidence, not a live deployment claim.
 
@@ -26,6 +26,7 @@
 | Social image inspection | `public/images/jev-atlas-social.png` inspected at its original 1200×630 size; text, logo, contrast, and safe margins were intact. |
 | `npm run scan:public` | Passed with no findings; final counts are recorded in `reports/acceptance/public-scan.json`. |
 | `git diff --check` | Passed. |
+| GitHub Actions | `Quality checks` run [35877569914](https://github.com/tangling164/jevtypesafe/actions/runs/35877569914) completed successfully for `bb30dd1`; the Ubuntu runner repeated unit, type, preview browser, production SEO, and public-scan gates. |
 
 ## Remaining production work
 
