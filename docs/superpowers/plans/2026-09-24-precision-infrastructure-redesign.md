@@ -33,7 +33,7 @@
 - Consumes: existing `.site-header`, `.site-brand`, `.site-nav`, `.language-switch`, `.site-footer`, and `.shell` hooks.
 - Produces: `--font-sans`, `--font-mono`, graphite/cyan design tokens, `.system-bar`, `.nav-current`, and the shared typography/focus/button primitives used by later tasks.
 
-- [ ] **Step 1: Add failing browser assertions for the new foundation**
+- [x] **Step 1: Add failing browser assertions for the new foundation**
 
 Extend the shared-layout test with concrete computed-style and structure checks:
 
@@ -51,13 +51,13 @@ test('precision infrastructure visual foundation is active', async ({ page }) =>
 });
 ```
 
-- [ ] **Step 2: Run the focused test and confirm the intended failure**
+- [x] **Step 2: Run the focused test and confirm the intended failure**
 
 Run: `npx playwright test tests/e2e/reference-layout.spec.ts --project=desktop --workers=1`
 
 Expected: FAIL because `.system-bar`, `[aria-current="page"]`, and IBM Plex typography do not exist.
 
-- [ ] **Step 3: Install exact self-hosted font packages**
+- [x] **Step 3: Install exact self-hosted font packages**
 
 Run:
 
@@ -67,7 +67,7 @@ npm install @fontsource/ibm-plex-sans@5.3.0 @fontsource/ibm-plex-mono@5.3.0
 
 Expected: `package.json` and `package-lock.json` record both exact runtime dependencies.
 
-- [ ] **Step 4: Add font imports, tokens, and shared primitives**
+- [x] **Step 4: Add font imports, tokens, and shared primitives**
 
 At the top of `global.css`, import only used weights:
 
@@ -102,7 +102,7 @@ Replace the current palette with this token contract and connect existing Tailwi
 
 Set `body` to `background: var(--canvas)`, `font-family: var(--font-sans)`, and a subtle solid/linear graphite background without radial glows. Reduce general radii to 2–6px, make buttons rectangular, use the signal color only for focus/links/status, and keep focus outlines at least 2px.
 
-- [ ] **Step 5: Mark current navigation semantically and restyle the shell**
+- [x] **Step 5: Mark current navigation semantically and restyle the shell**
 
 In `BaseLayout.astro`, compute active navigation from `path` and add `system-bar` to the header. Each matching link receives `aria-current="page"`; the Categories summary receives an active class for category routes. Keep the globe icon and existing destinations unchanged.
 
@@ -114,7 +114,7 @@ Use this pattern for links:
 
 Restyle header/footer in `global.css` as compact ruled infrastructure bars with mono metadata labels, no pill navigation, and no restored affiliation strip.
 
-- [ ] **Step 6: Verify the focused contract and commit**
+- [x] **Step 6: Verify the focused contract and commit**
 
 Run:
 

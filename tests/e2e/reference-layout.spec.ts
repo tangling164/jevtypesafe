@@ -1,5 +1,17 @@
 import { test, expect } from '@playwright/test';
 
+test('precision infrastructure visual foundation is active', async ({ page }) => {
+  await page.goto('/projects/');
+  await expect(page.locator('.site-header')).toHaveClass(/system-bar/);
+  await expect(page.locator('.site-nav [aria-current="page"]')).toHaveCount(1);
+  const styles = await page.locator('body').evaluate((element) => {
+    const css = getComputedStyle(element);
+    return { font: css.fontFamily, background: css.backgroundColor };
+  });
+  expect(styles.font).toContain('IBM Plex Sans');
+  expect(styles.background).toBe('rgb(8, 12, 14)');
+});
+
 test('Jev Atlas home begins directly below the navigation', async ({ page }) => {
   for (const path of ['/', '/zh/']) {
     await page.goto(path);

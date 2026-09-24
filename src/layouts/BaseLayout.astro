@@ -15,6 +15,11 @@ const languageLabel=counterpart ? (locale==='en'?'Switch to 简体中文':'Switc
 const documentTitle=`${title} · ${config.SITE_NAME}`;
 const socialImage=new URL('/images/jev-atlas-social.png',config.SITE_URL).href;
 const socialImageAlt=locale==='zh'?'Jev Atlas 科技风格项目目录预览':'Jev Atlas technology project directory preview';
+const homePath=pagePath(locale);
+const projectsPath=pagePath(locale,'projects/');
+const categoryPath=pagePath(locale,'categories/');
+const aboutPath=pagePath(locale,'about/');
+const submitPath=pagePath(locale,'submit/');
 ---
 <!doctype html>
 <html lang={locale==='zh'?'zh-Hans':'en'}>
@@ -37,14 +42,14 @@ const socialImageAlt=locale==='zh'?'Jev Atlas 科技风格项目目录预览':'J
   </head>
   <body>
     <a href="#main" class="skip-link">{locale==='zh'?'跳至内容':'Skip to content'}</a>
-    <header class="site-header border-b border-line">
+    <header class="site-header system-bar border-b border-line">
       <div class="shell header-inner">
-        <a href={pagePath(locale)} class="site-brand" aria-label={config.SITE_NAME}><img class="brand-mark" src="/images/jev-mark-tech.png" width="32" height="32" alt="" /><span>Jev <span>Atlas</span></span></a>
+        <a href={homePath} class="site-brand" aria-label={config.SITE_NAME} aria-current={path===homePath?'page':undefined}><img class="brand-mark" src="/images/jev-mark-tech.png" width="32" height="32" alt="" /><span>Jev <span>Atlas</span></span></a>
         <nav aria-label={locale==='zh'?'主导航':'Main navigation'} class="site-nav text-sm">
-          <a class="inline-flex min-h-11 items-center" href={pagePath(locale,'projects/')}>{t.projects}</a>
-          {categories.length>0 && <details class="relative"><summary>{t.categories}</summary><div class="absolute left-0 top-full z-10 min-w-48 rounded-md border border-line bg-surface p-2 shadow-xl">{categories.map(c=><a class="block px-2 py-3" href={pagePath(locale,`categories/${c.id}/`)}>{c[locale]}</a>)}</div></details>}
-          <a class="nav-about" href={pagePath(locale,'about/')}>{t.about}</a>
-          <a class="nav-submit" href={pagePath(locale,'submit/')}>{t.submit}</a>
+          <a class="inline-flex min-h-11 items-center" href={projectsPath} aria-current={path.startsWith(projectsPath)?'page':undefined}>{t.projects}</a>
+          {categories.length>0 && <details class="relative"><summary class:list={{'nav-current':path.startsWith(categoryPath)}} aria-current={path.startsWith(categoryPath)?'page':undefined}>{t.categories}</summary><div class="absolute left-0 top-full z-10 min-w-56 border border-line bg-surface p-2">{categories.map(c=><a class="block px-3 py-3" href={pagePath(locale,`categories/${c.id}/`)}>{c[locale]}</a>)}</div></details>}
+          <a class="nav-about" href={aboutPath} aria-current={path===aboutPath?'page':undefined}>{t.about}</a>
+          <a class="nav-submit" href={submitPath} aria-current={path===submitPath?'page':undefined}>{t.submit}</a>
         </nav>
         <a id="language-switch" class="language-switch" href={counterpart || pagePath(locale==='en'?'zh':'en')} lang={locale==='en'?'zh-Hans':'en'} aria-label={languageLabel} title={languageLabel}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" /></svg></a>
       </div>
