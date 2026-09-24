@@ -2,5 +2,5 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout locale="en" path="/404.html" title="Page not found" description="This page could not be found. / 此页面不存在。" indexable={false}>
-  <h1>Page not found / <span lang="zh-Hans">页面不存在</span></h1><p>This link may have changed. / <span lang="zh-Hans">此链接可能已变更。</span></p><a class="button" href="/">Home</a> <a class="button" href="/zh/" lang="zh-Hans">中文首页</a>
+  <section class="utility-page"><p class="page-code">ERR / 404</p><p class="eyebrow">Jev Atlas</p><h1>Page not found / <span lang="zh-Hans">页面不存在</span></h1><p>This link may have changed. / <span lang="zh-Hans">此链接可能已变更。</span></p><div class="utility-actions"><a class="button button-primary" href="/">Home →</a><a class="button" href="/zh/" lang="zh-Hans">中文首页 →</a></div></section>
 </BaseLayout>

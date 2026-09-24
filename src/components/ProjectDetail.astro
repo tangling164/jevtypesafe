@@ -25,7 +25,7 @@ const facts: Array<[string, string]> = [
 ---
 <article class="project-detail">
   <header class="detail-header" data-reveal>
-    <div class="detail-identity"><span class="detail-monogram" aria-hidden="true">{p.name.slice(0, 1).toUpperCase()}</span><div><p class="eyebrow">{categories[0]?.[locale] ?? t.projects}</p><h1>{p.name}</h1>{p.owner && <p class="muted">{t.author}: {p.owner}</p>}</div></div>
+    <div class="detail-identity"><span class="detail-key" aria-hidden="true">PROJECT / {p.name.slice(0, 3).toUpperCase()}</span><div><p class="eyebrow">{categories[0]?.[locale] ?? t.projects}</p><h1>{p.name}</h1>{p.owner && <p class="muted">{t.author}: {p.owner}</p>}</div></div>
     <p class="detail-summary">{text.summary}</p>
     <div class="detail-badges flex flex-wrap gap-2">
       <span class="badge">{t[p.source_status]}</span>
@@ -42,11 +42,11 @@ const facts: Array<[string, string]> = [
 
   <div class="detail-layout">
     <div class="detail-main">
-      <section data-reveal><p class="section-kicker">{t.problem}</p><h2>{t.problem}</h2><p>{text.problem}</p></section>
-      <section data-reveal><p class="section-kicker">{t.role}</p><h2>{t.role}</h2><p>{ecosystemRole}</p></section>
-      <section data-reveal><p class="section-kicker">{t.requirements}</p><h2>{t.requirements}</h2><p>{text.requirements_text}</p></section>
+      <section data-reveal><p class="section-kicker"><span class="section-number">01</span><span>{t.problem}</span></p><h2>{t.problem}</h2><p>{text.problem}</p></section>
+      <section data-reveal><p class="section-kicker"><span class="section-number">02</span><span>{t.role}</span></p><h2>{t.role}</h2><p>{ecosystemRole}</p></section>
+      <section data-reveal><p class="section-kicker"><span class="section-number">03</span><span>{t.requirements}</span></p><h2>{t.requirements}</h2><p>{text.requirements_text}</p></section>
       <section data-reveal>
-        <p class="section-kicker">{t.provenance}</p><h2>{t.provenance}</h2>
+        <p class="section-kicker"><span class="section-number">04</span><span>{t.provenance}</span></p><h2>{t.provenance}</h2>
         <p class="muted text-sm">{p.verification === 'runtime_tested' ? t.runtimeTested : t.sourceChecked} · {t.checked}: {date(p.checked_at)}</p>
         <ul class="source-list">
           {p.sources.map((source) => <li><a href={source.url} rel="noopener"><span>{sourceLabel[source.type]}</span><span>{date(source.fetched_at)} ↗</span></a><small>{source.url}</small></li>)}
@@ -54,7 +54,7 @@ const facts: Array<[string, string]> = [
         </ul>
       </section>
     </div>
-    <aside class="detail-sidebar" aria-label={zh ? '项目事实' : 'Project facts'} data-reveal>
+    <aside class="detail-sidebar fact-table" aria-label={zh ? '项目事实' : 'Project facts'} data-reveal>
       <h2>{zh ? '项目事实' : 'Project facts'}</h2>
       <dl>{facts.map(([label2, value]) => <div><dt>{label2}</dt><dd>{value}</dd></div>)}<div><dt>{t.apiKey}</dt><dd>{tristate(p.requirements.api_key)}</dd></div><div><dt>{t.additionalModel}</dt><dd>{tristate(p.requirements.additional_model)}</dd></div><div><dt>{t.local}</dt><dd>{tristate(p.requirements.local_install)}</dd></div><div><dt>{t.hardware}</dt><dd>{p.requirements.hardware ?? t.unknown}</dd></div></dl>
       {p.license && <a class="detail-license" href={p.license.url} rel="noopener">{t.license}: {p.license.spdx} ↗</a>}

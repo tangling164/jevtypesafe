@@ -48,7 +48,7 @@ test('directory, search, detail and info pages use the shared layout system', as
 
   await page.goto('/search/');
   await expect(page.locator('.search-layout')).toBeVisible();
-  await expect(page.locator('.filter-panel')).toBeVisible();
+  await expect(page.locator('.filter-panel.filter-index')).toBeVisible();
   await expect(page.locator('#search-results .project-row')).toHaveCount(10);
   await expect(page.locator('#search-results .project-index').first()).toHaveText('01');
   await expect(page.locator('#search-results .project-data').first()).toBeVisible();
@@ -56,11 +56,15 @@ test('directory, search, detail and info pages use the shared layout system', as
 
   await page.goto('/projects/supercov/');
   await expect(page.locator('.detail-layout')).toBeVisible();
-  await expect(page.locator('.detail-sidebar')).toContainText('License');
+  await expect(page.locator('.detail-sidebar.fact-table')).toContainText('License');
+  await expect(page.locator('.detail-main .section-number')).toHaveText(['01', '02', '03', '04']);
 
   await page.goto('/about/');
   await expect(page.locator('.info-page')).toBeVisible();
-  await expect(page.locator('.info-aside')).toBeVisible();
+  await expect(page.locator('.info-aside.info-note')).toBeVisible();
+
+  await page.goto('/missing-precision-route/');
+  await expect(page.locator('.page-code')).toContainText('404');
 });
 
 test('motion never hides content and reduced motion removes transforms', async ({ page }) => {

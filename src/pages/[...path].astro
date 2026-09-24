@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination.astro';
 import ProjectDetail from '../components/ProjectDetail.astro';
 import ProjectList from '../components/ProjectList.astro';
 import Search from '../components/Search.astro';
-import { manifest, config } from '../lib/site';
+import { manifest, config, content } from '../lib/site';
 import { dictionary } from '../i18n';
 import { pagePath, paginationPath, type Route } from '../lib/routes';
 import { structuredData, serializeStructuredData } from '../lib/seo';
@@ -34,19 +34,20 @@ const description = pageDescription(route, t);
 const listCount = t.directoryCount.replace('{count}', String(route.total));
 const prevLink = route.page > 1 ? paginationPath(route,route.page-1) : null;
 const nextLink = route.page < route.pages ? paginationPath(route,route.page+1) : null;
+const categoryIndex = route.kind === 'category' && route.category ? content.categories.findIndex((category) => category.id === route.category?.id) + 1 : 0;
 ---
 <BaseLayout title={pageTitle} description={description} locale={locale} path={route.path} counterpart={route.counterpart} indexable={route.indexable} isHome={route.kind === 'home'}>
   {route.kind === 'home' && <HomePage locale={locale} projects={route.projects} />}
 
   {route.kind === 'directory' && <>
-    <header class="page-heading" data-reveal><p class="eyebrow">{t.kicker}</p><h1>{pageTitle}</h1><p>{listCount}. {t.filterHint}</p></header>
+    <header class="page-heading" data-reveal><p class="page-code">INDEX / ALL</p><p class="eyebrow">{t.kicker}</p><h1>{pageTitle}</h1><p>{listCount}. {t.filterHint}</p></header>
     <div class="directory-toolbar" data-reveal><span>{listCount}</span><a class="button button-primary" href={pagePath(locale, 'search/')}>{t.search}</a></div>
     <div class="directory-content"><ProjectList projects={route.projects} locale={locale} /></div>
     <Pagination route={route} />
   </>}
 
   {route.kind === 'category' && route.category && <>
-    <header class="page-heading" data-reveal><p class="eyebrow"><a href={pagePath(locale, 'projects/')}>{t.projects}</a> / {route.category[locale]}</p><h1>{pageTitle}</h1><p>{route.category.description[locale]}</p></header>
+    <header class="page-heading" data-reveal><p class="page-code">INDEX / {String(categoryIndex).padStart(2,'0')}</p><p class="eyebrow"><a href={pagePath(locale, 'projects/')}>{t.projects}</a> / {route.category[locale]}</p><h1>{pageTitle}</h1><p>{route.category.description[locale]}</p></header>
     <div class="directory-toolbar" data-reveal><span>{listCount}</span><a class="button button-primary" href={pagePath(locale, 'search/')}>{t.search}</a></div>
     <div class="directory-content"><ProjectList projects={route.projects} locale={locale} /></div>
     <Pagination route={route} />

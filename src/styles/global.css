@@ -19,7 +19,7 @@
 }
 
 @layer base {
-  :root { --canvas: #080c0e; --surface-0: #0b1114; --surface-1: #0f171a; --surface-2: #142024; --line: #243338; --line-strong: #385059; --ink: #e7edec; --muted: #93a2a5; --quiet: #66777b; --signal: #54d8d0; --signal-soft: #9ce9e3; --warning: #d8a35c; --font-sans: 'IBM Plex Sans', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace; }
+  :root { --canvas: #080c0e; --surface-0: #0b1114; --surface-1: #0f171a; --surface-2: #142024; --line: #243338; --line-strong: #385059; --ink: #e7edec; --muted: #93a2a5; --quiet: #78898d; --signal: #54d8d0; --signal-soft: #9ce9e3; --warning: #d8a35c; --font-sans: 'IBM Plex Sans', 'Noto Sans SC', 'Microsoft YaHei', sans-serif; --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace; }
   html { color-scheme: dark; background: var(--canvas); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; }
   body { margin: 0; min-width: 320px; background: var(--canvas); color: var(--ink); }
   * { box-sizing: border-box; }

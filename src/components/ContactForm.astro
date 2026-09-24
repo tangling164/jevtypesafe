@@ -7,7 +7,7 @@ const t = dictionary(locale);
 const email = config.CONTACT_EMAIL;
 // ?project= is read client-side: static HTML cannot capture query parameters at build time.
 ---
-<form class="panel grid gap-5" data-contact-form data-kind={kind} data-locale={locale} data-email={email} data-project="" novalidate>
+<form class="panel technical-form grid gap-5" data-contact-form data-kind={kind} data-locale={locale} data-email={email} data-project="" novalidate>
   <label class="grid gap-2"><span>{t.url}</span><input name="url" type="url" inputmode="url" required pattern="https://.*" autocomplete="url" /></label>
   {kind === 'submit' ? <>
     <label class="grid gap-2"><span>{t.optionalName}</span><input name="name" maxlength="120" autocomplete="organization" /></label>

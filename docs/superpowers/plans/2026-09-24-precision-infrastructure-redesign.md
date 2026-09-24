@@ -351,7 +351,7 @@ git commit -m "Convert project cards to technical index rows"
 - Consumes: Task 1 tokens and Task 3 project rows.
 - Produces: `.page-code`, `.fact-table`, `.section-number`, `.filter-index`, `.info-note`, and consistent utility-page layouts.
 
-- [ ] **Step 1: Add failing cross-page structure assertions**
+- [x] **Step 1: Add failing cross-page structure assertions**
 
 Extend the shared test:
 
@@ -370,19 +370,19 @@ await page.goto('/missing-precision-route/');
 await expect(page.locator('.page-code')).toContainText('404');
 ```
 
-- [ ] **Step 2: Run the test and confirm failure**
+- [x] **Step 2: Run the test and confirm failure**
 
 Run: `npx playwright test tests/e2e/reference-layout.spec.ts --project=desktop --workers=1`
 
 Expected: FAIL on the new fact-table, section-number, filter-index, info-note, and page-code hooks.
 
-- [ ] **Step 3: Add editorial numbering and fact-table semantics**
+- [x] **Step 3: Add editorial numbering and fact-table semantics**
 
 In `ProjectDetail.astro`, map the four main sections with explicit `01`–`04` `.section-number` labels, add `fact-table` to the sidebar, and keep every existing source/fact/action. Replace decorative monogram dominance with a compact project key.
 
 In `src/pages/[...path].astro`, add a localized `.page-code` to directory/category headings such as `INDEX / ALL` and `INDEX / 03`; do not change H1 count or metadata.
 
-- [ ] **Step 4: Align search, information, forms, pagination, and 404**
+- [x] **Step 4: Align search, information, forms, pagination, and 404**
 
 - Add `filter-index` to the filter panel and mono group numbers before each fieldset legend.
 - Add `info-note` to the information aside and a page code derived from `kind`.
@@ -390,11 +390,11 @@ In `src/pages/[...path].astro`, add a localized `.page-code` to directory/catego
 - Render pagination as compact numbered/previous/next controls with `aria-current` retained.
 - Give 404 a `.page-code` value of `ERR / 404` and retain real response status through existing routing.
 
-- [ ] **Step 5: Implement shared inner-page CSS**
+- [x] **Step 5: Implement shared inner-page CSS**
 
 Use a consistent 12-column editorial grid, numbered section labels, ruled fact rows, rectangular inputs, and mono metadata. Keep detail facts sticky only above 900px. Ensure info body line length stays near 70 characters and filters collapse into the existing accessible details element on mobile.
 
-- [ ] **Step 6: Run behavior, accessibility, and SEO regressions, then commit**
+- [x] **Step 6: Run behavior, accessibility, and SEO regressions, then commit**
 
 Run:
 

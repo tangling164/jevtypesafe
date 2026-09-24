@@ -9,7 +9,7 @@ const label = (page: number) => t.paginationStatus.replace('{page}', String(page
 const pages = Array.from({ length: route.pages }, (_, index) => index + 1);
 ---
 {route.pages > 1 && (
-  <nav class="mt-8 flex flex-wrap items-center gap-2" aria-label={t.pagination}>
+  <nav class="technical-pagination mt-8 flex flex-wrap items-center gap-2" aria-label={t.pagination}>
     {route.page > 1 && <a class="button" rel="prev" href={link(route.page - 1)}>{t.previous}</a>}
     {pages.map((page) => page === route.page
       ? <span class="button bg-surface" aria-current="page" aria-label={label(page)}>{page}</span>

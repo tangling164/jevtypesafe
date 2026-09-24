@@ -10,9 +10,10 @@ const headings = {
   submit: zh ? '提交项目' : 'Submit a project', sponsor: zh ? '赞助合作' : 'Sponsorship',
   about: zh ? '关于本站' : 'About this directory', privacy: zh ? '隐私说明' : 'Privacy',
 };
+const pageCode = {submit:'FORM / SUBMIT',sponsor:'DOC / SPONSOR',about:'DOC / ABOUT',privacy:'DOC / PRIVACY'}[kind];
 ---
 <article class="info-page">
-  <header class="page-heading" data-reveal><p class="eyebrow">{t.kicker}</p><h1>{headings[kind]}</h1></header>
+  <header class="page-heading" data-reveal><p class="page-code">{pageCode}</p><p class="eyebrow">{t.kicker}</p><h1>{headings[kind]}</h1></header>
   <div class="info-layout"><div class="prose" data-reveal>
   {kind === 'submit' && <>
     <p>{t.free}</p><p>{zh ? '无需注册。我们会核实公开来源和许可状态，但不承诺立即发布。请在自己的邮件应用中真正发送；本站没有邮件发送服务。' : 'No account is needed. We check public sources and license status, but cannot promise immediate publication. You must send the message from your own email app; this site has no email sending service.'}</p>
@@ -39,5 +40,5 @@ const headings = {
     <p>{config.PUBLIC_WEB_ANALYTICS_TOKEN ? (zh ? '本站已配置 Cloudflare Web Analytics，用于了解页面访问和性能。它不作为赞助曝光或出站点击的完整记录。' : 'Cloudflare Web Analytics is configured to understand page visits and performance. It is not treated as a complete record of sponsorship impressions or outbound clicks.') : (zh ? '本站当前未配置访问分析 token，因此不加载分析脚本，也不进行赞助跟踪。' : 'No analytics token is currently configured, so no analytics script is loaded and sponsorship tracking is not active.')}</p>
     <p>{zh ? '公开联系邮箱可能显示在页面上。本站不会把客户私人邮箱、付款资料或私密备注放入公开目录数据。' : 'A public contact address may appear on the site. Private customer email, payment details, and private notes are not placed in public directory data.'}</p>
   </>}
-  </div><aside class="info-aside" data-reveal><p class="info-aside-label">{zh ? '目录原则' : 'Directory principles'}</p><p>{t.independent}</p><p>{t.sourceChecked}</p><a href={locale === 'zh' ? '/zh/projects/' : '/projects/'}>{t.browse} →</a></aside></div>
+  </div><aside class="info-aside info-note" data-reveal><p class="info-aside-label">{zh ? '目录原则' : 'Directory principles'}</p><p>{t.independent}</p><p>{t.sourceChecked}</p><a href={locale === 'zh' ? '/zh/projects/' : '/projects/'}>{t.browse} →</a></aside></div>
 </article>
