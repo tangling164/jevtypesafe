@@ -2,7 +2,7 @@
 
 - Date: 2026-09-24
 - Executor: Codex with the site owner's Cloudflare authorization
-- Production source: `fda0c3d244d1adb07db964dd21d83bf4c5927788` on `origin/main`; release tag `v0.1.0`
+- Accepted release source and `v0.1.0` tag: `a011a3f6de756f59022a8f9ac2f442ff73c501ef`
 - Environment: Windows 11, Node 24.14.1, npm 11.11.0, Wrangler 4.135.0, Cloudflare Workers Builds
 - Worker: `jev-builds-directory`
 
@@ -29,6 +29,7 @@
 | Initial manual Worker deployment | Passed: version `1a8c3c58-5ee9-4afc-bc04-399344538650` at `https://jev-builds-directory.tl18774902382.workers.dev`. |
 | GitHub `Quality checks` | Passed: run `35966893387` for the domain commit and run `35967436989` for production source `fda0c3d244d1adb07db964dd21d83bf4c5927788`. |
 | Workers Builds from `main` | Git push triggered build `f433305a-7e5a-485e-8881-025a21da0a94`; its post-DNS retry `32f5d303-f7da-4bc9-bd21-931b674645c4` passed and promoted version `173587e1-93ae-4ddc-8f41-801a09c3f4ad`. |
+| Independent post-acceptance `main` promotion | Passed: GitHub run `35970605136` and Cloudflare version `b1612a18-9d0d-47a7-a2e8-1e2eecf8d930` were created automatically from `a011a3f6de756f59022a8f9ac2f442ff73c501ef`; no dashboard retry was required. |
 | `https://jevtypesafe.dev/` | `200 OK`, `text/html`, Cloudflare edge response, HTTPS valid, `CF-Cache-Status: HIT`. |
 | `https://jevtypesafe.dev/zh/` | `200 OK`. |
 | `https://jevtypesafe.dev/projects/supercov/` | `200 OK`. |
